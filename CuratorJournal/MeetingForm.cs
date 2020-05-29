@@ -36,8 +36,8 @@ namespace CuratorJournal
         {
             if (e.RowIndex >= 0)
             {
-                meeting = (Meeting)dgvMeeting.Rows[e.RowIndex].DataBoundItem;
                 panelMeeting.Visible = true;
+                meeting = (Meeting)dgvMeeting.Rows[e.RowIndex].DataBoundItem;
                 if (meeting.statusMeeting == true)
                     radioButtonPlan.Checked = true;
                 else
@@ -56,6 +56,8 @@ namespace CuratorJournal
 
         private void bAddMeeting_Click(object sender, EventArgs e)
         {
+            dgvMeeting.ClearSelection();
+            panelMeeting.Visible = true;
             meeting = new Meeting();
             meeting.dateMeeting = DateTime.Now.Date;
             dateTimePickerMeeting.Value = DateTime.Now.Date;
@@ -64,8 +66,8 @@ namespace CuratorJournal
             meeting.idJournal = JournalForm.Journal.idJournal;
             tbQuestion.Text = "";
             tbDecision.Text = "";
-            panelMeeting.Visible = true;
             FillStudent();
+            bDelete.Visible = false;
         }
 
  

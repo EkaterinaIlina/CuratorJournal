@@ -32,6 +32,6 @@ namespace CuratorJournal
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Journal> Journal { get; set; }
-        public override string ToString() => surnameCurator + " " + nameCurator;
+        public override string ToString() => surnameCurator + " " + nameCurator + " " + patronymicCurator;
     }
 }

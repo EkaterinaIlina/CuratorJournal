@@ -647,6 +647,7 @@
             this.panelResTemp.Name = "panelResTemp";
             this.panelResTemp.Size = new System.Drawing.Size(361, 245);
             this.panelResTemp.TabIndex = 56;
+            this.panelResTemp.Visible = false;
             // 
             // lCountryT
             // 
@@ -850,6 +851,7 @@
             this.panelHostel.Name = "panelHostel";
             this.panelHostel.Size = new System.Drawing.Size(308, 76);
             this.panelHostel.TabIndex = 58;
+            this.panelHostel.Visible = false;
             // 
             // listBoxHostel
             // 
@@ -1337,6 +1339,7 @@
             this.buttonDelete.TabIndex = 64;
             this.buttonDelete.Text = "Удалить";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Visible = false;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // StudentForm

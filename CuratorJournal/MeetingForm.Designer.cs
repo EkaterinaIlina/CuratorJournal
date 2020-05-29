@@ -118,7 +118,7 @@
             // 
             // bDelete
             // 
-            this.bDelete.Location = new System.Drawing.Point(6, 271);
+            this.bDelete.Location = new System.Drawing.Point(3, 555);
             this.bDelete.Name = "bDelete";
             this.bDelete.Size = new System.Drawing.Size(133, 28);
             this.bDelete.TabIndex = 39;
@@ -129,7 +129,7 @@
             // 
             // bSave
             // 
-            this.bSave.Location = new System.Drawing.Point(6, 237);
+            this.bSave.Location = new System.Drawing.Point(3, 520);
             this.bSave.Name = "bSave";
             this.bSave.Size = new System.Drawing.Size(133, 28);
             this.bSave.TabIndex = 38;
@@ -163,7 +163,7 @@
             // 
             this.lStudent.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lStudent.AutoSize = true;
-            this.lStudent.Location = new System.Drawing.Point(139, 194);
+            this.lStudent.Location = new System.Drawing.Point(3, 206);
             this.lStudent.Name = "lStudent";
             this.lStudent.Size = new System.Drawing.Size(137, 13);
             this.lStudent.TabIndex = 36;

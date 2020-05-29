@@ -1,6 +1,6 @@
 ﻿namespace CuratorJournal
 {
-    partial class AttendanceCheck
+    partial class AttendanceCheckForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,24 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AttendanceCheck));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AttendanceCheckForm));
             this.lTitle = new System.Windows.Forms.Label();
-            this.dgvMeeting = new System.Windows.Forms.DataGridView();
-            this.panelMeeting = new System.Windows.Forms.Panel();
-            this.bDelete = new System.Windows.Forms.Button();
-            this.bSaveStudent = new System.Windows.Forms.Button();
-            this.lDescr = new System.Windows.Forms.Label();
-            this.dgvStudent = new System.Windows.Forms.DataGridView();
-            this.lStudent = new System.Windows.Forms.Label();
-            this.lQuestion = new System.Windows.Forms.Label();
-            this.tbQuestion = new System.Windows.Forms.TextBox();
-            this.tbDecision = new System.Windows.Forms.TextBox();
-            this.lDate = new System.Windows.Forms.Label();
+            this.dgvAttendance = new System.Windows.Forms.DataGridView();
+            this.bAddAttendance = new System.Windows.Forms.Button();
             this.dateTimePickerAttendance = new System.Windows.Forms.DateTimePicker();
-            this.bAddMeeting = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMeeting)).BeginInit();
-            this.panelMeeting.SuspendLayout();
+            this.lDate = new System.Windows.Forms.Label();
+            this.lStudent = new System.Windows.Forms.Label();
+            this.dgvStudent = new System.Windows.Forms.DataGridView();
+            this.bSaveStudent = new System.Windows.Forms.Button();
+            this.bDelete = new System.Windows.Forms.Button();
+            this.comboBoxDiscpline = new System.Windows.Forms.ComboBox();
+            this.comboBoxOccup = new System.Windows.Forms.ComboBox();
+            this.textBoxFullNamePrep = new System.Windows.Forms.TextBox();
+            this.labelDiscipline = new System.Windows.Forms.Label();
+            this.labelOccup = new System.Windows.Forms.Label();
+            this.labelFullNamePrep = new System.Windows.Forms.Label();
+            this.panelAttendance = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
+            this.panelAttendance.SuspendLayout();
             this.SuspendLayout();
             // 
             // lTitle
@@ -58,65 +60,58 @@
             this.lTitle.TabIndex = 3;
             this.lTitle.Text = "Проверка посещаемости занятий студентами";
             // 
-            // dgvMeeting
+            // dgvAttendance
             // 
-            this.dgvMeeting.AllowUserToAddRows = false;
-            this.dgvMeeting.AllowUserToDeleteRows = false;
-            this.dgvMeeting.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvMeeting.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMeeting.Location = new System.Drawing.Point(34, 40);
-            this.dgvMeeting.Name = "dgvMeeting";
-            this.dgvMeeting.ReadOnly = true;
-            this.dgvMeeting.RowHeadersVisible = false;
-            this.dgvMeeting.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dgvMeeting.Size = new System.Drawing.Size(445, 150);
-            this.dgvMeeting.TabIndex = 33;
+            this.dgvAttendance.AllowUserToAddRows = false;
+            this.dgvAttendance.AllowUserToDeleteRows = false;
+            this.dgvAttendance.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvAttendance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAttendance.Location = new System.Drawing.Point(34, 40);
+            this.dgvAttendance.Name = "dgvAttendance";
+            this.dgvAttendance.ReadOnly = true;
+            this.dgvAttendance.RowHeadersVisible = false;
+            this.dgvAttendance.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.dgvAttendance.Size = new System.Drawing.Size(445, 150);
+            this.dgvAttendance.TabIndex = 33;
+            this.dgvAttendance.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAttendance_CellMouseClick);
             // 
-            // panelMeeting
+            // bAddAttendance
             // 
-            this.panelMeeting.Controls.Add(this.bDelete);
-            this.panelMeeting.Controls.Add(this.bSaveStudent);
-            this.panelMeeting.Controls.Add(this.lDescr);
-            this.panelMeeting.Controls.Add(this.dgvStudent);
-            this.panelMeeting.Controls.Add(this.lStudent);
-            this.panelMeeting.Controls.Add(this.lQuestion);
-            this.panelMeeting.Controls.Add(this.tbQuestion);
-            this.panelMeeting.Controls.Add(this.tbDecision);
-            this.panelMeeting.Controls.Add(this.lDate);
-            this.panelMeeting.Controls.Add(this.dateTimePickerAttendance);
-            this.panelMeeting.Location = new System.Drawing.Point(34, 208);
-            this.panelMeeting.Name = "panelMeeting";
-            this.panelMeeting.Size = new System.Drawing.Size(510, 595);
-            this.panelMeeting.TabIndex = 34;
-            this.panelMeeting.Visible = false;
+            this.bAddAttendance.Image = ((System.Drawing.Image)(resources.GetObject("bAddAttendance.Image")));
+            this.bAddAttendance.Location = new System.Drawing.Point(501, 40);
+            this.bAddAttendance.Name = "bAddAttendance";
+            this.bAddAttendance.Size = new System.Drawing.Size(43, 23);
+            this.bAddAttendance.TabIndex = 40;
+            this.bAddAttendance.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.bAddAttendance.UseVisualStyleBackColor = true;
+            this.bAddAttendance.Click += new System.EventHandler(this.bAddAttendance_Click);
             // 
-            // bDelete
+            // dateTimePickerAttendance
             // 
-            this.bDelete.Location = new System.Drawing.Point(3, 540);
-            this.bDelete.Name = "bDelete";
-            this.bDelete.Size = new System.Drawing.Size(133, 43);
-            this.bDelete.TabIndex = 39;
-            this.bDelete.Text = "Удалить";
-            this.bDelete.UseVisualStyleBackColor = true;
-            this.bDelete.Visible = false;
+            this.dateTimePickerAttendance.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerAttendance.Location = new System.Drawing.Point(142, 9);
+            this.dateTimePickerAttendance.Name = "dateTimePickerAttendance";
+            this.dateTimePickerAttendance.Size = new System.Drawing.Size(140, 20);
+            this.dateTimePickerAttendance.TabIndex = 4;
             // 
-            // bSaveStudent
+            // lDate
             // 
-            this.bSaveStudent.Location = new System.Drawing.Point(3, 491);
-            this.bSaveStudent.Name = "bSaveStudent";
-            this.bSaveStudent.Size = new System.Drawing.Size(133, 43);
-            this.bSaveStudent.TabIndex = 38;
-            this.bSaveStudent.Text = "Сохранить";
-            this.bSaveStudent.UseVisualStyleBackColor = true;
+            this.lDate.AutoSize = true;
+            this.lDate.Location = new System.Drawing.Point(3, 15);
+            this.lDate.Name = "lDate";
+            this.lDate.Size = new System.Drawing.Size(96, 13);
+            this.lDate.TabIndex = 5;
+            this.lDate.Text = "Дата проведения";
             // 
-            // lDescr
+            // lStudent
             // 
-            this.lDescr.AutoSize = true;
-            this.lDescr.Location = new System.Drawing.Point(248, 116);
-            this.lDescr.Name = "lDescr";
-            this.lDescr.Size = new System.Drawing.Size(103, 13);
-            this.lDescr.TabIndex = 9;
-            this.lDescr.Text = "Принятое решение";
+            this.lStudent.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lStudent.AutoSize = true;
+            this.lStudent.Location = new System.Drawing.Point(3, 116);
+            this.lStudent.Name = "lStudent";
+            this.lStudent.Size = new System.Drawing.Size(137, 13);
+            this.lStudent.TabIndex = 36;
+            this.lStudent.Text = "Отсутствующие студенты";
             // 
             // dgvStudent
             // 
@@ -124,94 +119,127 @@
             this.dgvStudent.AllowUserToDeleteRows = false;
             this.dgvStudent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStudent.Location = new System.Drawing.Point(142, 197);
+            this.dgvStudent.Location = new System.Drawing.Point(142, 116);
             this.dgvStudent.Name = "dgvStudent";
             this.dgvStudent.RowHeadersVisible = false;
             this.dgvStudent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvStudent.Size = new System.Drawing.Size(345, 391);
             this.dgvStudent.TabIndex = 37;
             // 
-            // lStudent
+            // bSaveStudent
             // 
-            this.lStudent.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lStudent.AutoSize = true;
-            this.lStudent.Location = new System.Drawing.Point(6, 197);
-            this.lStudent.Name = "lStudent";
-            this.lStudent.Size = new System.Drawing.Size(137, 13);
-            this.lStudent.TabIndex = 36;
-            this.lStudent.Text = "Отсутствующие студенты";
+            this.bSaveStudent.Location = new System.Drawing.Point(3, 415);
+            this.bSaveStudent.Name = "bSaveStudent";
+            this.bSaveStudent.Size = new System.Drawing.Size(133, 43);
+            this.bSaveStudent.TabIndex = 38;
+            this.bSaveStudent.Text = "Сохранить";
+            this.bSaveStudent.UseVisualStyleBackColor = true;
+            this.bSaveStudent.Click += new System.EventHandler(this.bSaveStudent_Click);
             // 
-            // lQuestion
+            // bDelete
             // 
-            this.lQuestion.AutoSize = true;
-            this.lQuestion.Location = new System.Drawing.Point(3, 116);
-            this.lQuestion.Name = "lQuestion";
-            this.lQuestion.Size = new System.Drawing.Size(129, 13);
-            this.lQuestion.TabIndex = 8;
-            this.lQuestion.Text = "Вопрос для обсуждения";
+            this.bDelete.Location = new System.Drawing.Point(3, 464);
+            this.bDelete.Name = "bDelete";
+            this.bDelete.Size = new System.Drawing.Size(133, 43);
+            this.bDelete.TabIndex = 39;
+            this.bDelete.Text = "Удалить";
+            this.bDelete.UseVisualStyleBackColor = true;
+            this.bDelete.Visible = false;
+            this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
             // 
-            // tbQuestion
+            // comboBoxDiscpline
             // 
-            this.tbQuestion.Location = new System.Drawing.Point(6, 132);
-            this.tbQuestion.MaxLength = 300;
-            this.tbQuestion.Multiline = true;
-            this.tbQuestion.Name = "tbQuestion";
-            this.tbQuestion.Size = new System.Drawing.Size(236, 59);
-            this.tbQuestion.TabIndex = 7;
+            this.comboBoxDiscpline.FormattingEnabled = true;
+            this.comboBoxDiscpline.Location = new System.Drawing.Point(142, 35);
+            this.comboBoxDiscpline.MaxLength = 25;
+            this.comboBoxDiscpline.Name = "comboBoxDiscpline";
+            this.comboBoxDiscpline.Size = new System.Drawing.Size(189, 21);
+            this.comboBoxDiscpline.TabIndex = 41;
+            this.comboBoxDiscpline.SelectedIndexChanged += new System.EventHandler(this.comboBoxDiscpline_SelectedIndexChanged);
             // 
-            // tbDecision
+            // comboBoxOccup
             // 
-            this.tbDecision.Location = new System.Drawing.Point(251, 132);
-            this.tbDecision.MaxLength = 300;
-            this.tbDecision.Multiline = true;
-            this.tbDecision.Name = "tbDecision";
-            this.tbDecision.Size = new System.Drawing.Size(236, 59);
-            this.tbDecision.TabIndex = 6;
+            this.comboBoxOccup.FormattingEnabled = true;
+            this.comboBoxOccup.Location = new System.Drawing.Point(142, 62);
+            this.comboBoxOccup.MaxLength = 25;
+            this.comboBoxOccup.Name = "comboBoxOccup";
+            this.comboBoxOccup.Size = new System.Drawing.Size(189, 21);
+            this.comboBoxOccup.TabIndex = 42;
+            this.comboBoxOccup.SelectedIndexChanged += new System.EventHandler(this.comboBoxOccup_SelectedIndexChanged);
             // 
-            // lDate
+            // textBoxFullNamePrep
             // 
-            this.lDate.AutoSize = true;
-            this.lDate.Location = new System.Drawing.Point(6, 15);
-            this.lDate.Name = "lDate";
-            this.lDate.Size = new System.Drawing.Size(96, 13);
-            this.lDate.TabIndex = 5;
-            this.lDate.Text = "Дата проведения";
+            this.textBoxFullNamePrep.Location = new System.Drawing.Point(142, 90);
+            this.textBoxFullNamePrep.MaxLength = 100;
+            this.textBoxFullNamePrep.Name = "textBoxFullNamePrep";
+            this.textBoxFullNamePrep.Size = new System.Drawing.Size(290, 20);
+            this.textBoxFullNamePrep.TabIndex = 43;
+            this.textBoxFullNamePrep.TextChanged += new System.EventHandler(this.textBoxFullNamePrep_TextChanged);
             // 
-            // dateTimePickerAttendance
+            // labelDiscipline
             // 
-            this.dateTimePickerAttendance.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerAttendance.Location = new System.Drawing.Point(125, 9);
-            this.dateTimePickerAttendance.Name = "dateTimePickerAttendance";
-            this.dateTimePickerAttendance.Size = new System.Drawing.Size(140, 20);
-            this.dateTimePickerAttendance.TabIndex = 4;
+            this.labelDiscipline.AutoSize = true;
+            this.labelDiscipline.Location = new System.Drawing.Point(3, 38);
+            this.labelDiscipline.Name = "labelDiscipline";
+            this.labelDiscipline.Size = new System.Drawing.Size(70, 13);
+            this.labelDiscipline.TabIndex = 44;
+            this.labelDiscipline.Text = "Дисциплина";
             // 
-            // bAddMeeting
+            // labelOccup
             // 
-            this.bAddMeeting.Image = ((System.Drawing.Image)(resources.GetObject("bAddMeeting.Image")));
-            this.bAddMeeting.Location = new System.Drawing.Point(501, 40);
-            this.bAddMeeting.Name = "bAddMeeting";
-            this.bAddMeeting.Size = new System.Drawing.Size(43, 23);
-            this.bAddMeeting.TabIndex = 40;
-            this.bAddMeeting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.bAddMeeting.UseVisualStyleBackColor = true;
+            this.labelOccup.AutoSize = true;
+            this.labelOccup.Location = new System.Drawing.Point(3, 65);
+            this.labelOccup.Name = "labelOccup";
+            this.labelOccup.Size = new System.Drawing.Size(85, 13);
+            this.labelOccup.TabIndex = 45;
+            this.labelOccup.Text = "Статус занятия";
             // 
-            // AttendanceCheck
+            // labelFullNamePrep
+            // 
+            this.labelFullNamePrep.AutoSize = true;
+            this.labelFullNamePrep.Location = new System.Drawing.Point(3, 93);
+            this.labelFullNamePrep.Name = "labelFullNamePrep";
+            this.labelFullNamePrep.Size = new System.Drawing.Size(114, 13);
+            this.labelFullNamePrep.TabIndex = 46;
+            this.labelFullNamePrep.Text = "ФИО преподавателя";
+            // 
+            // panelAttendance
+            // 
+            this.panelAttendance.Controls.Add(this.labelFullNamePrep);
+            this.panelAttendance.Controls.Add(this.labelOccup);
+            this.panelAttendance.Controls.Add(this.labelDiscipline);
+            this.panelAttendance.Controls.Add(this.textBoxFullNamePrep);
+            this.panelAttendance.Controls.Add(this.comboBoxOccup);
+            this.panelAttendance.Controls.Add(this.comboBoxDiscpline);
+            this.panelAttendance.Controls.Add(this.bDelete);
+            this.panelAttendance.Controls.Add(this.bSaveStudent);
+            this.panelAttendance.Controls.Add(this.dgvStudent);
+            this.panelAttendance.Controls.Add(this.lStudent);
+            this.panelAttendance.Controls.Add(this.lDate);
+            this.panelAttendance.Controls.Add(this.dateTimePickerAttendance);
+            this.panelAttendance.Location = new System.Drawing.Point(34, 208);
+            this.panelAttendance.Name = "panelAttendance";
+            this.panelAttendance.Size = new System.Drawing.Size(510, 522);
+            this.panelAttendance.TabIndex = 34;
+            this.panelAttendance.Visible = false;
+            // 
+            // AttendanceCheckForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(611, 509);
-            this.Controls.Add(this.bAddMeeting);
-            this.Controls.Add(this.panelMeeting);
-            this.Controls.Add(this.dgvMeeting);
+            this.ClientSize = new System.Drawing.Size(628, 509);
+            this.Controls.Add(this.bAddAttendance);
+            this.Controls.Add(this.panelAttendance);
+            this.Controls.Add(this.dgvAttendance);
             this.Controls.Add(this.lTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
-            this.Name = "AttendanceCheck";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMeeting)).EndInit();
-            this.panelMeeting.ResumeLayout(false);
-            this.panelMeeting.PerformLayout();
+            this.Name = "AttendanceCheckForm";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).EndInit();
+            this.panelAttendance.ResumeLayout(false);
+            this.panelAttendance.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,18 +248,20 @@
         #endregion
 
         private System.Windows.Forms.Label lTitle;
-        private System.Windows.Forms.DataGridView dgvMeeting;
-        private System.Windows.Forms.Panel panelMeeting;
-        private System.Windows.Forms.Label lDate;
+        private System.Windows.Forms.DataGridView dgvAttendance;
+        private System.Windows.Forms.Button bAddAttendance;
         private System.Windows.Forms.DateTimePicker dateTimePickerAttendance;
-        private System.Windows.Forms.Label lDescr;
-        private System.Windows.Forms.Label lQuestion;
-        private System.Windows.Forms.TextBox tbQuestion;
-        private System.Windows.Forms.TextBox tbDecision;
+        private System.Windows.Forms.Label lDate;
         private System.Windows.Forms.Label lStudent;
         private System.Windows.Forms.DataGridView dgvStudent;
         private System.Windows.Forms.Button bSaveStudent;
         private System.Windows.Forms.Button bDelete;
-        private System.Windows.Forms.Button bAddMeeting;
+        private System.Windows.Forms.ComboBox comboBoxDiscpline;
+        private System.Windows.Forms.ComboBox comboBoxOccup;
+        private System.Windows.Forms.TextBox textBoxFullNamePrep;
+        private System.Windows.Forms.Label labelDiscipline;
+        private System.Windows.Forms.Label labelOccup;
+        private System.Windows.Forms.Label labelFullNamePrep;
+        private System.Windows.Forms.Panel panelAttendance;
     }
 }

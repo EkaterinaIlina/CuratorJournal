@@ -68,5 +68,6 @@ namespace CuratorJournal
         public virtual ICollection<RatingMark> RatingMark { get; set; }
         public virtual Residence Residence { get; set; }
         public virtual Residence Residence1 { get; set; }
+        public override string ToString() => surnameStudent + " " + nameStudent;
     }
 }

@@ -14,7 +14,6 @@ namespace CuratorJournal
         Residence residenceTemp ;
         Kin kin ;
         Family family = new Family();
-        bool flag; // Добавление/редактирование братьев и сестер
         List <Kin> listRelatives;
         Language language;
 
@@ -48,8 +47,6 @@ namespace CuratorJournal
             family = new Family();
             student.idGroup = idGroup;
             comboBoxLang.DataSource = DBobjects.Entities.Language.ToList();
-            comboBoxLang.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            comboBoxLang.AutoCompleteSource = AutoCompleteSource.ListItems;
             dateTimePickerDateBirth.Value = DateTime.Now;
             dateTimePickerLern.Value = DateTime.Now;            
             listRelatives = new List<Kin>();
@@ -84,8 +81,7 @@ namespace CuratorJournal
         }
         private void ResidenceFill()
         {
-            listBoxHostel.DataSource = DBobjects.Entities.Hostel.Select(p => p.nameHostel).ToList();
-            listBoxHostel.SelectedItem = listBoxHostel.Items[0];
+            listBoxHostel.DataSource = DBobjects.Entities.Hostel.Select(p => p.nameHostel).ToList();  
             tbCountry.Text = residence.country;
             tbDistrict.Text = residence.district;
             tbRegion.Text = residence.region;
@@ -107,7 +103,7 @@ namespace CuratorJournal
                     if (residenceTemp.idHostel != null || residenceTemp.idHostel.ToString() != "")
                     {
                         radioButtonHostel.Checked = true;
-                        listBoxHostel.SelectedItem = student.Residence1.Hostel;
+                        listBoxHostel.SelectedItem = student.Residence1.Hostel.nameHostel ;
                         tbRoom.Text = residenceTemp.room;
                     }
                     else
@@ -154,7 +150,6 @@ namespace CuratorJournal
                 else
                     radioButtonInvKinF.Checked = true;
                 tbPlaceEmployment.Text = kin.placeOfWorkKin;
-                flag = false;
             }
         }
         private void DeleteKin()
@@ -290,7 +285,6 @@ namespace CuratorJournal
                 panelHostel.Visible = true;
                 panelResTemp.Visible = false;
                 listBoxHostel.DataSource = DBobjects.Entities.Hostel.Select(p => p.nameHostel).ToList();
-                listBoxHostel.SelectedItem = listBoxHostel.Items[0];
             }
         }
 
@@ -612,8 +606,7 @@ namespace CuratorJournal
         {
             if (radioButtonInog.Checked == true && radioButtonHostel.Checked == true)
             {
-                if(listBoxHostel.SelectedItem!=null)
-                    residenceTemp.idHostel = DBobjects.Entities.Hostel.FirstOrDefault(p => p.nameHostel == listBoxHostel.SelectedItem).idHostel;
+                    residenceTemp.idHostel = DBobjects.Entities.Hostel.FirstOrDefault(p => p.nameHostel == listBoxHostel.SelectedItem.ToString()).idHostel;
             }
         }
 
@@ -651,7 +644,6 @@ namespace CuratorJournal
             kin.disabilityKin=false;
             listBoxKinStatus.SelectedItem = listBoxKinStatus.Items[0];
             panelRelatives.Visible = true;
-            flag = true;
         }
 
         private void listBoxKinStatus_SelectedValueChanged(object sender, EventArgs e)
@@ -664,10 +656,6 @@ namespace CuratorJournal
             {
                 if (listRelatives.Where(p => p.kinStatus == kin.kinStatus).Count() == 0)
                     listRelatives.Add(kin);
-                else if ((kin.kinStatus == "Брат" || kin.kinStatus == "Сестра") && flag == true)
-                    listRelatives.Add(kin);
-                else if ((kin.kinStatus == "Мать" || kin.kinStatus == "Отец") && (listRelatives.Where(p => p.kinStatus == "Мать" || p.kinStatus == "Отец").Count() > 0))
-                    MessageBox.Show("Уже есть");
             }
             else
                 MessageBox.Show("Заполните обязательное поле");

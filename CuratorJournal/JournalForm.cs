@@ -52,17 +52,23 @@ namespace CuratorJournal
                     studentInformation.Show();
                     break; 
                 case "GraficProcess":
-                        StudyScheduleForm studySchedule = new StudyScheduleForm();
-                        studySchedule.WindowState = FormWindowState.Maximized;
-                        studySchedule.MdiParent = this;
-                        studySchedule.Show();                        
-                        break;
-                    case "MeetingJournal":
-                        MeetingForm meetingForm = new MeetingForm();
-                        meetingForm.WindowState = FormWindowState.Maximized;
-                        meetingForm.MdiParent = this;
-                        meetingForm.Show();
-                        break;
+                    StudyScheduleForm studySchedule = new StudyScheduleForm();
+                    studySchedule.WindowState = FormWindowState.Maximized;
+                    studySchedule.MdiParent = this;
+                    studySchedule.Show();                        
+                    break;   
+                case "MeetingJournal":
+                    MeetingForm meetingForm = new MeetingForm();
+                    meetingForm.WindowState = FormWindowState.Maximized;
+                    meetingForm.MdiParent = this;
+                    meetingForm.Show();
+                    break;
+                case "Attendance":
+                    AttendanceCheckForm attendanceCheckForm = new AttendanceCheckForm();
+                    attendanceCheckForm.WindowState = FormWindowState.Maximized;
+                    attendanceCheckForm.MdiParent = this;
+                    attendanceCheckForm.Show();
+                    break;
                 }
             }
             else if((treeViewMenu.SelectedNode).Name== "MainInformation")

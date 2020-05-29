@@ -261,6 +261,12 @@
     <Compile Include="VisitHostel.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="VisitHostelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisitHostelForm.Designer.cs">
+      <DependentUpon>VisitHostelForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddJournalForm.resx">
       <DependentUpon>AddJournalForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -309,6 +315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StudyScheduleForm.resx">
       <DependentUpon>StudyScheduleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisitHostelForm.resx">
+      <DependentUpon>VisitHostelForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.Config" />
     <None Include="ClassDiagram1.cd" />
