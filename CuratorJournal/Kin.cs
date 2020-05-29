@@ -31,5 +31,6 @@ namespace CuratorJournal
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TalkParents> TalkParents { get; set; }
         public virtual Student Student { get; set; }
+        public override string ToString() => fullNameKin;
     }
 }

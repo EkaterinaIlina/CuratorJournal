@@ -11,7 +11,7 @@ namespace CuratorJournal
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Curator
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +19,7 @@ namespace CuratorJournal
         {
             this.Journal = new HashSet<Journal>();
         }
-
+    
         public int idCurator { get; set; }
         public string surnameCurator { get; set; }
         public string nameCurator { get; set; }
@@ -29,9 +29,9 @@ namespace CuratorJournal
         public string password { get; set; }
         public string question { get; set; }
         public string ansver { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Journal> Journal { get; set; }
-        public override string ToString() => surnameCurator + " "+ nameCurator + " " + patronymicCurator;
+        public override string ToString() => surnameCurator + " " + nameCurator;
     }
 }
