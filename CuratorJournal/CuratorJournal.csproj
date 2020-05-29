@@ -320,7 +320,6 @@
       <DependentUpon>VisitHostelForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.Config" />
-    <None Include="ClassDiagram1.cd" />
     <EntityDeploy Include="MyModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MyModel.Designer.cs</LastGenOutput>

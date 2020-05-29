@@ -29,44 +29,47 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VisitHostelForm));
-            this.bAddMeeting = new System.Windows.Forms.Button();
-            this.panelMeeting = new System.Windows.Forms.Panel();
+            this.bAddVisit = new System.Windows.Forms.Button();
+            this.panelVisitRoom = new System.Windows.Forms.Panel();
             this.bDelete = new System.Windows.Forms.Button();
             this.bSaveStudent = new System.Windows.Forms.Button();
             this.lStudent = new System.Windows.Forms.Label();
             this.lDate = new System.Windows.Forms.Label();
-            this.dgvStudent = new System.Windows.Forms.DataGridView();
-            this.dateTimePickerAttendance = new System.Windows.Forms.DateTimePicker();
-            this.dgvMeeting = new System.Windows.Forms.DataGridView();
+            this.dgvRoom = new System.Windows.Forms.DataGridView();
+            this.dateTimePickerVisit = new System.Windows.Forms.DateTimePicker();
+            this.dgvVisit = new System.Windows.Forms.DataGridView();
             this.lTitle = new System.Windows.Forms.Label();
-            this.panelMeeting.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMeeting)).BeginInit();
+            this.textBoxCause = new System.Windows.Forms.TextBox();
+            this.labelCause = new System.Windows.Forms.Label();
+            this.panelVisitRoom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRoom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVisit)).BeginInit();
             this.SuspendLayout();
             // 
-            // bAddMeeting
+            // bAddVisit
             // 
-            this.bAddMeeting.Image = ((System.Drawing.Image)(resources.GetObject("bAddMeeting.Image")));
-            this.bAddMeeting.Location = new System.Drawing.Point(4, 64);
-            this.bAddMeeting.Name = "bAddMeeting";
-            this.bAddMeeting.Size = new System.Drawing.Size(43, 23);
-            this.bAddMeeting.TabIndex = 44;
-            this.bAddMeeting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.bAddMeeting.UseVisualStyleBackColor = true;
+            this.bAddVisit.Image = ((System.Drawing.Image)(resources.GetObject("bAddVisit.Image")));
+            this.bAddVisit.Location = new System.Drawing.Point(4, 64);
+            this.bAddVisit.Name = "bAddVisit";
+            this.bAddVisit.Size = new System.Drawing.Size(43, 23);
+            this.bAddVisit.TabIndex = 44;
+            this.bAddVisit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.bAddVisit.UseVisualStyleBackColor = true;
             // 
-            // panelMeeting
+            // panelVisitRoom
             // 
-            this.panelMeeting.Controls.Add(this.bDelete);
-            this.panelMeeting.Controls.Add(this.bSaveStudent);
-            this.panelMeeting.Controls.Add(this.lStudent);
-            this.panelMeeting.Controls.Add(this.lDate);
-            this.panelMeeting.Controls.Add(this.dgvStudent);
-            this.panelMeeting.Controls.Add(this.dateTimePickerAttendance);
-            this.panelMeeting.Location = new System.Drawing.Point(282, 64);
-            this.panelMeeting.Name = "panelMeeting";
-            this.panelMeeting.Size = new System.Drawing.Size(292, 459);
-            this.panelMeeting.TabIndex = 43;
-            this.panelMeeting.Visible = false;
+            this.panelVisitRoom.Controls.Add(this.labelCause);
+            this.panelVisitRoom.Controls.Add(this.textBoxCause);
+            this.panelVisitRoom.Controls.Add(this.bDelete);
+            this.panelVisitRoom.Controls.Add(this.bSaveStudent);
+            this.panelVisitRoom.Controls.Add(this.lStudent);
+            this.panelVisitRoom.Controls.Add(this.lDate);
+            this.panelVisitRoom.Controls.Add(this.dgvRoom);
+            this.panelVisitRoom.Controls.Add(this.dateTimePickerVisit);
+            this.panelVisitRoom.Location = new System.Drawing.Point(282, 64);
+            this.panelVisitRoom.Name = "panelVisitRoom";
+            this.panelVisitRoom.Size = new System.Drawing.Size(302, 459);
+            this.panelVisitRoom.TabIndex = 43;
             // 
             // bDelete
             // 
@@ -93,79 +96,100 @@
             this.lStudent.AutoSize = true;
             this.lStudent.Location = new System.Drawing.Point(10, 148);
             this.lStudent.Name = "lStudent";
-            this.lStudent.Size = new System.Drawing.Size(137, 13);
+            this.lStudent.Size = new System.Drawing.Size(125, 13);
             this.lStudent.TabIndex = 36;
-            this.lStudent.Text = "Отсутствующие студенты";
+            this.lStudent.Text = "Проверенные комнаты";
             // 
             // lDate
             // 
             this.lDate.AutoSize = true;
-            this.lDate.Location = new System.Drawing.Point(6, 15);
+            this.lDate.Location = new System.Drawing.Point(10, 15);
             this.lDate.Name = "lDate";
             this.lDate.Size = new System.Drawing.Size(96, 13);
             this.lDate.TabIndex = 5;
             this.lDate.Text = "Дата проведения";
             // 
-            // dgvStudent
+            // dgvRoom
             // 
-            this.dgvStudent.AllowUserToAddRows = false;
-            this.dgvStudent.AllowUserToDeleteRows = false;
-            this.dgvStudent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStudent.Location = new System.Drawing.Point(13, 164);
-            this.dgvStudent.Name = "dgvStudent";
-            this.dgvStudent.RowHeadersVisible = false;
-            this.dgvStudent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvStudent.Size = new System.Drawing.Size(241, 284);
-            this.dgvStudent.TabIndex = 37;
+            this.dgvRoom.AllowUserToAddRows = false;
+            this.dgvRoom.AllowUserToDeleteRows = false;
+            this.dgvRoom.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRoom.Location = new System.Drawing.Point(13, 164);
+            this.dgvRoom.Name = "dgvRoom";
+            this.dgvRoom.RowHeadersVisible = false;
+            this.dgvRoom.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvRoom.Size = new System.Drawing.Size(286, 284);
+            this.dgvRoom.TabIndex = 37;
             // 
-            // dateTimePickerAttendance
+            // dateTimePickerVisit
             // 
-            this.dateTimePickerAttendance.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerAttendance.Location = new System.Drawing.Point(125, 9);
-            this.dateTimePickerAttendance.Name = "dateTimePickerAttendance";
-            this.dateTimePickerAttendance.Size = new System.Drawing.Size(140, 20);
-            this.dateTimePickerAttendance.TabIndex = 4;
+            this.dateTimePickerVisit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerVisit.Location = new System.Drawing.Point(121, 9);
+            this.dateTimePickerVisit.Name = "dateTimePickerVisit";
+            this.dateTimePickerVisit.Size = new System.Drawing.Size(178, 20);
+            this.dateTimePickerVisit.TabIndex = 4;
             // 
-            // dgvMeeting
+            // dgvVisit
             // 
-            this.dgvMeeting.AllowUserToAddRows = false;
-            this.dgvMeeting.AllowUserToDeleteRows = false;
-            this.dgvMeeting.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvMeeting.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMeeting.Location = new System.Drawing.Point(53, 64);
-            this.dgvMeeting.Name = "dgvMeeting";
-            this.dgvMeeting.ReadOnly = true;
-            this.dgvMeeting.RowHeadersVisible = false;
-            this.dgvMeeting.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dgvMeeting.Size = new System.Drawing.Size(210, 210);
-            this.dgvMeeting.TabIndex = 42;
+            this.dgvVisit.AllowUserToAddRows = false;
+            this.dgvVisit.AllowUserToDeleteRows = false;
+            this.dgvVisit.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvVisit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVisit.Location = new System.Drawing.Point(53, 64);
+            this.dgvVisit.Name = "dgvVisit";
+            this.dgvVisit.ReadOnly = true;
+            this.dgvVisit.RowHeadersVisible = false;
+            this.dgvVisit.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.dgvVisit.Size = new System.Drawing.Size(210, 407);
+            this.dgvVisit.TabIndex = 42;
             // 
             // lTitle
             // 
             this.lTitle.AutoSize = true;
             this.lTitle.Font = new System.Drawing.Font("Palatino Linotype", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.lTitle.Location = new System.Drawing.Point(41, 11);
+            this.lTitle.Location = new System.Drawing.Point(65, 21);
             this.lTitle.Name = "lTitle";
-            this.lTitle.Size = new System.Drawing.Size(495, 28);
+            this.lTitle.Size = new System.Drawing.Size(420, 28);
             this.lTitle.TabIndex = 41;
-            this.lTitle.Text = "Проверка посещаемости занятий студентами";
+            this.lTitle.Text = "Посещение студенческого общежития";
+            // 
+            // textBoxCause
+            // 
+            this.textBoxCause.Location = new System.Drawing.Point(121, 45);
+            this.textBoxCause.MaxLength = 300;
+            this.textBoxCause.Multiline = true;
+            this.textBoxCause.Name = "textBoxCause";
+            this.textBoxCause.Size = new System.Drawing.Size(178, 90);
+            this.textBoxCause.TabIndex = 40;
+            // 
+            // labelCause
+            // 
+            this.labelCause.AutoSize = true;
+            this.labelCause.Location = new System.Drawing.Point(10, 45);
+            this.labelCause.Name = "labelCause";
+            this.labelCause.Size = new System.Drawing.Size(110, 13);
+            this.labelCause.TabIndex = 41;
+            this.labelCause.Text = "Причина посещения";
             // 
             // VisitHostelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(596, 450);
-            this.Controls.Add(this.bAddMeeting);
-            this.Controls.Add(this.panelMeeting);
-            this.Controls.Add(this.dgvMeeting);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(613, 450);
+            this.Controls.Add(this.bAddVisit);
+            this.Controls.Add(this.panelVisitRoom);
+            this.Controls.Add(this.dgvVisit);
             this.Controls.Add(this.lTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "VisitHostelForm";
             this.Text = "VisitHostelForm";
-            this.panelMeeting.ResumeLayout(false);
-            this.panelMeeting.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMeeting)).EndInit();
+            this.panelVisitRoom.ResumeLayout(false);
+            this.panelVisitRoom.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRoom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVisit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,15 +197,17 @@
 
         #endregion
 
-        private System.Windows.Forms.Button bAddMeeting;
-        private System.Windows.Forms.Panel panelMeeting;
+        private System.Windows.Forms.Button bAddVisit;
+        private System.Windows.Forms.Panel panelVisitRoom;
         private System.Windows.Forms.Button bDelete;
         private System.Windows.Forms.Button bSaveStudent;
         private System.Windows.Forms.Label lStudent;
         private System.Windows.Forms.Label lDate;
-        private System.Windows.Forms.DataGridView dgvStudent;
-        private System.Windows.Forms.DateTimePicker dateTimePickerAttendance;
-        private System.Windows.Forms.DataGridView dgvMeeting;
+        private System.Windows.Forms.DataGridView dgvRoom;
+        private System.Windows.Forms.DateTimePicker dateTimePickerVisit;
+        private System.Windows.Forms.DataGridView dgvVisit;
         private System.Windows.Forms.Label lTitle;
+        private System.Windows.Forms.Label labelCause;
+        private System.Windows.Forms.TextBox textBoxCause;
     }
 }

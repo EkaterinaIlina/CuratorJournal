@@ -69,6 +69,12 @@ namespace CuratorJournal
                     attendanceCheckForm.MdiParent = this;
                     attendanceCheckForm.Show();
                     break;
+                case "VisitHostel":
+                    VisitHostelForm visitHostelForm = new VisitHostelForm();
+                    visitHostelForm.WindowState = FormWindowState.Maximized;
+                    visitHostelForm.MdiParent = this;
+                    visitHostelForm.Show();
+                    break;
                 }
             }
             else if((treeViewMenu.SelectedNode).Name== "MainInformation")
