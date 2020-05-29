@@ -25,12 +25,12 @@ namespace CuratorJournal
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Achivement> Achivement { get; set; }
         public virtual DbSet<AchivementStudent> AchivementStudent { get; set; }
         public virtual DbSet<Attendance> Attendance { get; set; }
         public virtual DbSet<CoreIndicator> CoreIndicator { get; set; }
         public virtual DbSet<Curator> Curator { get; set; }
         public virtual DbSet<Discipline> Discipline { get; set; }
+        public virtual DbSet<Event> Event { get; set; }
         public virtual DbSet<Family> Family { get; set; }
         public virtual DbSet<FinalGrade> FinalGrade { get; set; }
         public virtual DbSet<FormOfControl> FormOfControl { get; set; }
@@ -41,7 +41,7 @@ namespace CuratorJournal
         public virtual DbSet<Journal> Journal { get; set; }
         public virtual DbSet<JournalStudent> JournalStudent { get; set; }
         public virtual DbSet<Kin> Kin { get; set; }
-        public virtual DbSet<KinshipStatus> KinshipStatus { get; set; }
+        public virtual DbSet<LackAttendance> LackAttendance { get; set; }
         public virtual DbSet<LackMeeting> LackMeeting { get; set; }
         public virtual DbSet<Language> Language { get; set; }
         public virtual DbSet<ListMarkStud> ListMarkStud { get; set; }

@@ -12,15 +12,13 @@ namespace CuratorJournal
     using System;
     using System.Collections.Generic;
     
-    public partial class AchivementStudent
+    public partial class LackAttendance
     {
-        public int idAchivStud { get; set; }
+        public int idLackAttendance { get; set; }
+        public int idAttendance { get; set; }
         public int idStudent { get; set; }
-        public int idEvent { get; set; }
-        public string fullNameSupervis { get; set; }
-        public string topicWork { get; set; }
     
-        public virtual Event Event { get; set; }
+        public virtual Attendance Attendance { get; set; }
         public virtual Student Student { get; set; }
     }
 }

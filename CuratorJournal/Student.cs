@@ -21,6 +21,7 @@ namespace CuratorJournal
             this.Family = new HashSet<Family>();
             this.JournalStudent = new HashSet<JournalStudent>();
             this.Kin = new HashSet<Kin>();
+            this.LackAttendance = new HashSet<LackAttendance>();
             this.LackMeeting = new HashSet<LackMeeting>();
             this.ListMarkStud = new HashSet<ListMarkStud>();
             this.PrivTalkStudent = new HashSet<PrivTalkStudent>();
@@ -52,6 +53,8 @@ namespace CuratorJournal
         public virtual ICollection<JournalStudent> JournalStudent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Kin> Kin { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LackAttendance> LackAttendance { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LackMeeting> LackMeeting { get; set; }
         public virtual Language Language { get; set; }

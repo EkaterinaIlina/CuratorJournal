@@ -12,19 +12,19 @@ namespace CuratorJournal
     using System;
     using System.Collections.Generic;
     
-    public partial class Achivement
+    public partial class Event
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Achivement()
+        public Event()
         {
             this.AchivementStudent = new HashSet<AchivementStudent>();
         }
     
-        public int idAchivement { get; set; }
+        public int idEvent { get; set; }
         public int idJournal { get; set; }
         public int idTypeEvent { get; set; }
-        public string fullNameSupervis { get; set; }
-        public string topicWork { get; set; }
+        public bool statusEvent { get; set; }
+        public string nameEvent { get; set; }
         public System.DateTime dateEvent { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

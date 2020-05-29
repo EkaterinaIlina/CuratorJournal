@@ -57,9 +57,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Achivement.cs">
-      <DependentUpon>MyModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="AchivementStudent.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
@@ -99,6 +96,9 @@
     </Compile>
     <Compile Include="DynamicsOfIndicatorsForm.Designer.cs">
       <DependentUpon>DynamicsOfIndicatorsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Event.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Family.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
@@ -142,7 +142,7 @@
     <Compile Include="Kin.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="KinshipStatus.cs">
+    <Compile Include="LackAttendance.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="LackMeeting.cs">

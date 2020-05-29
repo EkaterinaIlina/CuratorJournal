@@ -17,13 +17,13 @@ namespace CuratorJournal
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TypeOfEvent()
         {
-            this.Achivement = new HashSet<Achivement>();
+            this.Event = new HashSet<Event>();
         }
     
         public int idTypeEvent { get; set; }
         public string nameTypeEvent { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Achivement> Achivement { get; set; }
+        public virtual ICollection<Event> Event { get; set; }
     }
 }

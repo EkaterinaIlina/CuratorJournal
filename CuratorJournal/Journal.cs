@@ -17,8 +17,8 @@ namespace CuratorJournal
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Journal()
         {
-            this.Achivement = new HashSet<Achivement>();
             this.Attendance = new HashSet<Attendance>();
+            this.Event = new HashSet<Event>();
             this.GroupDynamics = new HashSet<GroupDynamics>();
             this.JournalStudent = new HashSet<JournalStudent>();
             this.Meeting = new HashSet<Meeting>();
@@ -36,10 +36,10 @@ namespace CuratorJournal
         public int idGroup { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Achivement> Achivement { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Attendance> Attendance { get; set; }
         public virtual Curator Curator { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Event> Event { get; set; }
         public virtual Group Group { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GroupDynamics> GroupDynamics { get; set; }

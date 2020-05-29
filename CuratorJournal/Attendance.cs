@@ -14,6 +14,12 @@ namespace CuratorJournal
     
     public partial class Attendance
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Attendance()
+        {
+            this.LackAttendance = new HashSet<LackAttendance>();
+        }
+    
         public int idAttendance { get; set; }
         public int idJournal { get; set; }
         public System.DateTime dateAttendance { get; set; }
@@ -24,5 +30,7 @@ namespace CuratorJournal
         public virtual Discipline Discipline { get; set; }
         public virtual Journal Journal { get; set; }
         public virtual OccupationStatus OccupationStatus { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LackAttendance> LackAttendance { get; set; }
     }
 }
