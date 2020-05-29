@@ -70,7 +70,7 @@ namespace CuratorJournal
             dgvStudent.Columns[14].Visible = false; dgvStudent.Columns[23].Visible = false;
             dgvStudent.Columns[15].Visible = false; dgvStudent.Columns[24].Visible = false;
             dgvStudent.Columns[16].Visible = false; dgvStudent.Columns[25].Visible = false;
-            dgvStudent.Columns[26].Visible = false; dgvStudent.Columns[27].Visible = false;
+            dgvStudent.Columns[26].Visible = false; 
         }
 
         private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)

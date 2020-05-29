@@ -46,6 +46,7 @@ namespace CuratorJournal
         }
         private void FillPanel()
         {
+            panelAttendance.Visible = true;
             dateTimePickerAttendance.Value = attendance.dateAttendance;
             comboBoxDiscpline.SelectedItem = attendance.Discipline;
             comboBoxOccup.SelectedItem = attendance.OccupationStatus;
@@ -55,8 +56,7 @@ namespace CuratorJournal
         private void bAddAttendance_Click(object sender, EventArgs e)
         {
             attendance = new Attendance();
-            FillcomboBoxDiscpline();
-            panelAttendance.Visible = true;
+            FillcomboBoxDiscpline();            
             dgvAttendance.ClearSelection();            
             attendance.dateAttendance = DateTime.Now.Date;
             attendance.fullNameTeach = "";
@@ -71,7 +71,6 @@ namespace CuratorJournal
         {
             if (e.RowIndex >= 0)
             {
-                panelAttendance.Visible = true;
                 attendance = (Attendance)dgvAttendance.Rows[e.RowIndex].DataBoundItem;
                 FillcomboBoxDiscpline();
                 FillPanel();
@@ -199,6 +198,11 @@ namespace CuratorJournal
         private void textBoxFullNamePrep_TextChanged(object sender, EventArgs e)
         {
             attendance.fullNameTeach = textBoxFullNamePrep.Text;
+        }
+
+        private void dateTimePickerAttendance_ValueChanged(object sender, EventArgs e)
+        {
+            attendance.dateAttendance = dateTimePickerAttendance.Value.Date;
         }
     }
 }

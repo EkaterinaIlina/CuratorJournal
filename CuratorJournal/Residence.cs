@@ -17,6 +17,7 @@ namespace CuratorJournal
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Residence()
         {
+            this.ProvenRooms = new HashSet<ProvenRooms>();
             this.Student = new HashSet<Student>();
             this.Student1 = new HashSet<Student>();
         }
@@ -34,6 +35,8 @@ namespace CuratorJournal
         public string room { get; set; }
     
         public virtual Hostel Hostel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProvenRooms> ProvenRooms { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student> Student { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

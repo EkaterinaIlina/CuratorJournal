@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище CuratorJournalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище CuratorJournalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AchivementStudent">
           <Key>
             <PropertyRef Name="idAchivStud" />
@@ -246,7 +246,7 @@
             <PropertyRef Name="idProvenRooms" />
           </Key>
           <Property Name="idProvenRooms" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idStudent" Type="int" Nullable="false" />
+          <Property Name="idResidence" Type="int" Nullable="false" />
           <Property Name="idVisitHostel" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Rating">
@@ -695,17 +695,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProvenRoo__idStu__5BAD9CC8">
-          <End Role="Student" Type="Self.Student" Multiplicity="1">
+        <Association Name="FK__ProvenRoo__idResidence">
+          <End Role="Residence" Type="Self.Residence" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="ProvenRooms" Type="Self.ProvenRooms" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="idStudent" />
+            <Principal Role="Residence">
+              <PropertyRef Name="idResidence" />
             </Principal>
             <Dependent Role="ProvenRooms">
-              <PropertyRef Name="idStudent" />
+              <PropertyRef Name="idResidence" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1118,8 +1118,8 @@
             <End Role="Student" EntitySet="Student" />
             <End Role="PrivTalkStudent" EntitySet="PrivTalkStudent" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProvenRoo__idStu__5BAD9CC8" Association="Self.FK__ProvenRoo__idStu__5BAD9CC8">
-            <End Role="Student" EntitySet="Student" />
+          <AssociationSet Name="FK__ProvenRoo__idResidence" Association="Self.FK__ProvenRoo__idResidence">
+            <End Role="Residence" EntitySet="Residence" />
             <End Role="ProvenRooms" EntitySet="ProvenRooms" />
           </AssociationSet>
           <AssociationSet Name="FK__ProvenRoo__idVis__5CA1C101" Association="Self.FK__ProvenRoo__idVis__5CA1C101">
@@ -1203,7 +1203,8 @@
             <End Role="Student" EntitySet="Student" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CuratorJournalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1506,9 +1507,9 @@
             <PropertyRef Name="idProvenRooms" />
           </Key>
           <Property Name="idProvenRooms" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idStudent" Type="Int32" Nullable="false" />
+          <Property Name="idResidence" Type="Int32" Nullable="false" />
           <Property Name="idVisitHostel" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Student" Relationship="Self.FK__ProvenRoo__idStu__5BAD9CC8" FromRole="ProvenRooms" ToRole="Student" />
+          <NavigationProperty Name="Residence" Relationship="Self.FK__ProvenRoo__idResidence" FromRole="ProvenRooms" ToRole="Residence" />
           <NavigationProperty Name="VisitHostel" Relationship="Self.FK__ProvenRoo__idVis__5CA1C101" FromRole="ProvenRooms" ToRole="VisitHostel" />
         </EntityType>
         <EntityType Name="Rating">
@@ -1548,6 +1549,7 @@
           <Property Name="idHostel" Type="Int32" />
           <Property Name="room" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Hostel" Relationship="Self.FK__Residence__idHos__662B2B3B" FromRole="Residence" ToRole="Hostel" />
+          <NavigationProperty Name="ProvenRooms" Relationship="Self.FK__ProvenRoo__idResidence" FromRole="Residence" ToRole="ProvenRooms" />
           <NavigationProperty Name="Student" Relationship="Self.FK_Student_ResidenceP" FromRole="Residence" ToRole="Student" />
           <NavigationProperty Name="Student1" Relationship="Self.FK_Student_ResidenceT" FromRole="Residence" ToRole="Student" />
         </EntityType>
@@ -1587,7 +1589,6 @@
           <NavigationProperty Name="Language" Relationship="Self.FK_Student_Language" FromRole="Student" ToRole="Language" />
           <NavigationProperty Name="ListMarkStud" Relationship="Self.FK__ListMarkS__idStu__4F47C5E3" FromRole="Student" ToRole="ListMarkStud" />
           <NavigationProperty Name="PrivTalkStudent" Relationship="Self.FK__PrivTalkS__idStu__58D1301D" FromRole="Student" ToRole="PrivTalkStudent" />
-          <NavigationProperty Name="ProvenRooms" Relationship="Self.FK__ProvenRoo__idStu__5BAD9CC8" FromRole="Student" ToRole="ProvenRooms" />
           <NavigationProperty Name="RatingMark" Relationship="Self.FK__RatingMar__idStu__46B27FE2" FromRole="Student" ToRole="RatingMark" />
           <NavigationProperty Name="Residence" Relationship="Self.FK_Student_ResidenceP" FromRole="Student" ToRole="Residence" />
           <NavigationProperty Name="Residence1" Relationship="Self.FK_Student_ResidenceT" FromRole="Student" ToRole="Residence" />
@@ -2181,17 +2182,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProvenRoo__idStu__5BAD9CC8">
-          <End Role="Student" Type="Self.Student" Multiplicity="1">
+        <Association Name="FK__ProvenRoo__idResidence">
+          <End Role="Residence" Type="Self.Residence" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="ProvenRooms" Type="Self.ProvenRooms" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="idStudent" />
+            <Principal Role="Residence">
+              <PropertyRef Name="idResidence" />
             </Principal>
             <Dependent Role="ProvenRooms">
-              <PropertyRef Name="idStudent" />
+              <PropertyRef Name="idResidence" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2466,8 +2467,8 @@
             <End Role="Student" EntitySet="Student" />
             <End Role="PrivTalkStudent" EntitySet="PrivTalkStudent" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProvenRoo__idStu__5BAD9CC8" Association="Self.FK__ProvenRoo__idStu__5BAD9CC8">
-            <End Role="Student" EntitySet="Student" />
+          <AssociationSet Name="FK__ProvenRoo__idResidence" Association="Self.FK__ProvenRoo__idResidence">
+            <End Role="Residence" EntitySet="Residence" />
             <End Role="ProvenRooms" EntitySet="ProvenRooms" />
           </AssociationSet>
           <AssociationSet Name="FK__ProvenRoo__idVis__5CA1C101" Association="Self.FK__ProvenRoo__idVis__5CA1C101">
@@ -2766,7 +2767,7 @@
             <EntityTypeMapping TypeName="CuratorJournalModel.ProvenRooms">
               <MappingFragment StoreEntitySet="ProvenRooms">
                 <ScalarProperty Name="idProvenRooms" ColumnName="idProvenRooms" />
-                <ScalarProperty Name="idStudent" ColumnName="idStudent" />
+                <ScalarProperty Name="idResidence" ColumnName="idResidence" />
                 <ScalarProperty Name="idVisitHostel" ColumnName="idVisitHostel" />
               </MappingFragment>
             </EntityTypeMapping>

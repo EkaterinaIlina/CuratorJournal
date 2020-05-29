@@ -93,6 +93,7 @@
             this.dateTimePickerAttendance.Name = "dateTimePickerAttendance";
             this.dateTimePickerAttendance.Size = new System.Drawing.Size(140, 20);
             this.dateTimePickerAttendance.TabIndex = 4;
+            this.dateTimePickerAttendance.ValueChanged += new System.EventHandler(this.dateTimePickerAttendance_ValueChanged);
             // 
             // lDate
             // 

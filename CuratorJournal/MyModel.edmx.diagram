@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9ac0d55a3f634902b61c120b04671fdd" Name="Diagram1" ZoomLevel="97">
+      <Diagram DiagramId="8540d157a881463f93d33722a7d9e6d4" Name="Diagram1">
         <EntityTypeShape EntityType="CuratorJournalModel.AchivementStudent" Width="1.5" PointX="16.5" PointY="25.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.Attendance" Width="1.5" PointX="5.25" PointY="19" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.CoreIndicator" Width="1.5" PointX="6" PointY="15.75" IsExpanded="true" />
@@ -12,34 +12,34 @@
         <EntityTypeShape EntityType="CuratorJournalModel.Discipline" Width="1.5" PointX="3" PointY="18.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.Event" Width="1.5" PointX="11.25" PointY="25.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.Family" Width="1.5" PointX="8.25" PointY="23.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuratorJournalModel.FinalGrade" Width="1.5" PointX="11" PointY="44.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuratorJournalModel.FormOfControl" Width="1.5" PointX="8.75" PointY="44.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuratorJournalModel.Grade" Width="1.5" PointX="11" PointY="35.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.FinalGrade" Width="1.5" PointX="11" PointY="42.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.FormOfControl" Width="1.5" PointX="8.75" PointY="42.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Grade" Width="1.5" PointX="11" PointY="39.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.Group" Width="1.5" PointX="0.75" PointY="25.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.GroupDynamics" Width="1.5" PointX="8.25" PointY="19.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuratorJournalModel.Hostel" Width="1.5" PointX="1.5" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Hostel" Width="1.5" PointX="1.5" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.Journal" Width="1.5" PointX="3" PointY="24.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.JournalStudent" Width="1.5" PointX="11.25" PointY="21.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.Kin" Width="1.5" PointX="8.25" PointY="26.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.LackAttendance" Width="1.5" PointX="11.25" PointY="18.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuratorJournalModel.LackMeeting" Width="1.5" PointX="8.25" PointY="31.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuratorJournalModel.Language" Width="1.5" PointX="3.75" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.LackMeeting" Width="1.5" PointX="8.25" PointY="30.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Language" Width="1.5" PointX="3.75" PointY="15.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.ListMarkStud" Width="1.5" PointX="13.25" PointY="29.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.Meeting" Width="1.5" PointX="5.25" PointY="32.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.OccupationStatus" Width="1.5" PointX="3" PointY="21.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.Offense" Width="1.5" PointX="5.25" PointY="35.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.PrivateTalk" Width="1.5" PointX="5.25" PointY="39" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuratorJournalModel.PrivTalkStudent" Width="1.5" PointX="8.25" PointY="34.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuratorJournalModel.ProvenRooms" Width="1.5" PointX="8.25" PointY="37.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.PrivTalkStudent" Width="1.5" PointX="8.25" PointY="33.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.ProvenRooms" Width="1.5" PointX="7.5" PointY="49.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.Rating" Width="1.5" PointX="12" PointY="32.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.RatingMark" Width="1.5" PointX="14.25" PointY="25.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuratorJournalModel.Residence" Width="1.5" PointX="3.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Residence" Width="1.5" PointX="3.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.StatusStudent" Width="1.5" PointX="9" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuratorJournalModel.Student" Width="1.5" PointX="6" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Student" Width="1.5" PointX="6" PointY="23.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.StudyingProcess" Width="1.5" PointX="5.25" PointY="42" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.TalkParents" Width="1.5" PointX="10.5" PointY="28.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuratorJournalModel.TopicTalkParents" Width="1.5" PointX="8.25" PointY="41.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuratorJournalModel.TypeOfEvent" Width="1.5" PointX="9" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.TopicTalkParents" Width="1.5" PointX="8.25" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.TypeOfEvent" Width="1.5" PointX="9" PointY="36.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.VisitHostel" Width="1.5" PointX="5.25" PointY="49.75" IsExpanded="true" />
         <AssociationConnector Association="CuratorJournalModel.FK_AchivementStudent_Event" ManuallyRouted="false" />
         <AssociationConnector Association="CuratorJournalModel.FK_AchivementStudent_Student" ManuallyRouted="false" />
@@ -79,7 +79,7 @@
         <AssociationConnector Association="CuratorJournalModel.FK__ListMarkS__idStu__4F47C5E3" ManuallyRouted="false" />
         <AssociationConnector Association="CuratorJournalModel.FK__PrivTalkS__idPrT__57DD0BE4" ManuallyRouted="false" />
         <AssociationConnector Association="CuratorJournalModel.FK__PrivTalkS__idStu__58D1301D" ManuallyRouted="false" />
-        <AssociationConnector Association="CuratorJournalModel.FK__ProvenRoo__idStu__5BAD9CC8" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__ProvenRoo__idResidence" ManuallyRouted="false" />
         <AssociationConnector Association="CuratorJournalModel.FK__ProvenRoo__idVis__5CA1C101" ManuallyRouted="false" />
         <AssociationConnector Association="CuratorJournalModel.FK__RatingMar__idRat__489AC854" ManuallyRouted="false" />
         <AssociationConnector Association="CuratorJournalModel.FK__RatingMar__idStu__46B27FE2" ManuallyRouted="false" />

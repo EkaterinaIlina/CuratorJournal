@@ -25,7 +25,6 @@ namespace CuratorJournal
             this.LackMeeting = new HashSet<LackMeeting>();
             this.ListMarkStud = new HashSet<ListMarkStud>();
             this.PrivTalkStudent = new HashSet<PrivTalkStudent>();
-            this.ProvenRooms = new HashSet<ProvenRooms>();
             this.RatingMark = new HashSet<RatingMark>();
         }
     
@@ -63,11 +62,8 @@ namespace CuratorJournal
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PrivTalkStudent> PrivTalkStudent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProvenRooms> ProvenRooms { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RatingMark> RatingMark { get; set; }
         public virtual Residence Residence { get; set; }
         public virtual Residence Residence1 { get; set; }
-        public override string ToString() => surnameStudent + " " + nameStudent;
     }
 }

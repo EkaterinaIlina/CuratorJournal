@@ -15,10 +15,10 @@ namespace CuratorJournal
     public partial class ProvenRooms
     {
         public int idProvenRooms { get; set; }
-        public int idStudent { get; set; }
+        public int idResidence { get; set; }
         public int idVisitHostel { get; set; }
     
-        public virtual Student Student { get; set; }
+        public virtual Residence Residence { get; set; }
         public virtual VisitHostel VisitHostel { get; set; }
     }
 }

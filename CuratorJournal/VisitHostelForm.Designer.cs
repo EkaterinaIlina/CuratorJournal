@@ -41,6 +41,8 @@
             this.lTitle = new System.Windows.Forms.Label();
             this.textBoxCause = new System.Windows.Forms.TextBox();
             this.labelCause = new System.Windows.Forms.Label();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.panelVisitRoom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVisit)).BeginInit();
@@ -49,12 +51,13 @@
             // bAddVisit
             // 
             this.bAddVisit.Image = ((System.Drawing.Image)(resources.GetObject("bAddVisit.Image")));
-            this.bAddVisit.Location = new System.Drawing.Point(4, 64);
+            this.bAddVisit.Location = new System.Drawing.Point(15, 44);
             this.bAddVisit.Name = "bAddVisit";
             this.bAddVisit.Size = new System.Drawing.Size(43, 23);
             this.bAddVisit.TabIndex = 44;
             this.bAddVisit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bAddVisit.UseVisualStyleBackColor = true;
+            this.bAddVisit.Click += new System.EventHandler(this.bAddVisit_Click);
             // 
             // panelVisitRoom
             // 
@@ -66,10 +69,11 @@
             this.panelVisitRoom.Controls.Add(this.lDate);
             this.panelVisitRoom.Controls.Add(this.dgvRoom);
             this.panelVisitRoom.Controls.Add(this.dateTimePickerVisit);
-            this.panelVisitRoom.Location = new System.Drawing.Point(282, 64);
+            this.panelVisitRoom.Location = new System.Drawing.Point(289, 44);
             this.panelVisitRoom.Name = "panelVisitRoom";
-            this.panelVisitRoom.Size = new System.Drawing.Size(302, 459);
+            this.panelVisitRoom.Size = new System.Drawing.Size(304, 459);
             this.panelVisitRoom.TabIndex = 43;
+            this.panelVisitRoom.Visible = false;
             // 
             // bDelete
             // 
@@ -94,7 +98,7 @@
             // 
             this.lStudent.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lStudent.AutoSize = true;
-            this.lStudent.Location = new System.Drawing.Point(10, 148);
+            this.lStudent.Location = new System.Drawing.Point(11, 148);
             this.lStudent.Name = "lStudent";
             this.lStudent.Size = new System.Drawing.Size(125, 13);
             this.lStudent.TabIndex = 36;
@@ -129,6 +133,7 @@
             this.dateTimePickerVisit.Name = "dateTimePickerVisit";
             this.dateTimePickerVisit.Size = new System.Drawing.Size(178, 20);
             this.dateTimePickerVisit.TabIndex = 4;
+            this.dateTimePickerVisit.ValueChanged += new System.EventHandler(this.dateTimePickerVisit_ValueChanged);
             // 
             // dgvVisit
             // 
@@ -136,19 +141,20 @@
             this.dgvVisit.AllowUserToDeleteRows = false;
             this.dgvVisit.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvVisit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVisit.Location = new System.Drawing.Point(53, 64);
+            this.dgvVisit.Location = new System.Drawing.Point(64, 44);
             this.dgvVisit.Name = "dgvVisit";
             this.dgvVisit.ReadOnly = true;
             this.dgvVisit.RowHeadersVisible = false;
             this.dgvVisit.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvVisit.Size = new System.Drawing.Size(210, 407);
             this.dgvVisit.TabIndex = 42;
+            this.dgvVisit.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvVisit_CellMouseClick);
             // 
             // lTitle
             // 
             this.lTitle.AutoSize = true;
             this.lTitle.Font = new System.Drawing.Font("Palatino Linotype", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.lTitle.Location = new System.Drawing.Point(65, 21);
+            this.lTitle.Location = new System.Drawing.Point(78, 9);
             this.lTitle.Name = "lTitle";
             this.lTitle.Size = new System.Drawing.Size(420, 28);
             this.lTitle.TabIndex = 41;
@@ -156,12 +162,13 @@
             // 
             // textBoxCause
             // 
-            this.textBoxCause.Location = new System.Drawing.Point(121, 45);
+            this.textBoxCause.Location = new System.Drawing.Point(13, 61);
             this.textBoxCause.MaxLength = 300;
             this.textBoxCause.Multiline = true;
             this.textBoxCause.Name = "textBoxCause";
-            this.textBoxCause.Size = new System.Drawing.Size(178, 90);
+            this.textBoxCause.Size = new System.Drawing.Size(286, 84);
             this.textBoxCause.TabIndex = 40;
+            this.textBoxCause.TextChanged += new System.EventHandler(this.textBoxCause_TextChanged);
             // 
             // labelCause
             // 
@@ -172,12 +179,36 @@
             this.labelCause.TabIndex = 41;
             this.labelCause.Text = "Причина посещения";
             // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(64, 457);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(210, 24);
+            this.buttonSave.TabIndex = 45;
+            this.buttonSave.Text = "Сохранить";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Visible = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(64, 487);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(210, 24);
+            this.buttonDelete.TabIndex = 46;
+            this.buttonDelete.Text = "Удалить";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Visible = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
             // VisitHostelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(613, 450);
+            this.ClientSize = new System.Drawing.Size(613, 463);
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.bAddVisit);
             this.Controls.Add(this.panelVisitRoom);
             this.Controls.Add(this.dgvVisit);
@@ -209,5 +240,7 @@
         private System.Windows.Forms.Label lTitle;
         private System.Windows.Forms.Label labelCause;
         private System.Windows.Forms.TextBox textBoxCause;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }
