@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7b260be2e0fd48d9bd71ff76528b27ba" Name="Diagram1">
+        <EntityTypeShape EntityType="CuratorJournalModel.Achivement" Width="1.5" PointX="5.25" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.AchivementStudent" Width="1.5" PointX="11.25" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Attendance" Width="1.5" PointX="11.25" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.CoreIndicator" Width="1.5" PointX="6" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Curator" Width="1.5" PointX="0.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Discipline" Width="1.5" PointX="9" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Family" Width="1.5" PointX="8.25" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.FinalGrade" Width="1.5" PointX="11" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.FormOfControl" Width="1.5" PointX="8.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Grade" Width="1.5" PointX="11" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Group" Width="1.5" PointX="0.75" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.GroupDynamics" Width="1.5" PointX="8.25" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Hostel" Width="1.5" PointX="1.5" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Journal" Width="1.5" PointX="3" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.JournalStudent" Width="1.5" PointX="11.25" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Kin" Width="1.5" PointX="8.25" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.KinshipStatus" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.LackMeeting" Width="1.5" PointX="8.25" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Language" Width="1.5" PointX="3.75" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.ListMarkStud" Width="1.5" PointX="13.25" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Meeting" Width="1.5" PointX="5.25" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.OccupationStatus" Width="1.5" PointX="9" PointY="41" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Offense" Width="1.5" PointX="5.25" PointY="35.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.PrivateTalk" Width="1.5" PointX="5.25" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.PrivTalkStudent" Width="1.5" PointX="8.25" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.ProvenRooms" Width="1.5" PointX="8.25" PointY="37.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Rating" Width="1.5" PointX="12" PointY="32.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.RatingMark" Width="1.5" PointX="14.25" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Residence" Width="1.5" PointX="3.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.StatusStudent" Width="1.5" PointX="9" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Student" Width="1.5" PointX="6" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.StudyingProcess" Width="1.5" PointX="5.25" PointY="41.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.TalkParents" Width="1.5" PointX="10.5" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.TopicTalkParents" Width="1.5" PointX="8.25" PointY="44" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.TypeOfEvent" Width="1.5" PointX="3" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuratorJournalModel.VisitHostel" Width="1.5" PointX="5.25" PointY="49.375" IsExpanded="true" />
+        <AssociationConnector Association="CuratorJournalModel.FK__Achivemen__idAch" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__Achivemen__idJou" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__Achivemen__idTyp" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__Achivemen__idStu__3E1D39E1" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__Attendanc__idDis__367C1819" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__Attendanc__idJou__3587F3E0" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__Attendanc__idOcc__37703C52" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__GroupDyna__idCor__32AB8735" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK_Journal_Curator" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__FinalGrad__idDis__4B7734FF" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__RatingMar__idDis__47A6A41B" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__Family__idStuden__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__FinalGrad__idFor__4C6B5938" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__ListMarkS__idFin__503BEA1C" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__ListMarkS__idGra__51300E55" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__Journal__idGroup__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK_Student_Group" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__GroupDyna__idJou__31B762FC" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__Residence__idHos__662B2B3B" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__JournalSt__idJou__04E4BC85" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__Meeting__idJourn__14270015" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__Offense__idJourn__2EDAF651" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__PrivateTa__idJou__19DFD96B" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__StudyingP__idJou__17036CC0" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__TalkParen__idJou__43D61337" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__VisitHost__idJou__2BFE89A6" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__JournalSt__idSta__05D8E0BE" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__JournalSt__idStu__03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__TalkParen__idKin__41EDCAC5" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK_Kin_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__LackMeeti__idMee__540C7B00" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__LackMeeti__idStu__55009F39" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK_Student_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__ListMarkS__idStu__4F47C5E3" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__PrivTalkS__idPrT__57DD0BE4" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__PrivTalkS__idStu__58D1301D" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__ProvenRoo__idStu__5BAD9CC8" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__ProvenRoo__idVis__5CA1C101" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__RatingMar__idRat__489AC854" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__RatingMar__idStu__46B27FE2" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK_Student_ResidenceP" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK_Student_ResidenceT" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK__TalkParen__idTop__42E1EEFE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
