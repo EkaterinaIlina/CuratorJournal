@@ -52,7 +52,6 @@ namespace CuratorJournal
             StudentTable.Columns.Add(idStudent);
             StudentTable.Columns.Add(FIOstudent);
             List<Student> stud = DBobjects.Entities.Student.Where(p => p.idGroup == JournalForm.Journal.idGroup).ToList();
-            List<RatingMark> ratingMarks = DBobjects.Entities.RatingMark.Where(p => p.idJournal == JournalForm.Journal.idJournal).ToList();
             foreach (Rating rating in DBobjects.Entities.Rating.ToList())
             {
                 StudentTable.Columns.Add(rating.nameRating);
@@ -62,15 +61,22 @@ namespace CuratorJournal
             {
                 DataRow dr = StudentTable.NewRow();
                 dr["id"] = st.idStudent;
-                dr["Фамилия Имя"] = st;
-                if (DBobjects.Entities.RatingMark.Where(p => p.idStudent == st.idStudent && p.idDiscipline == discipline.idDiscipline).Count() > 0)
-                {
-                    foreach (RatingMark rating in ratingMarks.Where(p=>p.idStudent==st.idStudent).ToList()) {                   
-                        dr[rating.Rating.ToString()] = rating.ratingMark1;
-                        dr["ID" + rating.Rating.ToString()] = rating.idRating;
-                    }                   
+                dr["Фамилия Имя"] = st;               
+                foreach (Rating rating in DBobjects.Entities.Rating.ToList())
+                    {
+                    if (DBobjects.Entities.RatingMark.Where(p => p.idStudent == st.idStudent && p.idDiscipline == discipline.idDiscipline && p.idJournal == JournalForm.Journal.idJournal).Count() > 0)
+                    {
+                        dr[rating.ToString()] = DBobjects.Entities.RatingMark.FirstOrDefault(p=> p.idStudent == st.idStudent && p.idDiscipline == discipline.idDiscipline && p.idRating ==rating.idRating && p.idJournal == JournalForm.Journal.idJournal).ratingMark1;
+                        dr["ID" + rating.ToString()] = DBobjects.Entities.RatingMark.FirstOrDefault(p => p.idStudent == st.idStudent && p.idDiscipline == discipline.idDiscipline && p.idRating == rating.idRating && p.idJournal == JournalForm.Journal.idJournal).idRatingMark ;
+                    }                
+                    else
+                    {
+                        dr[rating.ToString()] = 0;
+                        dr["ID" + rating.ToString()] = 0;
+                    }
+                   
                 }
-               
+
                 StudentTable.Rows.Add(dr);
             }
             dgvStudentMark.DataSource = StudentTable;
@@ -125,6 +131,7 @@ namespace CuratorJournal
         private void buttonSave_Click(object sender, EventArgs e)
         {
             SaveRatingMark();
+            MessageBox.Show("Сохранено");
         }
     }
 }
