@@ -183,6 +183,9 @@ namespace CuratorJournal
                 case 4:
                     dgvStudent.Rows[id].Cells[2].Style.Font = new Font(dgvStudent.DefaultCellStyle.Font, FontStyle.Regular);
                     break;
+                default:
+                    dgvStudent.Rows[id].Cells[2].Style.Font = new Font(dgvStudent.DefaultCellStyle.Font, FontStyle.Regular);
+                    break;
             }
         }
 
@@ -213,6 +216,9 @@ namespace CuratorJournal
                     dgvStudent.Rows[e.RowIndex].Cells[2].Style.Font = new Font(dgvStudent.DefaultCellStyle.Font, FontStyle.Italic);
                     break;
                 case 4:
+                    dgvStudent.Rows[e.RowIndex].Cells[2].Style.Font = new Font(dgvStudent.DefaultCellStyle.Font, FontStyle.Regular);
+                    break;
+                default:
                     dgvStudent.Rows[e.RowIndex].Cells[2].Style.Font = new Font(dgvStudent.DefaultCellStyle.Font, FontStyle.Regular);
                     break;
             }

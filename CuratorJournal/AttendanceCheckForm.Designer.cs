@@ -152,7 +152,7 @@
             // 
             this.comboBoxDiscpline.FormattingEnabled = true;
             this.comboBoxDiscpline.Location = new System.Drawing.Point(142, 35);
-            this.comboBoxDiscpline.MaxLength = 25;
+            this.comboBoxDiscpline.MaxLength = 100;
             this.comboBoxDiscpline.Name = "comboBoxDiscpline";
             this.comboBoxDiscpline.Size = new System.Drawing.Size(189, 21);
             this.comboBoxDiscpline.TabIndex = 41;

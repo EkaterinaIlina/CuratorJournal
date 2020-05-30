@@ -33,7 +33,6 @@
             this.comboBoxDiscpline = new System.Windows.Forms.ComboBox();
             this.dgvStudentMark = new System.Windows.Forms.DataGridView();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonFiksDiscipline = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudentMark)).BeginInit();
             this.SuspendLayout();
@@ -51,10 +50,10 @@
             // comboBoxDiscpline
             // 
             this.comboBoxDiscpline.FormattingEnabled = true;
-            this.comboBoxDiscpline.Location = new System.Drawing.Point(148, 54);
-            this.comboBoxDiscpline.MaxLength = 25;
+            this.comboBoxDiscpline.Location = new System.Drawing.Point(35, 54);
+            this.comboBoxDiscpline.MaxLength = 100;
             this.comboBoxDiscpline.Name = "comboBoxDiscpline";
-            this.comboBoxDiscpline.Size = new System.Drawing.Size(189, 21);
+            this.comboBoxDiscpline.Size = new System.Drawing.Size(302, 21);
             this.comboBoxDiscpline.TabIndex = 43;
             this.comboBoxDiscpline.SelectedIndexChanged += new System.EventHandler(this.comboBoxDiscpline_SelectedIndexChanged);
             // 
@@ -64,30 +63,23 @@
             this.dgvStudentMark.AllowUserToDeleteRows = false;
             this.dgvStudentMark.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvStudentMark.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStudentMark.Location = new System.Drawing.Point(148, 81);
+            this.dgvStudentMark.Location = new System.Drawing.Point(35, 81);
             this.dgvStudentMark.Name = "dgvStudentMark";
             this.dgvStudentMark.RowHeadersVisible = false;
             this.dgvStudentMark.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvStudentMark.Size = new System.Drawing.Size(428, 374);
+            this.dgvStudentMark.Size = new System.Drawing.Size(541, 374);
             this.dgvStudentMark.TabIndex = 44;
+            this.dgvStudentMark.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvStudentMark_EditingControlShowing);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(23, 388);
+            this.buttonSave.Location = new System.Drawing.Point(164, 466);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(119, 24);
+            this.buttonSave.Size = new System.Drawing.Size(285, 24);
             this.buttonSave.TabIndex = 45;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
-            // 
-            // buttonDelete
-            // 
-            this.buttonDelete.Location = new System.Drawing.Point(23, 432);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(119, 23);
-            this.buttonDelete.TabIndex = 46;
-            this.buttonDelete.Text = "Удалить";
-            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonFiksDiscipline
             // 
@@ -103,9 +95,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 467);
+            this.ClientSize = new System.Drawing.Size(634, 502);
             this.Controls.Add(this.buttonFiksDiscipline);
-            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.dgvStudentMark);
             this.Controls.Add(this.comboBoxDiscpline);
@@ -125,7 +116,6 @@
         private System.Windows.Forms.ComboBox comboBoxDiscpline;
         private System.Windows.Forms.DataGridView dgvStudentMark;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonFiksDiscipline;
     }
 }

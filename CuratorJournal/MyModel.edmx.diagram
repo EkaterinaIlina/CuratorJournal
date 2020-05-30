@@ -86,6 +86,7 @@
         <AssociationConnector Association="CuratorJournalModel.FK_Student_ResidenceP" ManuallyRouted="false" />
         <AssociationConnector Association="CuratorJournalModel.FK_Student_ResidenceT" ManuallyRouted="false" />
         <AssociationConnector Association="CuratorJournalModel.FK__TalkParen__idTop__42E1EEFE" ManuallyRouted="false" />
+        <AssociationConnector Association="CuratorJournalModel.FK_RatingMark_Journal" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

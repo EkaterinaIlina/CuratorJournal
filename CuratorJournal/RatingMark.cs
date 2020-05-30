@@ -19,9 +19,11 @@ namespace CuratorJournal
         public int idDiscipline { get; set; }
         public int idRating { get; set; }
         public int ratingMark1 { get; set; }
+        public int idJournal { get; set; }
     
         public virtual Discipline Discipline { get; set; }
         public virtual Rating Rating { get; set; }
         public virtual Student Student { get; set; }
+        public virtual Journal Journal { get; set; }
     }
 }

@@ -56,6 +56,7 @@ namespace CuratorJournal
         private void bAddAttendance_Click(object sender, EventArgs e)
         {
             attendance = new Attendance();
+            panelAttendance.Visible = true;
             FillcomboBoxDiscpline();            
             dgvAttendance.ClearSelection();            
             attendance.dateAttendance = DateTime.Now.Date;
@@ -73,6 +74,7 @@ namespace CuratorJournal
             {
                 attendance = (Attendance)dgvAttendance.Rows[e.RowIndex].DataBoundItem;
                 FillcomboBoxDiscpline();
+                panelAttendance.Visible = true;
                 FillPanel();
                 FillStudent();
                 bDelete.Visible = true;

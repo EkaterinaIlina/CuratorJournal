@@ -27,6 +27,7 @@ namespace CuratorJournal
             this.StudyingProcess = new HashSet<StudyingProcess>();
             this.TalkParents = new HashSet<TalkParents>();
             this.VisitHostel = new HashSet<VisitHostel>();
+            this.RatingMark = new HashSet<RatingMark>();
         }
     
         public int idJournal { get; set; }
@@ -57,5 +58,7 @@ namespace CuratorJournal
         public virtual ICollection<TalkParents> TalkParents { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VisitHostel> VisitHostel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RatingMark> RatingMark { get; set; }
     }
 }
