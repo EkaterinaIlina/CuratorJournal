@@ -120,7 +120,7 @@
             this.dgvStudent.AllowUserToDeleteRows = false;
             this.dgvStudent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStudent.Location = new System.Drawing.Point(142, 116);
+            this.dgvStudent.Location = new System.Drawing.Point(142, 119);
             this.dgvStudent.Name = "dgvStudent";
             this.dgvStudent.RowHeadersVisible = false;
             this.dgvStudent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;

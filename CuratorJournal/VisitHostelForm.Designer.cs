@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VisitHostelForm));
             this.bAddVisit = new System.Windows.Forms.Button();
             this.panelVisitRoom = new System.Windows.Forms.Panel();
+            this.labelCause = new System.Windows.Forms.Label();
+            this.textBoxCause = new System.Windows.Forms.TextBox();
             this.bDelete = new System.Windows.Forms.Button();
             this.bSaveStudent = new System.Windows.Forms.Button();
             this.lStudent = new System.Windows.Forms.Label();
@@ -39,8 +41,6 @@
             this.dateTimePickerVisit = new System.Windows.Forms.DateTimePicker();
             this.dgvVisit = new System.Windows.Forms.DataGridView();
             this.lTitle = new System.Windows.Forms.Label();
-            this.textBoxCause = new System.Windows.Forms.TextBox();
-            this.labelCause = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.panelVisitRoom.SuspendLayout();
@@ -74,6 +74,25 @@
             this.panelVisitRoom.Size = new System.Drawing.Size(304, 459);
             this.panelVisitRoom.TabIndex = 43;
             this.panelVisitRoom.Visible = false;
+            // 
+            // labelCause
+            // 
+            this.labelCause.AutoSize = true;
+            this.labelCause.Location = new System.Drawing.Point(10, 45);
+            this.labelCause.Name = "labelCause";
+            this.labelCause.Size = new System.Drawing.Size(110, 13);
+            this.labelCause.TabIndex = 41;
+            this.labelCause.Text = "Причина посещения";
+            // 
+            // textBoxCause
+            // 
+            this.textBoxCause.Location = new System.Drawing.Point(13, 61);
+            this.textBoxCause.MaxLength = 300;
+            this.textBoxCause.Multiline = true;
+            this.textBoxCause.Name = "textBoxCause";
+            this.textBoxCause.Size = new System.Drawing.Size(286, 84);
+            this.textBoxCause.TabIndex = 40;
+            this.textBoxCause.TextChanged += new System.EventHandler(this.textBoxCause_TextChanged);
             // 
             // bDelete
             // 
@@ -160,25 +179,6 @@
             this.lTitle.TabIndex = 41;
             this.lTitle.Text = "Посещение студенческого общежития";
             // 
-            // textBoxCause
-            // 
-            this.textBoxCause.Location = new System.Drawing.Point(13, 61);
-            this.textBoxCause.MaxLength = 300;
-            this.textBoxCause.Multiline = true;
-            this.textBoxCause.Name = "textBoxCause";
-            this.textBoxCause.Size = new System.Drawing.Size(286, 84);
-            this.textBoxCause.TabIndex = 40;
-            this.textBoxCause.TextChanged += new System.EventHandler(this.textBoxCause_TextChanged);
-            // 
-            // labelCause
-            // 
-            this.labelCause.AutoSize = true;
-            this.labelCause.Location = new System.Drawing.Point(10, 45);
-            this.labelCause.Name = "labelCause";
-            this.labelCause.Size = new System.Drawing.Size(110, 13);
-            this.labelCause.TabIndex = 41;
-            this.labelCause.Text = "Причина посещения";
-            // 
             // buttonSave
             // 
             this.buttonSave.Location = new System.Drawing.Point(64, 457);
@@ -206,7 +206,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(613, 463);
+            this.ClientSize = new System.Drawing.Size(630, 463);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.bAddVisit);
@@ -214,9 +214,9 @@
             this.Controls.Add(this.dgvVisit);
             this.Controls.Add(this.lTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "VisitHostelForm";
-            this.Text = "VisitHostelForm";
             this.panelVisitRoom.ResumeLayout(false);
             this.panelVisitRoom.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoom)).EndInit();

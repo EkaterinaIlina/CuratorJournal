@@ -42,10 +42,7 @@ namespace CuratorJournal
             dgvVisit.Columns[4].Visible = false;
             dgvVisit.Columns[5].Visible = false;
         }
-        private void AddTable()
-        {
 
-        }
         private void FillRoom()
         {
             List<Student> students = DBobjects.Entities.Student.Where(p => p.idGroup == JournalForm.Journal.idGroup && p.idResidenceTemp!= null && p.Residence1.idHostel != null).ToList();

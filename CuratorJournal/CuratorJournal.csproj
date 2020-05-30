@@ -100,6 +100,12 @@
     <Compile Include="Event.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventForm.Designer.cs">
+      <DependentUpon>EventForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Family.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
@@ -204,6 +210,12 @@
     <Compile Include="Rating.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="RatingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RatingForm.Designer.cs">
+      <DependentUpon>RatingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RatingMark.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
@@ -279,6 +291,9 @@
     <EmbeddedResource Include="DynamicsOfIndicatorsForm.resx">
       <DependentUpon>DynamicsOfIndicatorsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EventForm.resx">
+      <DependentUpon>EventForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GroupForm.resx">
       <DependentUpon>GroupForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -301,6 +316,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RatingForm.resx">
+      <DependentUpon>RatingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RecoveryPassword.resx">
       <DependentUpon>RecoveryPassword.cs</DependentUpon>
     </EmbeddedResource>

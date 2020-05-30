@@ -75,6 +75,13 @@ namespace CuratorJournal
                     visitHostelForm.MdiParent = this;
                     visitHostelForm.Show();
                     break;
+
+                    case "PerformeMonitor":
+                        RatingForm ratingForm = new RatingForm();
+                        ratingForm.WindowState = FormWindowState.Maximized;
+                        ratingForm.MdiParent = this;
+                        ratingForm.Show();
+                        break;
                 }
             }
             else if((treeViewMenu.SelectedNode).Name== "MainInformation")
