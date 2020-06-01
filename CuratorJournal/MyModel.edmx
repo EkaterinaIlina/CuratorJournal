@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище CuratorJournalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище CuratorJournalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AchivementStudent">
           <Key>
             <PropertyRef Name="idAchivStud" />
@@ -335,6 +335,7 @@
           <Property Name="idKin" Type="int" Nullable="false" />
           <Property Name="idTopTPar" Type="int" Nullable="false" />
           <Property Name="idJournal" Type="int" Nullable="false" />
+          <Property Name="topicTalc" Type="varchar" MaxLength="300" />
           <Property Name="dateTalkPar" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="TopicTalkParents">
@@ -1222,8 +1223,7 @@
             <End Role="Student" EntitySet="Student" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CuratorJournalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1646,6 +1646,7 @@
           <NavigationProperty Name="Journal" Relationship="Self.FK__TalkParen__idJou__43D61337" FromRole="TalkParents" ToRole="Journal" />
           <NavigationProperty Name="Kin" Relationship="Self.FK__TalkParen__idKin__41EDCAC5" FromRole="TalkParents" ToRole="Kin" />
           <NavigationProperty Name="TopicTalkParents" Relationship="Self.FK__TalkParen__idTop__42E1EEFE" FromRole="TalkParents" ToRole="TopicTalkParents" />
+          <Property Name="topicTalc" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TopicTalkParents">
           <Key>
@@ -2899,6 +2900,7 @@
           <EntitySetMapping Name="TalkParents">
             <EntityTypeMapping TypeName="CuratorJournalModel.TalkParents">
               <MappingFragment StoreEntitySet="TalkParents">
+                <ScalarProperty Name="topicTalc" ColumnName="topicTalc" />
                 <ScalarProperty Name="idTalkPar" ColumnName="idTalkPar" />
                 <ScalarProperty Name="idKin" ColumnName="idKin" />
                 <ScalarProperty Name="idTopTPar" ColumnName="idTopTPar" />

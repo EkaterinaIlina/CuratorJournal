@@ -19,6 +19,7 @@ namespace CuratorJournal
         public int idTopTPar { get; set; }
         public int idJournal { get; set; }
         public System.DateTime dateTalkPar { get; set; }
+        public string topicTalc { get; set; }
     
         public virtual Journal Journal { get; set; }
         public virtual Kin Kin { get; set; }

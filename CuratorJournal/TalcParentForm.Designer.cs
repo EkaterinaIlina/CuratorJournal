@@ -34,15 +34,19 @@
             this.labelStudent = new System.Windows.Forms.Label();
             this.dgvTopicTalc = new System.Windows.Forms.DataGridView();
             this.bAddPrivTalc = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelTalkParent = new System.Windows.Forms.Panel();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.dataGridViewKin = new System.Windows.Forms.DataGridView();
+            this.labelStatusTopic = new System.Windows.Forms.Label();
+            this.comboBoxTopic = new System.Windows.Forms.ComboBox();
             this.labelTopic = new System.Windows.Forms.Label();
             this.textBoxTopic = new System.Windows.Forms.TextBox();
             this.lDate = new System.Windows.Forms.Label();
             this.dateTimePickerTalkStudent = new System.Windows.Forms.DateTimePicker();
-            this.comboBoxTopic = new System.Windows.Forms.ComboBox();
-            this.labelStatusTopic = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopicTalc)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.panelTalkParent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKin)).BeginInit();
             this.SuspendLayout();
             // 
             // lTitle
@@ -58,10 +62,11 @@
             // comboBoxStudent
             // 
             this.comboBoxStudent.FormattingEnabled = true;
-            this.comboBoxStudent.Location = new System.Drawing.Point(153, 56);
+            this.comboBoxStudent.Location = new System.Drawing.Point(137, 56);
             this.comboBoxStudent.Name = "comboBoxStudent";
             this.comboBoxStudent.Size = new System.Drawing.Size(454, 21);
             this.comboBoxStudent.TabIndex = 5;
+            this.comboBoxStudent.SelectedIndexChanged += new System.EventHandler(this.comboBoxStudent_SelectedIndexChanged);
             // 
             // labelStudent
             // 
@@ -85,6 +90,7 @@
             this.dgvTopicTalc.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvTopicTalc.Size = new System.Drawing.Size(503, 128);
             this.dgvTopicTalc.TabIndex = 46;
+            this.dgvTopicTalc.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTopicTalc_CellMouseClick);
             // 
             // bAddPrivTalc
             // 
@@ -95,19 +101,75 @@
             this.bAddPrivTalc.TabIndex = 48;
             this.bAddPrivTalc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bAddPrivTalc.UseVisualStyleBackColor = true;
+            this.bAddPrivTalc.Click += new System.EventHandler(this.bAddPrivTalc_Click);
             // 
-            // panel1
+            // panelTalkParent
             // 
-            this.panel1.Controls.Add(this.labelStatusTopic);
-            this.panel1.Controls.Add(this.comboBoxTopic);
-            this.panel1.Controls.Add(this.labelTopic);
-            this.panel1.Controls.Add(this.textBoxTopic);
-            this.panel1.Controls.Add(this.lDate);
-            this.panel1.Controls.Add(this.dateTimePickerTalkStudent);
-            this.panel1.Location = new System.Drawing.Point(29, 231);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(578, 236);
-            this.panel1.TabIndex = 49;
+            this.panelTalkParent.Controls.Add(this.buttonDelete);
+            this.panelTalkParent.Controls.Add(this.buttonSave);
+            this.panelTalkParent.Controls.Add(this.dataGridViewKin);
+            this.panelTalkParent.Controls.Add(this.labelStatusTopic);
+            this.panelTalkParent.Controls.Add(this.comboBoxTopic);
+            this.panelTalkParent.Controls.Add(this.labelTopic);
+            this.panelTalkParent.Controls.Add(this.textBoxTopic);
+            this.panelTalkParent.Controls.Add(this.lDate);
+            this.panelTalkParent.Controls.Add(this.dateTimePickerTalkStudent);
+            this.panelTalkParent.Location = new System.Drawing.Point(29, 231);
+            this.panelTalkParent.Name = "panelTalkParent";
+            this.panelTalkParent.Size = new System.Drawing.Size(587, 236);
+            this.panelTalkParent.TabIndex = 49;
+            this.panelTalkParent.Visible = false;
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(474, 200);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(101, 23);
+            this.buttonDelete.TabIndex = 50;
+            this.buttonDelete.Text = "Удалить";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Visible = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(303, 200);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(101, 23);
+            this.buttonSave.TabIndex = 49;
+            this.buttonSave.Text = "Сохранить";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // dataGridViewKin
+            // 
+            this.dataGridViewKin.AllowUserToAddRows = false;
+            this.dataGridViewKin.AllowUserToDeleteRows = false;
+            this.dataGridViewKin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewKin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewKin.Location = new System.Drawing.Point(303, 23);
+            this.dataGridViewKin.Name = "dataGridViewKin";
+            this.dataGridViewKin.RowHeadersVisible = false;
+            this.dataGridViewKin.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.dataGridViewKin.Size = new System.Drawing.Size(272, 157);
+            this.dataGridViewKin.TabIndex = 48;
+            // 
+            // labelStatusTopic
+            // 
+            this.labelStatusTopic.AutoSize = true;
+            this.labelStatusTopic.Location = new System.Drawing.Point(6, 7);
+            this.labelStatusTopic.Name = "labelStatusTopic";
+            this.labelStatusTopic.Size = new System.Drawing.Size(139, 13);
+            this.labelStatusTopic.TabIndex = 47;
+            this.labelStatusTopic.Text = "Вид работы с родителями";
+            // 
+            // comboBoxTopic
+            // 
+            this.comboBoxTopic.FormattingEnabled = true;
+            this.comboBoxTopic.Location = new System.Drawing.Point(9, 23);
+            this.comboBoxTopic.Name = "comboBoxTopic";
+            this.comboBoxTopic.Size = new System.Drawing.Size(272, 21);
+            this.comboBoxTopic.TabIndex = 46;
             // 
             // labelTopic
             // 
@@ -144,24 +206,6 @@
             this.dateTimePickerTalkStudent.Size = new System.Drawing.Size(178, 20);
             this.dateTimePickerTalkStudent.TabIndex = 42;
             // 
-            // comboBoxTopic
-            // 
-            this.comboBoxTopic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTopic.FormattingEnabled = true;
-            this.comboBoxTopic.Location = new System.Drawing.Point(9, 23);
-            this.comboBoxTopic.Name = "comboBoxTopic";
-            this.comboBoxTopic.Size = new System.Drawing.Size(272, 21);
-            this.comboBoxTopic.TabIndex = 46;
-            // 
-            // labelStatusTopic
-            // 
-            this.labelStatusTopic.AutoSize = true;
-            this.labelStatusTopic.Location = new System.Drawing.Point(6, 7);
-            this.labelStatusTopic.Name = "labelStatusTopic";
-            this.labelStatusTopic.Size = new System.Drawing.Size(139, 13);
-            this.labelStatusTopic.TabIndex = 47;
-            this.labelStatusTopic.Text = "Вид работы с родителями";
-            // 
             // TalcParentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,7 +213,7 @@
             this.AutoScroll = true;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(628, 513);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelTalkParent);
             this.Controls.Add(this.bAddPrivTalc);
             this.Controls.Add(this.dgvTopicTalc);
             this.Controls.Add(this.labelStudent);
@@ -180,8 +224,9 @@
             this.MaximizeBox = false;
             this.Name = "TalcParentForm";
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopicTalc)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelTalkParent.ResumeLayout(false);
+            this.panelTalkParent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,12 +239,15 @@
         private System.Windows.Forms.Label labelStudent;
         private System.Windows.Forms.DataGridView dgvTopicTalc;
         private System.Windows.Forms.Button bAddPrivTalc;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelTalkParent;
         private System.Windows.Forms.Label labelStatusTopic;
         private System.Windows.Forms.ComboBox comboBoxTopic;
         private System.Windows.Forms.Label labelTopic;
         private System.Windows.Forms.TextBox textBoxTopic;
         private System.Windows.Forms.Label lDate;
         private System.Windows.Forms.DateTimePicker dateTimePickerTalkStudent;
+        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.DataGridView dataGridViewKin;
     }
 }
