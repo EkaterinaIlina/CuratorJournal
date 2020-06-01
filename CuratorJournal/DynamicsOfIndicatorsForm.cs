@@ -30,9 +30,9 @@ namespace CuratorJournal
             DataColumn idGrDin = new DataColumn("id", Type.GetType("System.Int32"));
             DataColumn idCoreInd = new DataColumn("idCoreInd", Type.GetType("System.Int32"));
             DataColumn CoreInd = new DataColumn("Основные показатели", Type.GetType("System.String"));
-            DataColumn OneSemestr = new DataColumn("1-ый семестр", Type.GetType("System.Int32"));
-            DataColumn TwoSemestr = new DataColumn("2-ой семестр", Type.GetType("System.Int32"));
-            DataColumn note = new DataColumn("Примечания", Type.GetType("System.String"));
+            DataColumn OneSemestr = new DataColumn("1-ый семестр", Type.GetType("System.Single"));
+            DataColumn TwoSemestr = new DataColumn("2-ой семестр", Type.GetType("System.Double"));
+            DataColumn note = new DataColumn("Примечания", Type.GetType("Single.String"));
             Dynamics.Columns.Add(idGrDin);
             Dynamics.Columns.Add(idCoreInd);
             Dynamics.Columns.Add(CoreInd);

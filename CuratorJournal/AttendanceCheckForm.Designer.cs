@@ -157,6 +157,7 @@
             this.comboBoxDiscpline.Size = new System.Drawing.Size(189, 21);
             this.comboBoxDiscpline.TabIndex = 41;
             this.comboBoxDiscpline.SelectedIndexChanged += new System.EventHandler(this.comboBoxDiscpline_SelectedIndexChanged);
+            this.comboBoxDiscpline.Validated += new System.EventHandler(this.comboBoxDiscpline_Validated);
             // 
             // comboBoxOccup
             // 
@@ -200,9 +201,9 @@
             this.labelFullNamePrep.AutoSize = true;
             this.labelFullNamePrep.Location = new System.Drawing.Point(3, 93);
             this.labelFullNamePrep.Name = "labelFullNamePrep";
-            this.labelFullNamePrep.Size = new System.Drawing.Size(114, 13);
+            this.labelFullNamePrep.Size = new System.Drawing.Size(118, 13);
             this.labelFullNamePrep.TabIndex = 46;
-            this.labelFullNamePrep.Text = "ФИО преподавателя";
+            this.labelFullNamePrep.Text = "ФИО преподавателя*";
             // 
             // panelAttendance
             // 
@@ -229,12 +230,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(628, 509);
+            this.ClientSize = new System.Drawing.Size(645, 509);
             this.Controls.Add(this.bAddAttendance);
             this.Controls.Add(this.panelAttendance);
             this.Controls.Add(this.dgvAttendance);
             this.Controls.Add(this.lTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "AttendanceCheckForm";
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).EndInit();

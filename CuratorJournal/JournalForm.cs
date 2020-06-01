@@ -82,6 +82,18 @@ namespace CuratorJournal
                         ratingForm.MdiParent = this;
                         ratingForm.Show();
                         break;
+                    case "StudentAchivment":
+                        EventForm eventForm = new EventForm();
+                        eventForm.WindowState = FormWindowState.Maximized;
+                        eventForm.MdiParent = this;
+                        eventForm.Show();
+                        break;
+                    case "EducationActivities":
+                        EducationalWorkForm educationalWorkForm = new EducationalWorkForm();
+                        educationalWorkForm.WindowState = FormWindowState.Maximized;
+                        educationalWorkForm.MdiParent = this;
+                        educationalWorkForm.Show();
+                        break;
                 }
             }
             else if((treeViewMenu.SelectedNode).Name== "MainInformation")

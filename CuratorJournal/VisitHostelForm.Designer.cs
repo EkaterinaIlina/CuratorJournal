@@ -80,9 +80,9 @@
             this.labelCause.AutoSize = true;
             this.labelCause.Location = new System.Drawing.Point(10, 45);
             this.labelCause.Name = "labelCause";
-            this.labelCause.Size = new System.Drawing.Size(110, 13);
+            this.labelCause.Size = new System.Drawing.Size(114, 13);
             this.labelCause.TabIndex = 41;
-            this.labelCause.Text = "Причина посещения";
+            this.labelCause.Text = "Причина посещения*";
             // 
             // textBoxCause
             // 

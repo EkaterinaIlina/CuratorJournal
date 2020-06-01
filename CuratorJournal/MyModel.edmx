@@ -12,7 +12,7 @@
           <Property Name="idAchivStud" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idStudent" Type="int" Nullable="false" />
           <Property Name="idEvent" Type="int" Nullable="false" />
-          <Property Name="fullNameSupervis" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fullNameSupervis" Type="varchar" MaxLength="100" />
           <Property Name="topicWork" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Attendance">
@@ -1233,7 +1233,7 @@
           <Property Name="idAchivStud" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idStudent" Type="Int32" Nullable="false" />
           <Property Name="idEvent" Type="Int32" Nullable="false" />
-          <Property Name="fullNameSupervis" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fullNameSupervis" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="topicWork" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Event" Relationship="Self.FK_AchivementStudent_Event" FromRole="AchivementStudent" ToRole="Event" />
           <NavigationProperty Name="Student" Relationship="Self.FK_AchivementStudent_Student" FromRole="AchivementStudent" ToRole="Student" />

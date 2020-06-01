@@ -12,7 +12,7 @@ namespace CuratorJournal
 {
     public partial class AttendanceCheckForm : Form
     {
-        Attendance attendance ;
+        Attendance attendance;
         LackAttendance lackAttendance;
         Discipline discipline;
         public AttendanceCheckForm()
@@ -51,14 +51,14 @@ namespace CuratorJournal
             comboBoxDiscpline.SelectedItem = attendance.Discipline;
             comboBoxOccup.SelectedItem = attendance.OccupationStatus;
             textBoxFullNamePrep.Text = attendance.fullNameTeach;
-         
+
         }
         private void bAddAttendance_Click(object sender, EventArgs e)
         {
             attendance = new Attendance();
             panelAttendance.Visible = true;
-            FillcomboBoxDiscpline();            
-            dgvAttendance.ClearSelection();            
+            FillcomboBoxDiscpline();
+            dgvAttendance.ClearSelection();
             attendance.dateAttendance = DateTime.Now.Date;
             attendance.fullNameTeach = "";
             dateTimePickerAttendance.Value = attendance.dateAttendance;
@@ -80,7 +80,7 @@ namespace CuratorJournal
                 bDelete.Visible = true;
             }
         }
-         private void FillStudent()
+        private void FillStudent()
         {
             DataTable StudentTable = new DataTable();
             DataColumn idStudent = new DataColumn("id", Type.GetType("System.Int32"));
@@ -116,14 +116,7 @@ namespace CuratorJournal
         {
             try
             {
-                if (comboBoxDiscpline.FindString(comboBoxDiscpline.Text) == -1)
-                {
-                    discipline = new Discipline();
-                    discipline.nameDiscipline = comboBoxDiscpline.Text;
-                    DBobjects.Entities.Discipline.Add(discipline);
-                    DBobjects.Entities.SaveChanges();
-                }
-                attendance.idDiscipline = discipline.idDiscipline;                
+                attendance.idDiscipline = discipline.idDiscipline;
                 if (IsFieldsEmpteAttendance())
                     throw new Exception("Заполните обязательные поля");
                 if (DBobjects.Entities.Attendance.Where(p => p.idAttendance == attendance.idAttendance).Count() == 0)
@@ -157,7 +150,6 @@ namespace CuratorJournal
                 else if (lackAttendance.idLackAttendance != 0 && Convert.ToBoolean(dgvr.Cells[2].Value) == false)
                     DeleteLackAttendance();
             }
-
         }
         private void DeleteLackAttendance()
         {
@@ -166,7 +158,7 @@ namespace CuratorJournal
         }
         private bool IsFieldsEmpteAttendance()
         {
-            if (attendance.fullNameTeach == ""
+            if (attendance.fullNameTeach == "" || attendance.idDiscipline == 0
                 )
             {
                 return true;
@@ -179,9 +171,9 @@ namespace CuratorJournal
             discipline = DBobjects.Entities.Discipline.FirstOrDefault(p => p.nameDiscipline == comboBoxDiscpline.Text);
         }
 
-        private void comboBoxOccup_SelectedIndexChanged(object sender, EventArgs e)            
+        private void comboBoxOccup_SelectedIndexChanged(object sender, EventArgs e)
         {
-                attendance.idOccupStat = DBobjects.Entities.OccupationStatus.FirstOrDefault(p => p.nameOccupStat == comboBoxOccup.Text).idOccupStat;
+            attendance.idOccupStat = DBobjects.Entities.OccupationStatus.FirstOrDefault(p => p.nameOccupStat == comboBoxOccup.Text).idOccupStat;
         }
         private void DeleteAttendance()
         {
@@ -205,6 +197,29 @@ namespace CuratorJournal
         private void dateTimePickerAttendance_ValueChanged(object sender, EventArgs e)
         {
             attendance.dateAttendance = dateTimePickerAttendance.Value.Date;
+        }
+        private void saveDiscipline()
+        {
+            if (comboBoxDiscpline.FindString(comboBoxDiscpline.Text) == -1)
+            {
+                discipline = new Discipline();
+                discipline.nameDiscipline = comboBoxDiscpline.Text;
+                DBobjects.Entities.Discipline.Add(discipline);
+                DBobjects.Entities.SaveChanges();
+                comboBoxDiscpline.DataSource = DBobjects.Entities.Discipline.ToList();
+                comboBoxDiscpline.SelectedIndex = comboBoxDiscpline.Items.Count - 1;
+            }
+            else
+                MessageBox.Show("Заполните поле тип мероприятия");
+        
+    }
+        
+        private void comboBoxDiscpline_Validated(object sender, EventArgs e)
+        {
+            if (comboBoxDiscpline.FindString(comboBoxDiscpline.Text) == -1)
+            {
+                saveDiscipline();
+            }
         }
     }
 }

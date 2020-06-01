@@ -142,9 +142,9 @@
             this.lDescr.AutoSize = true;
             this.lDescr.Location = new System.Drawing.Point(248, 116);
             this.lDescr.Name = "lDescr";
-            this.lDescr.Size = new System.Drawing.Size(103, 13);
+            this.lDescr.Size = new System.Drawing.Size(107, 13);
             this.lDescr.TabIndex = 9;
-            this.lDescr.Text = "Принятое решение";
+            this.lDescr.Text = "Принятое решение*";
             // 
             // dgvStudent
             // 
@@ -174,9 +174,9 @@
             this.lQuestion.AutoSize = true;
             this.lQuestion.Location = new System.Drawing.Point(3, 116);
             this.lQuestion.Name = "lQuestion";
-            this.lQuestion.Size = new System.Drawing.Size(129, 13);
+            this.lQuestion.Size = new System.Drawing.Size(133, 13);
             this.lQuestion.TabIndex = 8;
-            this.lQuestion.Text = "Вопрос для обсуждения";
+            this.lQuestion.Text = "Вопрос для обсуждения*";
             // 
             // tbQuestion
             // 

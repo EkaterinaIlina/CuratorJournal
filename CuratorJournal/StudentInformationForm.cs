@@ -151,14 +151,19 @@ namespace CuratorJournal
 
         private void dgvStudent_MouseUp(object sender, MouseEventArgs e)
         {
-            dgvStudent.ClearSelection();
-            DataGridView.HitTestInfo hitTestInfo;                            
+            
+                dgvStudent.ClearSelection();
+                DataGridView.HitTestInfo hitTestInfo;
                 hitTestInfo = dgvStudent.HitTest(e.X, e.Y);
+                if (dgvStudent.Rows[hitTestInfo.RowIndex].Index >= 0)
+                {
                 dgvStudent.Rows[hitTestInfo.RowIndex].Selected = true;
                 if (hitTestInfo.Type == DataGridViewHitTestType.Cell)
                 {
-                        contextMenuStatus.Show(dgvStudent, e.Location);                           
+                    contextMenuStatus.Show(dgvStudent, e.Location);
                 }
+                }
+           
         }
 
         private void menuItem_Click(object sender, System.EventArgs e)
@@ -189,7 +194,6 @@ namespace CuratorJournal
             }
         }
 
-
         private void dgvStudent_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -197,10 +201,8 @@ namespace CuratorJournal
                 DataGridViewCell cell = dgvStudent.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 int index = Convert.ToInt32(dgvStudent.Rows[e.RowIndex].Cells["idStatus"].Value);
                 cell.ToolTipText = DBobjects.Entities.StatusStudent.FirstOrDefault(p => p.idStatusSt == index).nameSatusSt;
-            }
-                
+            }               
         }
-
 
         private void dgvStudent_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {

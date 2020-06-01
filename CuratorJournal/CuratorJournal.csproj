@@ -97,6 +97,12 @@
     <Compile Include="DynamicsOfIndicatorsForm.Designer.cs">
       <DependentUpon>DynamicsOfIndicatorsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EducationalWorkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EducationalWorkForm.Designer.cs">
+      <DependentUpon>EducationalWorkForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Event.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
@@ -290,6 +296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DynamicsOfIndicatorsForm.resx">
       <DependentUpon>DynamicsOfIndicatorsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EducationalWorkForm.resx">
+      <DependentUpon>EducationalWorkForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EventForm.resx">
       <DependentUpon>EventForm.cs</DependentUpon>
