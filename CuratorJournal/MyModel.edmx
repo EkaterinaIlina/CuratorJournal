@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище CuratorJournalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище CuratorJournalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AchivementStudent">
           <Key>
             <PropertyRef Name="idAchivStud" />
@@ -118,8 +118,8 @@
           <Property Name="idGrDin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idJournal" Type="int" Nullable="false" />
           <Property Name="idCoreInd" Type="int" Nullable="false" />
-          <Property Name="semesterOneDyn" Type="int" Nullable="false" />
-          <Property Name="semesterTwoDyn" Type="int" />
+          <Property Name="semesterOneDyn" Type="float" Nullable="false" />
+          <Property Name="semesterTwoDyn" Type="float" />
           <Property Name="note" Type="varchar" MaxLength="300" />
         </EntityType>
         <EntityType Name="Hostel">
@@ -1222,7 +1222,8 @@
             <End Role="Student" EntitySet="Student" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CuratorJournalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1361,8 +1362,8 @@
           <Property Name="idGrDin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idJournal" Type="Int32" Nullable="false" />
           <Property Name="idCoreInd" Type="Int32" Nullable="false" />
-          <Property Name="semesterOneDyn" Type="Int32" Nullable="false" />
-          <Property Name="semesterTwoDyn" Type="Int32" />
+          <Property Name="semesterOneDyn" Type="Double" Nullable="false" />
+          <Property Name="semesterTwoDyn" Type="Double" />
           <Property Name="note" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CoreIndicator" Relationship="Self.FK__GroupDyna__idCor__32AB8735" FromRole="GroupDynamics" ToRole="CoreIndicator" />
           <NavigationProperty Name="Journal" Relationship="Self.FK__GroupDyna__idJou__31B762FC" FromRole="GroupDynamics" ToRole="Journal" />
@@ -1396,7 +1397,7 @@
           <NavigationProperty Name="StudyingProcess" Relationship="Self.FK__StudyingP__idJou__17036CC0" FromRole="Journal" ToRole="StudyingProcess" />
           <NavigationProperty Name="TalkParents" Relationship="Self.FK__TalkParen__idJou__43D61337" FromRole="Journal" ToRole="TalkParents" />
           <NavigationProperty Name="VisitHostel" Relationship="Self.FK__VisitHost__idJou__2BFE89A6" FromRole="Journal" ToRole="VisitHostel" />
-          <NavigationProperty Name="RatingMark" Relationship="CuratorJournalModel.FK_RatingMark_Journal" FromRole="Journal" ToRole="RatingMark" />
+          <NavigationProperty Name="RatingMark" Relationship="Self.FK_RatingMark_Journal" FromRole="Journal" ToRole="RatingMark" />
         </EntityType>
         <EntityType Name="JournalStudent">
           <Key>
@@ -1548,11 +1549,11 @@
           <Property Name="idDiscipline" Type="Int32" Nullable="false" />
           <Property Name="idRating" Type="Int32" Nullable="false" />
           <Property Name="ratingMark1" Type="Int32" Nullable="false" />
+          <Property Name="idJournal" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Discipline" Relationship="Self.FK__RatingMar__idDis__47A6A41B" FromRole="RatingMark" ToRole="Discipline" />
+          <NavigationProperty Name="Journal" Relationship="Self.FK_RatingMark_Journal" FromRole="RatingMark" ToRole="Journal" />
           <NavigationProperty Name="Rating" Relationship="Self.FK__RatingMar__idRat__489AC854" FromRole="RatingMark" ToRole="Rating" />
           <NavigationProperty Name="Student" Relationship="Self.FK__RatingMar__idStu__46B27FE2" FromRole="RatingMark" ToRole="Student" />
-          <Property Name="idJournal" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Journal" Relationship="CuratorJournalModel.FK_RatingMark_Journal" FromRole="RatingMark" ToRole="Journal" />
         </EntityType>
         <EntityType Name="Residence">
           <Key>
@@ -2049,6 +2050,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_RatingMark_Journal">
+          <End Role="Journal" Type="Self.Journal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RatingMark" Type="Self.RatingMark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Journal">
+              <PropertyRef Name="idJournal" />
+            </Principal>
+            <Dependent Role="RatingMark">
+              <PropertyRef Name="idJournal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__JournalSt__idSta__05D8E0BE">
           <End Role="StatusStudent" Type="Self.StatusStudent" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -2444,6 +2459,10 @@
             <End Role="Journal" EntitySet="Journal" />
             <End Role="VisitHostel" EntitySet="VisitHostel" />
           </AssociationSet>
+          <AssociationSet Name="FK_RatingMark_Journal" Association="Self.FK_RatingMark_Journal">
+            <End Role="Journal" EntitySet="Journal" />
+            <End Role="RatingMark" EntitySet="RatingMark" />
+          </AssociationSet>
           <AssociationSet Name="FK__JournalSt__idSta__05D8E0BE" Association="Self.FK__JournalSt__idSta__05D8E0BE">
             <End Role="StatusStudent" EntitySet="StatusStudent" />
             <End Role="JournalStudent" EntitySet="JournalStudent" />
@@ -2516,25 +2535,7 @@
             <End Role="TopicTalkParents" EntitySet="TopicTalkParents" />
             <End Role="TalkParents" EntitySet="TalkParents" />
           </AssociationSet>
-          <AssociationSet Name="FK_RatingMark_Journal" Association="CuratorJournalModel.FK_RatingMark_Journal">
-            <End Role="Journal" EntitySet="Journal" />
-            <End Role="RatingMark" EntitySet="RatingMark" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK_RatingMark_Journal">
-          <End Type="CuratorJournalModel.Journal" Role="Journal" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="CuratorJournalModel.RatingMark" Role="RatingMark" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Journal">
-              <PropertyRef Name="idJournal" />
-            </Principal>
-            <Dependent Role="RatingMark">
-              <PropertyRef Name="idJournal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2822,12 +2823,12 @@
           <EntitySetMapping Name="RatingMark">
             <EntityTypeMapping TypeName="CuratorJournalModel.RatingMark">
               <MappingFragment StoreEntitySet="RatingMark">
-                <ScalarProperty Name="idJournal" ColumnName="idJournal" />
                 <ScalarProperty Name="idRatingMark" ColumnName="idRatingMark" />
                 <ScalarProperty Name="idStudent" ColumnName="idStudent" />
                 <ScalarProperty Name="idDiscipline" ColumnName="idDiscipline" />
                 <ScalarProperty Name="idRating" ColumnName="idRating" />
                 <ScalarProperty Name="ratingMark1" ColumnName="ratingMark" />
+                <ScalarProperty Name="idJournal" ColumnName="idJournal" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

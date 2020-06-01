@@ -34,11 +34,16 @@
             System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("График учебного процесса");
             System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Собрания");
             System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Проверка посещаемости занятий студентами");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Воспитательные воздействия куратора");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Индивидуальные беседы со студентами");
             System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Работа с родителями студентов");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Посещение студенческого общежития");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Достижения студентов");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Текущий контроль успеваемости");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Обсуждение проступках на заседаниии кафедры");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Воспитательные воздействия куратора", new System.Windows.Forms.TreeNode[] {
+            treeNode7,
+            treeNode8,
+            treeNode9});
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Посещение студенческого общежития");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Достижения студентов");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Текущий контроль успеваемости");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(JournalForm));
             this.treeViewMenu = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
@@ -60,16 +65,20 @@
             treeNode5.Text = "Собрания";
             treeNode6.Name = "Attendance";
             treeNode6.Text = "Проверка посещаемости занятий студентами";
-            treeNode7.Name = "EducationActivities";
-            treeNode7.Text = "Воспитательные воздействия куратора";
-            treeNode8.Name = "WorkParents";
+            treeNode7.Name = "PrivateTalcParents";
+            treeNode7.Text = "Индивидуальные беседы со студентами";
+            treeNode8.Name = "TalckParents";
             treeNode8.Text = "Работа с родителями студентов";
-            treeNode9.Name = "VisitHostel";
-            treeNode9.Text = "Посещение студенческого общежития";
-            treeNode10.Name = "StudentAchivment";
-            treeNode10.Text = "Достижения студентов";
-            treeNode11.Name = "PerformeMonitor";
-            treeNode11.Text = "Текущий контроль успеваемости";
+            treeNode9.Name = "Offence";
+            treeNode9.Text = "Обсуждение проступках на заседаниии кафедры";
+            treeNode10.Name = "EducationActivities";
+            treeNode10.Text = "Воспитательные воздействия куратора";
+            treeNode11.Name = "VisitHostel";
+            treeNode11.Text = "Посещение студенческого общежития";
+            treeNode12.Name = "StudentAchivment";
+            treeNode12.Text = "Достижения студентов";
+            treeNode13.Name = "PerformeMonitor";
+            treeNode13.Text = "Текущий контроль успеваемости";
             this.treeViewMenu.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
@@ -77,11 +86,10 @@
             treeNode4,
             treeNode5,
             treeNode6,
-            treeNode7,
-            treeNode8,
-            treeNode9,
             treeNode10,
-            treeNode11});
+            treeNode11,
+            treeNode12,
+            treeNode13});
             this.treeViewMenu.Size = new System.Drawing.Size(343, 563);
             this.treeViewMenu.TabIndex = 1;
             this.treeViewMenu.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMenu_AfterSelect);

@@ -267,6 +267,12 @@
     <Compile Include="StudyScheduleForm.Designer.cs">
       <DependentUpon>StudyScheduleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TalcParentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TalcParentForm.Designer.cs">
+      <DependentUpon>TalcParentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TalkParents.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
@@ -342,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StudyScheduleForm.resx">
       <DependentUpon>StudyScheduleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TalcParentForm.resx">
+      <DependentUpon>TalcParentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VisitHostelForm.resx">
       <DependentUpon>VisitHostelForm.cs</DependentUpon>

@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EducationalWorkForm));
             this.lTitle = new System.Windows.Forms.Label();
-            this.bAddPrivTalc = new System.Windows.Forms.Button();
             this.panelPrivTalc = new System.Windows.Forms.Panel();
             this.labelTopic = new System.Windows.Forms.Label();
             this.textBoxTopic = new System.Windows.Forms.TextBox();
@@ -41,6 +40,7 @@
             this.dgvTopicTalc = new System.Windows.Forms.DataGridView();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.bAddPrivTalc = new System.Windows.Forms.Button();
             this.panelPrivTalc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopicTalc)).BeginInit();
@@ -52,20 +52,9 @@
             this.lTitle.Font = new System.Drawing.Font("Palatino Linotype", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
             this.lTitle.Location = new System.Drawing.Point(105, 9);
             this.lTitle.Name = "lTitle";
-            this.lTitle.Size = new System.Drawing.Size(428, 28);
+            this.lTitle.Size = new System.Drawing.Size(432, 28);
             this.lTitle.TabIndex = 4;
-            this.lTitle.Text = "Воспитательные воздействия куратора";
-            // 
-            // bAddPrivTalc
-            // 
-            this.bAddPrivTalc.Image = ((System.Drawing.Image)(resources.GetObject("bAddPrivTalc.Image")));
-            this.bAddPrivTalc.Location = new System.Drawing.Point(18, 40);
-            this.bAddPrivTalc.Name = "bAddPrivTalc";
-            this.bAddPrivTalc.Size = new System.Drawing.Size(43, 23);
-            this.bAddPrivTalc.TabIndex = 47;
-            this.bAddPrivTalc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.bAddPrivTalc.UseVisualStyleBackColor = true;
-            this.bAddPrivTalc.Click += new System.EventHandler(this.bAddPrivTalc_Click);
+            this.lTitle.Text = "Индивидуальные беседы со студентами";
             // 
             // panelPrivTalc
             // 
@@ -176,6 +165,17 @@
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // bAddPrivTalc
+            // 
+            this.bAddPrivTalc.Image = ((System.Drawing.Image)(resources.GetObject("bAddPrivTalc.Image")));
+            this.bAddPrivTalc.Location = new System.Drawing.Point(18, 40);
+            this.bAddPrivTalc.Name = "bAddPrivTalc";
+            this.bAddPrivTalc.Size = new System.Drawing.Size(43, 23);
+            this.bAddPrivTalc.TabIndex = 47;
+            this.bAddPrivTalc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.bAddPrivTalc.UseVisualStyleBackColor = true;
+            this.bAddPrivTalc.Click += new System.EventHandler(this.bAddPrivTalc_Click);
             // 
             // EducationalWorkForm
             // 

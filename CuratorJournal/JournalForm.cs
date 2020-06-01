@@ -88,11 +88,17 @@ namespace CuratorJournal
                         eventForm.MdiParent = this;
                         eventForm.Show();
                         break;
-                    case "EducationActivities":
+                    case "PrivateTalcParents":
                         EducationalWorkForm educationalWorkForm = new EducationalWorkForm();
                         educationalWorkForm.WindowState = FormWindowState.Maximized;
                         educationalWorkForm.MdiParent = this;
                         educationalWorkForm.Show();
+                        break;
+                    case "TalckParents":
+                        TalcParentForm talcParentForm = new TalcParentForm();
+                        talcParentForm.WindowState = FormWindowState.Maximized;
+                        talcParentForm.MdiParent = this;
+                        talcParentForm.Show();
                         break;
                 }
             }

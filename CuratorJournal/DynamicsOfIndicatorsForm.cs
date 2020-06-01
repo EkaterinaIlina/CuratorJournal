@@ -31,8 +31,8 @@ namespace CuratorJournal
             DataColumn idCoreInd = new DataColumn("idCoreInd", Type.GetType("System.Int32"));
             DataColumn CoreInd = new DataColumn("Основные показатели", Type.GetType("System.String"));
             DataColumn OneSemestr = new DataColumn("1-ый семестр", Type.GetType("System.Single"));
-            DataColumn TwoSemestr = new DataColumn("2-ой семестр", Type.GetType("System.Double"));
-            DataColumn note = new DataColumn("Примечания", Type.GetType("Single.String"));
+            DataColumn TwoSemestr = new DataColumn("2-ой семестр", Type.GetType("System.Single"));
+            DataColumn note = new DataColumn("Примечания", Type.GetType("System.String"));
             Dynamics.Columns.Add(idGrDin);
             Dynamics.Columns.Add(idCoreInd);
             Dynamics.Columns.Add(CoreInd);
@@ -84,13 +84,12 @@ namespace CuratorJournal
                     groupDynamics = new GroupDynamics();
                 else
                 {
-                    int id = Convert.ToInt32(dgvr.Cells[1].Value);
+                    int id = Convert.ToInt32(dgvr.Cells[0].Value);
                     groupDynamics = DBobjects.Entities.GroupDynamics.FirstOrDefault(p => p.idGrDin == id);
                 }
                 groupDynamics.idJournal = JournalForm.Journal.idJournal;
-                groupDynamics.idGrDin = Convert.ToInt32(dgvr.Cells[0].Value);
-                groupDynamics.semesterOneDyn = Convert.ToInt32(dgvr.Cells[3].Value);
-                groupDynamics.semesterTwoDyn = Convert.ToInt32(dgvr.Cells[4].Value);
+                groupDynamics.semesterOneDyn = Convert.ToSingle(dgvr.Cells[3].Value);
+                groupDynamics.semesterTwoDyn = Convert.ToSingle(dgvr.Cells[4].Value);
                 groupDynamics.idCoreInd = Convert.ToInt32(dgvr.Cells[1].Value);
                 groupDynamics.note = dgvr.Cells[5].Value.ToString();
                 if (DBobjects.Entities.GroupDynamics.Where(p => p.idGrDin == groupDynamics.idGrDin).Count() == 0)
@@ -114,7 +113,7 @@ namespace CuratorJournal
 
         private void textBox_KeyPress(object sender,KeyPressEventArgs e)
         {
-            if(!Char.IsDigit(e.KeyChar) && e.KeyChar!=8 && e.KeyChar!=127)
+            if(!Char.IsDigit(e.KeyChar) && e.KeyChar!=8 && e.KeyChar!=127 && e.KeyChar!=44)
                 e.Handled = true;
         }
     }

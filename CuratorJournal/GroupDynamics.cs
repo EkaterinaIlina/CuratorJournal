@@ -17,8 +17,8 @@ namespace CuratorJournal
         public int idGrDin { get; set; }
         public int idJournal { get; set; }
         public int idCoreInd { get; set; }
-        public int semesterOneDyn { get; set; }
-        public Nullable<int> semesterTwoDyn { get; set; }
+        public double semesterOneDyn { get; set; }
+        public Nullable<double> semesterTwoDyn { get; set; }
         public string note { get; set; }
     
         public virtual CoreIndicator CoreIndicator { get; set; }
