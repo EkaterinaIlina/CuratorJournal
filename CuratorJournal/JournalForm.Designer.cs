@@ -36,7 +36,7 @@
             System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Проверка посещаемости занятий студентами");
             System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Индивидуальные беседы со студентами");
             System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Работа с родителями студентов");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Обсуждение проступках на заседаниии кафедры");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Заседания дисциплинароной комиссии");
             System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Воспитательные воздействия куратора", new System.Windows.Forms.TreeNode[] {
             treeNode7,
             treeNode8,
@@ -70,7 +70,7 @@
             treeNode8.Name = "TalckParents";
             treeNode8.Text = "Работа с родителями студентов";
             treeNode9.Name = "Offence";
-            treeNode9.Text = "Обсуждение проступках на заседаниии кафедры";
+            treeNode9.Text = "Заседания дисциплинароной комиссии";
             treeNode10.Name = "EducationActivities";
             treeNode10.Text = "Воспитательные воздействия куратора";
             treeNode11.Name = "VisitHostel";

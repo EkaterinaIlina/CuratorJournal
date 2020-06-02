@@ -88,6 +88,12 @@
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DBobjects.cs" />
+    <Compile Include="DisciplinaryCommissionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DisciplinaryCommissionForm.Designer.cs">
+      <DependentUpon>DisciplinaryCommissionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Discipline.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
@@ -302,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DisciplinaryCommissionForm.resx">
+      <DependentUpon>DisciplinaryCommissionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DynamicsOfIndicatorsForm.resx">
       <DependentUpon>DynamicsOfIndicatorsForm.cs</DependentUpon>

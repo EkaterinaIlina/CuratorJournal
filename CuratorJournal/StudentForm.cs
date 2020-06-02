@@ -52,9 +52,7 @@ namespace CuratorJournal
             listRelatives = new List<Kin>();
             this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
         }
-        
-            
-        
+
         private void MainFill()
         {
             buttonDelete.Visible = true;
@@ -358,49 +356,62 @@ namespace CuratorJournal
         }
 
         private void buttonSaveStudent_Click(object sender, EventArgs e)
-        {
-          
+        {         
             SaveAll();
             this.FormClosing -= StudentForm_FormClosing;
-            this.Close();
+           
         }
 
         private void SaveAll()
         {
-            try
+            if (String.IsNullOrWhiteSpace(residence.country) || String.IsNullOrWhiteSpace(residence.region) || String.IsNullOrWhiteSpace(residence.town ) || String.IsNullOrWhiteSpace(residence.house))
+                MessageBox.Show("Заполните обязательные поля");
+            else
             {
-                if (IsFieldsEmptyStudent())
-                    throw new Exception("Заполните обязательные поля");
-
                 ReadSaveResidence();
                 if (radioButtonInog.Checked == true)
                 {
                     if (radioButtonHostel.Checked == true)
                     {
-                        if (IsFieldsEmptyResidenceTempHostel())
-                            throw new Exception("Заполните обязательные поля");
+                        if (String.IsNullOrWhiteSpace(residenceTemp.room ))
+                            MessageBox.Show("Заполните обязательные поля");
                     }
-                    if (radioButtonPropiska.Checked == true || radioButtonOther.Checked == true)
+                    else if (radioButtonPropiska.Checked == true || radioButtonOther.Checked == true)
                     {
-                        if (IsFieldsEmptyResidenceTemp())
-                            throw new Exception("Заполните обязательные поля");
+                        if (String.IsNullOrWhiteSpace(residenceTemp.country ) || String.IsNullOrWhiteSpace(residenceTemp.region ) || String.IsNullOrWhiteSpace(residenceTemp.town ) || String.IsNullOrWhiteSpace(residenceTemp.house ))
+                            MessageBox.Show("Заполните обязательные поля");
                     }
-                    SaveResidenceTemp();
+                   
+                        SaveResidenceTemp();
+
+                        if (String.IsNullOrWhiteSpace(student.surnameStudent ) || String.IsNullOrWhiteSpace(student.nameStudent ) || String.IsNullOrWhiteSpace(student.telephoneStudent )
+                        || String.IsNullOrWhiteSpace(student.nameSchoolStudent ) || String.IsNullOrWhiteSpace(residence.country ) || String.IsNullOrWhiteSpace(residence.region ) || String.IsNullOrWhiteSpace(residence.town )
+                        || String.IsNullOrWhiteSpace(residence.house ))
+                            MessageBox.Show("Заполните обязательные поля");
+                     else
+                     {
+                            ReadSaveStudent();
+                        SaveNewKin();
+                        if (radioButtonSelectFamT.Checked == true)
+                        {
+                                if ((radioButtonChildTrue.Checked == true && String.IsNullOrWhiteSpace(family.nameChild )) || (radioButtonWork.Checked == true && String.IsNullOrWhiteSpace(family.professionSpous )) || (radioButtonSelectFamT.Checked == true && String.IsNullOrWhiteSpace(family.fullNameSpous ) && String.IsNullOrWhiteSpace(family.nameChild )))
+                                    MessageBox.Show("Заполните обязательные поля");
+                            else
+                            {
+                                ReadSaveFamily();
+                                MessageBox.Show("Сохранено");
+                            }
+                                    
+                        }
+                        else if (radioButtonSelectFamT.Checked == false && family.idFamily != 0)
+                        {
+                            DeleteFamily();
+                            MessageBox.Show("Сохранено");
+                        }
+        
+                     }
                 }
-                if (IsFieldsEmptyFamily())
-                    throw new Exception("Заполните обязательные поля");
-                
-                ReadSaveStudent();
-                if (radioButtonSelectFamT.Checked == true)
-                    ReadSaveFamily();
-                else if (radioButtonSelectFamT.Checked == false && family.idFamily != 0)
-                    DeleteFamily();
-                SaveNewKin();
-                DBobjects.Entities.SaveChanges();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
+
             }
         }
         private void SaveNewKin()
@@ -411,53 +422,6 @@ namespace CuratorJournal
                     kin.idStudent = student.idStudent;
                     SaveKin();
                 }
-        }
-
-        private bool IsFieldsEmptyStudent()
-        {
-            if (student.surnameStudent == null
-                || student.nameStudent == null
-                || student.telephoneStudent == null
-                || student.nameSchoolStudent == null
-                || residence.country == null
-                || residence.region == null
-                || residence.town == null
-                || residence.house == null
-                )
-            {
-                return true;
-            }
-            return false;
-        }
-        private bool IsFieldsEmptyFamily()
-        {
-            if ((radioButtonChildTrue.Checked == true && family.nameChild==null)
-                || (radioButtonWork.Checked==true && family.professionSpous==null)
-                || (radioButtonSelectFamT.Checked==true && family.fullNameSpous==null && family.nameChild==null))                
-            {
-                return true;
-            }
-            return false;
-        }
-        private bool IsFieldsEmptyResidenceTempHostel()
-        {
-            if (residenceTemp.room == "" )
-            {
-                return true;
-            }
-            return false;
-        }
-        private bool IsFieldsEmptyResidenceTemp()
-        {
-            if (residenceTemp.country == ""
-                || residenceTemp.region == ""
-                || residenceTemp.town == ""
-                || residenceTemp.house == ""
-                )
-            {
-                return true;
-            }
-            return false;
         }
 
         private void tbPathr_TextChanged(object sender, EventArgs e)
@@ -485,9 +449,8 @@ namespace CuratorJournal
 
         private void dateTimePickerDateBirth_ValueChanged(object sender, EventArgs e)
         {
-            student.dateOfBirthStudent = dateTimePickerDateBirth.Value.Date;        }
-
-        
+            student.dateOfBirthStudent = dateTimePickerDateBirth.Value.Date;
+        }
 
         private void tbPlaceLern_TextChanged(object sender, EventArgs e)
         {

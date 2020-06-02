@@ -117,27 +117,10 @@ namespace CuratorJournal
             DBobjects.Entities.SaveChanges();
         }
         private void SavePrivTalk()
-        {
-            try
-            {                
-                if (IsFieldsEmptePrivTalk())
-                    throw new Exception("Заполните обязательные поля");
-                if (DBobjects.Entities.PrivateTalk.Where(p => p.idPrTalk == privateTalk.idPrTalk).Count() == 0)
+        {        
+                    if (DBobjects.Entities.PrivateTalk.Where(p => p.idPrTalk == privateTalk.idPrTalk).Count() == 0)
                     DBobjects.Entities.PrivateTalk.Add(privateTalk);
-                DBobjects.Entities.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-        private bool IsFieldsEmptePrivTalk()
-        {
-            if (privateTalk.topicPrTalk == "" )
-            {
-                return true;
-            }
-            return false;
+                DBobjects.Entities.SaveChanges();       
         }
 
         private void dateTimePickerTalkStudent_ValueChanged(object sender, EventArgs e)
@@ -152,17 +135,25 @@ namespace CuratorJournal
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            SavePrivTalk();
-            FillTalkStudent();
-            SaveStudent();
-            MessageBox.Show("Сохранено");
+            if (String.IsNullOrWhiteSpace(privateTalk.topicPrTalk ))
+                MessageBox.Show("Заполните обязательные поля");
+            else
+            {
+                SavePrivTalk();
+                FillTalkStudent();
+                SaveStudent();
+                MessageBox.Show("Сохранено");
+            }
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            DeletePrivTalk();
-            panelPrivTalc.Visible = false;
-            FillTalkStudent(); 
+            if (MessageBox.Show("Удалить?", "Сообщение", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                DeletePrivTalk();
+                panelPrivTalc.Visible = false;
+                FillTalkStudent();
+            }
         }
     }
 }

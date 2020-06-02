@@ -48,8 +48,6 @@ namespace CuratorJournal
         }
         private void SaveGroup()
         {
-            try
-            {
                 if (DBobjects.Entities.Group.Where(p => p.idGroup == group.idGroup).Count() == 0)
                 {
                     DBobjects.Entities.Group.Add(group);
@@ -61,11 +59,7 @@ namespace CuratorJournal
                 {
                     SaveJournal();
                 }
-            }             
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
 }
         private  void SaveJournal()
         {
@@ -77,23 +71,14 @@ namespace CuratorJournal
         }
         private void bEdition_Click(object sender, EventArgs e)
         {
-                if (IsFieldsEmpty())
-                    throw new Exception("Заполните обязательные поля");
-                SaveGroup();
-            this.FormClosing -= GroupForm_FormClosing;
-            this.Close();
-        }
-        private bool IsFieldsEmpty()
-        {
-            if (group.institute == ""
-                || group.numberGroup == ""
-                || group.cipher == ""
-                || group.specialtyGroup == ""
-                )
+            if (String.IsNullOrWhiteSpace(group.institute)|| String.IsNullOrWhiteSpace(group.numberGroup)|| String.IsNullOrWhiteSpace(group.cipher ) || String.IsNullOrWhiteSpace(group.specialtyGroup ) )
+                MessageBox.Show("Заполните обязательные поля");
+            else
             {
-                return true;
+                SaveGroup();
+                this.FormClosing -= GroupForm_FormClosing;
+                this.Close();
             }
-            return false;
         }
         private void Delete()
         {
@@ -106,9 +91,12 @@ namespace CuratorJournal
         }
         private void bDelete_Click(object sender, EventArgs e)
         {
-            Delete();
-            this.FormClosing -= GroupForm_FormClosing;
-            this.Close();
+            if (MessageBox.Show("Удалить?", "Сообщение", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                Delete();
+                this.FormClosing -= GroupForm_FormClosing;
+                this.Close();
+            }
         }
 
         private void GroupForm_FormClosing(object sender, FormClosingEventArgs e)

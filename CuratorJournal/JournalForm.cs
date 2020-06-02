@@ -100,6 +100,13 @@ namespace CuratorJournal
                         talcParentForm.MdiParent = this;
                         talcParentForm.Show();
                         break;
+
+                    case "Offence":
+                        DisciplinaryCommissionForm disciplinaryCommissionForm = new DisciplinaryCommissionForm();
+                        disciplinaryCommissionForm.WindowState = FormWindowState.Maximized;
+                        disciplinaryCommissionForm.MdiParent = this;
+                        disciplinaryCommissionForm.Show();
+                        break;
                 }
             }
             else if((treeViewMenu.SelectedNode).Name== "MainInformation")

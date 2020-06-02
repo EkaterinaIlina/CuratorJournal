@@ -70,42 +70,24 @@ namespace CuratorJournal
             password = Convert.ToBase64String(result);
             return password;
         }
+
         private void bRegistration_Click(object sender, EventArgs e)
         {
-            try
-            {
-                curator.surnameCurator = (tbSurname.Text.Trim());
-                curator.nameCurator = (tbName.Text.Trim());
-                curator.patronymicCurator = (tbPathr.Text.Trim());
-                curator.positionCurator = (tbPosition.Text.Trim());
-                curator.login = (tbLogin.Text.Trim());
-                curator.password = (GetEncodedHash(tbPassword.Text).Trim());
-                curator.question = (tbQuestion.Text.Trim());
-                curator.ansver = (tbAnswer.Text.Trim());
-                if (IsFieldsEmpty())
-                    throw new Exception("Заполните обязательные поля");
-                Save();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            curator.surnameCurator = (tbSurname.Text.Trim());
+            curator.nameCurator = (tbName.Text.Trim());
+            curator.patronymicCurator = (tbPathr.Text.Trim());
+            curator.positionCurator = (tbPosition.Text.Trim());
+            curator.login = (tbLogin.Text.Trim());
+            curator.password = (GetEncodedHash(tbPassword.Text).Trim());
+            curator.question = (tbQuestion.Text.Trim());
+            curator.ansver = (tbAnswer.Text.Trim());
+            if (String.IsNullOrWhiteSpace(curator.surnameCurator ) || String.IsNullOrWhiteSpace(curator.nameCurator ) || String.IsNullOrWhiteSpace(curator.positionCurator ) || String.IsNullOrWhiteSpace(curator.login )|| String.IsNullOrWhiteSpace(curator.password ) || String.IsNullOrWhiteSpace(curator.question ) || String.IsNullOrWhiteSpace(curator.ansver ))
+                MessageBox.Show("Заполните обязательные поля");
+            else             
+                Save();                
         }
-        private bool IsFieldsEmpty()
-        {
-            if (curator.surnameCurator == ""
-                || curator.nameCurator == ""
-                || curator.positionCurator == ""
-                || curator.login == ""
-                || curator.password == ""
-                || curator.question == ""
-                || curator.ansver == ""
-                )
-            {
-                return true;
-            }
-            return false;
-        } 
-    }
+
+     }
 }
+
 

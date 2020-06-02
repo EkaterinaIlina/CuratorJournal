@@ -161,29 +161,12 @@ namespace CuratorJournal
                 eventObj.statusEvent = true;
         }
         private void saveEvent()
-        {
-            try
-            {
-                if (IsFieldsEmpteEvent())
-                    throw new Exception("Заполните обязательные поля");
+        {           
                 eventObj.idTypeEvent = DBobjects.Entities.TypeOfEvent.FirstOrDefault(p => p.nameTypeEvent == comboBoxTypeEvent.Text).idTypeEvent;
                 eventObj.idJournal = JournalForm.Journal.idJournal;
                 if (DBobjects.Entities.Event.Where(p => p.idEvent == eventObj.idEvent).Count() == 0)
                     DBobjects.Entities.Event.Add(eventObj);
                 DBobjects.Entities.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-        private bool IsFieldsEmpteEvent()
-        {
-            if (eventObj.nameEvent == "" )
-            {
-                return true;
-            }
-            return false;
         }
         private void saveStudent()
         {
@@ -236,17 +219,25 @@ namespace CuratorJournal
 
         private void bSave_Click(object sender, EventArgs e)
         {
-            saveEvent();
-            dgvEventFill();
-            saveStudent();
-            MessageBox.Show("Все сохранено");
+            if (String.IsNullOrWhiteSpace(eventObj.nameEvent))
+                MessageBox.Show("Заполните обязательные поля");
+            else
+            {
+                saveEvent();
+                dgvEventFill();
+                saveStudent();
+                MessageBox.Show("Все сохранено");
+            }
         }       
 
         private void bDelete_Click(object sender, EventArgs e)
         {
-            DeleteEvent();
-            panelEvent.Visible = false;
-            dgvEventFill();
+            if (MessageBox.Show("Удалить?", "Сообщение", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                DeleteEvent();
+                panelEvent.Visible = false;
+                dgvEventFill();
+            }
         }
         private void DeleteEvent()
         {

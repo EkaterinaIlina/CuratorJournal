@@ -16,7 +16,19 @@ namespace CuratorJournal
         public RatingForm()
         {
             InitializeComponent();
-            comboBoxDiscpline.DataSource = DBobjects.Entities.Discipline.ToList();
+            fillDiscipline();
+        }
+        private void fillDiscipline()
+        {
+            List<Discipline> disciplines = new List<Discipline>();
+            foreach (Discipline discipline in DBobjects.Entities.Discipline.ToList())
+            {
+                if (DBobjects.Entities.RatingMark.Where(p => p.idDiscipline == discipline.idDiscipline && p.idJournal == JournalForm.Journal.idJournal).Count() > 0)
+                {
+                    disciplines.Add(discipline);
+                }
+            }
+            comboBoxDiscpline.DataSource = disciplines;
             comboBoxDiscpline.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             comboBoxDiscpline.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
@@ -24,26 +36,34 @@ namespace CuratorJournal
         {
             if (comboBoxDiscpline.Text != "")
             {
-                discipline = new Discipline();
-                discipline.nameDiscipline = comboBoxDiscpline.Text;
-                DBobjects.Entities.Discipline.Add(discipline);
+                if (DBobjects.Entities.Discipline.Where(p => p.nameDiscipline == comboBoxDiscpline.Text).Count() == 0)
+                {
+                    discipline = new Discipline();
+                    discipline.nameDiscipline = comboBoxDiscpline.Text;
+                    DBobjects.Entities.Discipline.Add(discipline);
+                    DBobjects.Entities.SaveChanges();
+                }              
+               else
+                    discipline = DBobjects.Entities.Discipline.FirstOrDefault(p => p.nameDiscipline == comboBoxDiscpline.Text);
+                RatingMark ratingMark = new RatingMark();
+                ratingMark.idDiscipline = discipline.idDiscipline;
+                ratingMark.idJournal = JournalForm.Journal.idJournal;
+                ratingMark.idRating = DBobjects.Entities.Rating.First().idRating;
+                ratingMark.idStudent = DBobjects.Entities.Student.FirstOrDefault(p => p.idGroup == JournalForm.Journal.idGroup).idStudent;
+                ratingMark.ratingMark1 = 0;
+                DBobjects.Entities.RatingMark.Add(ratingMark);
                 DBobjects.Entities.SaveChanges();
-                comboBoxDiscpline.DataSource = DBobjects.Entities.Discipline.ToList();
+                comboBoxDiscpline.SelectedItem =discipline.nameDiscipline;
+                fillDiscipline();
+                comboBoxDiscpline.SelectedIndex = comboBoxDiscpline.Items.Count - 1;
             }
         }
         private void comboBoxDiscpline_SelectedIndexChanged(object sender, EventArgs e)
         {
             discipline = DBobjects.Entities.Discipline.FirstOrDefault(p => p.nameDiscipline == comboBoxDiscpline.Text);
-        }
-
-        private void buttonFiksDiscipline_Click(object sender, EventArgs e)
-        {
-            if (comboBoxDiscpline.FindString(comboBoxDiscpline.Text) == -1)
-            {
-                SaveDiscipline();
-            }
             FillTable();
         }
+
         private void FillTable()
         {
             DataTable StudentTable = new DataTable();
@@ -64,7 +84,7 @@ namespace CuratorJournal
                 dr["Фамилия Имя"] = st;               
                 foreach (Rating rating in DBobjects.Entities.Rating.ToList())
                     {
-                    if (DBobjects.Entities.RatingMark.Where(p => p.idStudent == st.idStudent && p.idDiscipline == discipline.idDiscipline && p.idJournal == JournalForm.Journal.idJournal).Count() > 0)
+                    if (DBobjects.Entities.RatingMark.Where(p => p.idStudent == st.idStudent && p.idDiscipline == discipline.idDiscipline && p.idJournal == JournalForm.Journal.idJournal&& p.idRating==rating.idRating).Count() > 0)
                     {
                         dr[rating.ToString()] = DBobjects.Entities.RatingMark.FirstOrDefault(p=> p.idStudent == st.idStudent && p.idDiscipline == discipline.idDiscipline && p.idRating ==rating.idRating && p.idJournal == JournalForm.Journal.idJournal).ratingMark1;
                         dr["ID" + rating.ToString()] = DBobjects.Entities.RatingMark.FirstOrDefault(p => p.idStudent == st.idStudent && p.idDiscipline == discipline.idDiscipline && p.idRating == rating.idRating && p.idJournal == JournalForm.Journal.idJournal).idRatingMark ;
@@ -73,10 +93,8 @@ namespace CuratorJournal
                     {
                         dr[rating.ToString()] = 0;
                         dr["ID" + rating.ToString()] = 0;
-                    }
-                   
+                    }                  
                 }
-
                 StudentTable.Rows.Add(dr);
             }
             dgvStudentMark.DataSource = StudentTable;
@@ -120,10 +138,15 @@ namespace CuratorJournal
                     ratingMark.idJournal = JournalForm.Journal.idJournal;
                     ratingMark.idStudent = Convert.ToInt32(dgvr.Cells[0].Value);
                     ratingMark.ratingMark1 = Convert.ToInt32(dgvr.Cells[rating.nameRating].Value);
-                    ratingMark.idDiscipline = discipline.idDiscipline;
-                    if (DBobjects.Entities.RatingMark.Where(p => p.idRatingMark == ratingMark.idRatingMark).Count() == 0)
-                        DBobjects.Entities.RatingMark.Add(ratingMark);
-                    DBobjects.Entities.SaveChanges();
+                    if (comboBoxDiscpline.Text != "")
+                    {
+                        ratingMark.idDiscipline = DBobjects.Entities.Discipline.FirstOrDefault(p => p.nameDiscipline == comboBoxDiscpline.Text).idDiscipline;
+                        if (DBobjects.Entities.RatingMark.Where(p => p.idRatingMark == ratingMark.idRatingMark).Count() == 0)
+                            DBobjects.Entities.RatingMark.Add(ratingMark);
+                        DBobjects.Entities.SaveChanges();
+                    }
+                    else
+                    MessageBox.Show("Заполните поле дисциплина");
                 }
             }
         }
@@ -133,5 +156,14 @@ namespace CuratorJournal
             SaveRatingMark();
             MessageBox.Show("Сохранено");
         }
+
+        private void comboBoxDiscpline_Validating(object sender, CancelEventArgs e)
+        {
+            if (comboBoxDiscpline.FindString(comboBoxDiscpline.Text) == -1)
+            {
+                SaveDiscipline();
+            }
+        }
+
     }
 }

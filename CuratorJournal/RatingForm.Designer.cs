@@ -33,7 +33,6 @@
             this.comboBoxDiscpline = new System.Windows.Forms.ComboBox();
             this.dgvStudentMark = new System.Windows.Forms.DataGridView();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.buttonFiksDiscipline = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudentMark)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,9 +52,10 @@
             this.comboBoxDiscpline.Location = new System.Drawing.Point(35, 54);
             this.comboBoxDiscpline.MaxLength = 100;
             this.comboBoxDiscpline.Name = "comboBoxDiscpline";
-            this.comboBoxDiscpline.Size = new System.Drawing.Size(302, 21);
+            this.comboBoxDiscpline.Size = new System.Drawing.Size(541, 21);
             this.comboBoxDiscpline.TabIndex = 43;
             this.comboBoxDiscpline.SelectedIndexChanged += new System.EventHandler(this.comboBoxDiscpline_SelectedIndexChanged);
+            this.comboBoxDiscpline.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxDiscpline_Validating);
             // 
             // dgvStudentMark
             // 
@@ -73,7 +73,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(164, 466);
+            this.buttonSave.Location = new System.Drawing.Point(163, 466);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(285, 24);
             this.buttonSave.TabIndex = 45;
@@ -81,22 +81,11 @@
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // buttonFiksDiscipline
-            // 
-            this.buttonFiksDiscipline.Location = new System.Drawing.Point(343, 52);
-            this.buttonFiksDiscipline.Name = "buttonFiksDiscipline";
-            this.buttonFiksDiscipline.Size = new System.Drawing.Size(233, 23);
-            this.buttonFiksDiscipline.TabIndex = 47;
-            this.buttonFiksDiscipline.Text = "Перейти к выставлению оценок";
-            this.buttonFiksDiscipline.UseVisualStyleBackColor = true;
-            this.buttonFiksDiscipline.Click += new System.EventHandler(this.buttonFiksDiscipline_Click);
-            // 
             // RatingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 502);
-            this.Controls.Add(this.buttonFiksDiscipline);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.dgvStudentMark);
             this.Controls.Add(this.comboBoxDiscpline);
@@ -116,6 +105,5 @@
         private System.Windows.Forms.ComboBox comboBoxDiscpline;
         private System.Windows.Forms.DataGridView dgvStudentMark;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.Button buttonFiksDiscipline;
     }
 }

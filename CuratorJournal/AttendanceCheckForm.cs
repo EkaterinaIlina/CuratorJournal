@@ -107,26 +107,23 @@ namespace CuratorJournal
 
         private void bSaveStudent_Click(object sender, EventArgs e)
         {
-            SaveAttendance();
-            dgvAttendanceFill();
-            SaveStudent();
-            MessageBox.Show("Все сохранено");
+            if (String.IsNullOrWhiteSpace(attendance.fullNameTeach )|| attendance.idDiscipline == 0)
+                MessageBox.Show("Заполните обязательные поля");
+            else
+            {
+                SaveAttendance();
+                dgvAttendanceFill();
+                SaveStudent();
+                MessageBox.Show("Все сохранено");
+            }
         }
         private void SaveAttendance()
-        {
-            try
-            {
+        {         
                 attendance.idDiscipline = discipline.idDiscipline;
-                if (IsFieldsEmpteAttendance())
-                    throw new Exception("Заполните обязательные поля");
                 if (DBobjects.Entities.Attendance.Where(p => p.idAttendance == attendance.idAttendance).Count() == 0)
                     DBobjects.Entities.Attendance.Add(attendance);
                 DBobjects.Entities.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            
         }
         private void SaveStudent()
         {
@@ -156,15 +153,7 @@ namespace CuratorJournal
             DBobjects.Entities.LackAttendance.Remove(lackAttendance);
             DBobjects.Entities.SaveChanges();
         }
-        private bool IsFieldsEmpteAttendance()
-        {
-            if (attendance.fullNameTeach == "" || attendance.idDiscipline == 0
-                )
-            {
-                return true;
-            }
-            return false;
-        }
+
 
         private void comboBoxDiscpline_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -184,9 +173,12 @@ namespace CuratorJournal
 
         private void bDelete_Click(object sender, EventArgs e)
         {
-            DeleteAttendance();
-            panelAttendance.Visible = false;
-            dgvAttendanceFill();
+            if (MessageBox.Show("Удалить?", "Сообщение", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                DeleteAttendance();
+                panelAttendance.Visible = false;
+                dgvAttendanceFill();
+            }
         }
 
         private void textBoxFullNamePrep_TextChanged(object sender, EventArgs e)
@@ -210,7 +202,7 @@ namespace CuratorJournal
                 comboBoxDiscpline.SelectedIndex = comboBoxDiscpline.Items.Count - 1;
             }
             else
-                MessageBox.Show("Заполните поле тип мероприятия");
+                MessageBox.Show("Заполните дисциплину");
         
     }
         

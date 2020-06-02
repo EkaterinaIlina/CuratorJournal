@@ -13,9 +13,9 @@ namespace CuratorJournal
     public partial class TalcParentForm : Form
     {
         int idStudent;
-
         TalkParents talkParents;
         StructParentsTalc structParentsTalc;
+
         public TalcParentForm()
         {
             InitializeComponent();
@@ -61,14 +61,16 @@ namespace CuratorJournal
         }
         private void filldgvTalcParent()
         {
-            List<StructParentsTalc> structs = DBobjects.Entities.StructParentsTalc.Where(p => p.Kin.idStudent == idStudent).ToList();
-            List<TalkParents> talk = new List<TalkParents>();
-            foreach (StructParentsTalc s in structs)
-            {
-                talk.Add(DBobjects.Entities.TalkParents.FirstOrDefault(p => p.idTalkPar == s.idTalkParents && p.idJournal == JournalForm.Journal.idJournal));
-            }
-            talk = talk.Distinct().ToList();
-            dgvTopicTalc.DataSource = talk;
+            dgvTopicTalc.DataSource = DBobjects.Entities.TalkParents.Where(p=>p.idJournal==JournalForm.Journal.idJournal).ToList(); 
+            dgvTopicTalc.Columns[0].Visible = false;
+            dgvTopicTalc.Columns[1].Visible = false;
+            dgvTopicTalc.Columns[2].Visible = false;
+            dgvTopicTalc.Columns[3].HeaderText = "Вопрос для обсуждения";
+            dgvTopicTalc.Columns[4].HeaderText = "Дата проведения";
+            dgvTopicTalc.Columns[7].HeaderText = "Тема обсуждения";
+            dgvTopicTalc.Columns[5].Visible = false;
+            dgvTopicTalc.Columns[6].Visible = false;
+
         }
         private void fillKin()
         {
@@ -127,11 +129,13 @@ namespace CuratorJournal
         }
         private void deleteStructParents()
         {
+            if(structParentsTalc!=null)
             DBobjects.Entities.StructParentsTalc.Remove(structParentsTalc);
             DBobjects.Entities.SaveChanges();
         }
         private void buttonSave_Click(object sender, EventArgs e)
-        {
+        { 
+            
             saveTalkParent();
             saveKin();
             MessageBox.Show("Сохранено");
@@ -140,15 +144,18 @@ namespace CuratorJournal
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow dgvr in dataGridViewKin.Rows)
+            if (MessageBox.Show("Удалить?", "Сообщение", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
-                int id = Convert.ToInt32(dgvr.Cells[4].Value);
-                structParentsTalc = DBobjects.Entities.StructParentsTalc.FirstOrDefault(p => p.idStructParentsTalc == id);
-                if (talkParents != null)
-                    deleteStructParents();
+                foreach (DataGridViewRow dgvr in dataGridViewKin.Rows)
+                {
+                    int id = Convert.ToInt32(dgvr.Cells[4].Value);
+                    structParentsTalc = DBobjects.Entities.StructParentsTalc.FirstOrDefault(p => p.idStructParentsTalc == id);
+                    if (talkParents != null)
+                        deleteStructParents();
+                }
+                DeletePrivTalk();
+                filldgvTalcParent();
             }
-            DeletePrivTalk();
-            filldgvTalcParent();
         }
         private void saveTalkParent()
         {
@@ -156,12 +163,13 @@ namespace CuratorJournal
             talkParents.topicTalc = textBoxTopic.Text;
             talkParents.dateTalkPar = dateTimePickerTalkStudent.Value.Date;
             talkParents.idJournal = JournalForm.Journal.idJournal;
-            if (DBobjects.Entities.TalkParents.Where(p => p.idTalkPar == talkParents.idTalkPar).Count() == 0)
-                DBobjects.Entities.TalkParents.Add(talkParents);
-            DBobjects.Entities.SaveChanges();
+            if ((String.IsNullOrWhiteSpace(talkParents.topicTalc )) || talkParents.idTopTPar != 0)
+            {
+                if (DBobjects.Entities.TalkParents.Where(p => p.idTalkPar == talkParents.idTalkPar).Count() == 0)
+                    DBobjects.Entities.TalkParents.Add(talkParents);
+                DBobjects.Entities.SaveChanges();
+            }
         }
-
-
 
         private void DeletePrivTalk()
         {

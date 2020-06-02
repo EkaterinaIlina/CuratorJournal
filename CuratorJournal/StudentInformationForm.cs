@@ -101,7 +101,7 @@ namespace CuratorJournal
         {
             foreach (DataGridViewRow dgvr in dgvStudent.Rows)
             {
-                if (Convert.ToInt32(dgvr.Cells[0].Value) == 0)
+                if (Convert.ToInt32(dgvr.Cells[1].Value) == 0)
                     journalStudent = new JournalStudent();
                 else
                 {
@@ -150,20 +150,18 @@ namespace CuratorJournal
         }
 
         private void dgvStudent_MouseUp(object sender, MouseEventArgs e)
-        {
-            
+        {            
                 dgvStudent.ClearSelection();
                 DataGridView.HitTestInfo hitTestInfo;
                 hitTestInfo = dgvStudent.HitTest(e.X, e.Y);
                 if (dgvStudent.Rows[hitTestInfo.RowIndex].Index >= 0)
                 {
-                dgvStudent.Rows[hitTestInfo.RowIndex].Selected = true;
-                if (hitTestInfo.Type == DataGridViewHitTestType.Cell)
-                {
+                    dgvStudent.Rows[hitTestInfo.RowIndex].Selected = true;
+                    if (hitTestInfo.Type == DataGridViewHitTestType.Cell)
+                    {
                     contextMenuStatus.Show(dgvStudent, e.Location);
+                    }
                 }
-                }
-           
         }
 
         private void menuItem_Click(object sender, System.EventArgs e)

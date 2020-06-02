@@ -73,18 +73,9 @@ namespace CuratorJournal
  
         private void SaveMeeting()
         {
-            try
-            {
-                if (IsFieldsEmpteMeeting())
-                    throw new Exception("Заполните обязательные поля");
                 if (DBobjects.Entities.Meeting.Where(p => p.idMeeting == meeting.idMeeting).Count() == 0)
                     DBobjects.Entities.Meeting.Add(meeting);
-                DBobjects.Entities.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+                DBobjects.Entities.SaveChanges();           
         }
         private void tbDecision_TextChanged(object sender, EventArgs e)
         {
@@ -166,16 +157,7 @@ namespace CuratorJournal
                 }
             
         }
-        private bool IsFieldsEmpteMeeting()
-        {
-            if (meeting.questionMeeting == ""
-                || meeting.decisionMeeting == ""
-                )
-                {
-                    return true;
-                }
-            return false;
-        }
+       
         private void DeleteLackMeeting()
         {
             DBobjects.Entities.LackMeeting.Remove(lackMeeting);
@@ -184,9 +166,12 @@ namespace CuratorJournal
 
         private void bDelete_Click(object sender, EventArgs e)
         {
-            DeleteMeetig();
-            panelMeeting.Visible = false;
-            dgvMeetingFill();
+            if (MessageBox.Show("Удалить?", "Сообщение", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                DeleteMeetig();
+                panelMeeting.Visible = false;
+                dgvMeetingFill();
+            }
         }
         private void DeleteMeetig()
         {
@@ -197,10 +182,16 @@ namespace CuratorJournal
 
         private void bSave_Click(object sender, EventArgs e)
         {
-            SaveMeeting();
-            dgvMeetingFill();
-            SaveStudent();
-            MessageBox.Show("Все сохранено");
+            if (String.IsNullOrWhiteSpace(meeting.questionMeeting) || String.IsNullOrWhiteSpace(meeting.decisionMeeting ))
+                MessageBox.Show("Заполните обязательные поля");
+            else
+            {
+                SaveMeeting();
+                dgvMeetingFill();
+                SaveStudent();
+                MessageBox.Show("Все сохранено");
+            }
         }
+      
     }
 }

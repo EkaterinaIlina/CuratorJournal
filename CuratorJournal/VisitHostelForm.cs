@@ -98,19 +98,9 @@ namespace CuratorJournal
             }
         }
         private void SaveVisit()
-        {
-            try
-            {
-                if (IsFieldsEmpteVisit())
-                    throw new Exception("Заполните обязательные поля");
+        { 
                 if (DBobjects.Entities.VisitHostel.Where(p => p.idVisitHostel == visitHostel.idVisitHostel).Count() == 0)
-                    DBobjects.Entities.VisitHostel.Add(visitHostel);
-                DBobjects.Entities.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+                    DBobjects.Entities.VisitHostel.Add(visitHostel);          
         }
         private void SaveStudent()
         {
@@ -140,15 +130,7 @@ namespace CuratorJournal
             DBobjects.Entities.ProvenRooms.Remove(provenRooms);
             DBobjects.Entities.SaveChanges();
         }
-        private bool IsFieldsEmpteVisit()
-        {
-            if (visitHostel.causeVisitHostel == ""
-                )
-            {
-                return true;
-            }
-            return false;
-        }
+       
 
         private void dateTimePickerVisit_ValueChanged(object sender, EventArgs e)
         {
@@ -162,10 +144,15 @@ namespace CuratorJournal
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            SaveVisit();
-            FillVisit();
-            SaveStudent();
-            MessageBox.Show("Сохранено");
+            if (String.IsNullOrWhiteSpace(visitHostel.causeVisitHostel))
+                MessageBox.Show("Заполните обязательные поля");
+            else
+            {
+                SaveVisit();
+                FillVisit();
+                SaveStudent();
+                MessageBox.Show("Сохранено");
+            }
         }
         private void DeleteVisit()
         {

@@ -40,9 +40,8 @@ namespace CuratorJournal
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
-        {
+        { 
             SaveJournal();
-           
         }
 
         private void SaveJournal()
@@ -74,7 +73,10 @@ namespace CuratorJournal
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            DeleteJournal();
+            if (MessageBox.Show("Удалить?", "Сообщение", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                DeleteJournal();
+            }
         }
 
         private void DeleteJournal()
@@ -84,7 +86,6 @@ namespace CuratorJournal
                 DBobjects.Entities.Journal.Remove(Journal);
                 DBobjects.Entities.SaveChanges();
                 MessageBox.Show("Удалено");
-
 
             }
         }
