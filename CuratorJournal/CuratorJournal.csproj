@@ -243,6 +243,9 @@
     <Compile Include="StatusStudent.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="StructParentsTalc.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Student.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>

@@ -14,15 +14,21 @@ namespace CuratorJournal
     
     public partial class TalkParents
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TalkParents()
+        {
+            this.StructParentsTalc = new HashSet<StructParentsTalc>();
+        }
+    
         public int idTalkPar { get; set; }
-        public int idKin { get; set; }
         public int idTopTPar { get; set; }
         public int idJournal { get; set; }
-        public System.DateTime dateTalkPar { get; set; }
         public string topicTalc { get; set; }
+        public System.DateTime dateTalkPar { get; set; }
     
         public virtual Journal Journal { get; set; }
-        public virtual Kin Kin { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StructParentsTalc> StructParentsTalc { get; set; }
         public virtual TopicTalkParents TopicTalkParents { get; set; }
     }
 }

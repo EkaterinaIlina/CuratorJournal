@@ -13,20 +13,15 @@ namespace CuratorJournal
     public partial class TalcParentForm : Form
     {
         int idStudent;
-        int idTalkParents;
-        DataTable kinTable = new DataTable();
+
         TalkParents talkParents;
+        StructParentsTalc structParentsTalc;
         public TalcParentForm()
         {
             InitializeComponent();
-            fillStudent();
-        }
-        private void fillStudent()
-        {
             comboBoxStudent.DataSource = DBobjects.Entities.Student.Where(p => p.idGroup == JournalForm.Journal.idGroup).ToList();
             comboBoxStudent.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             comboBoxStudent.AutoCompleteSource = AutoCompleteSource.ListItems;
-            
         }
 
         private void bAddPrivTalc_Click(object sender, EventArgs e)
@@ -35,7 +30,6 @@ namespace CuratorJournal
             talkParents.dateTalkPar = DateTime.Now.Date;
             talkParents.idJournal = JournalForm.Journal.idJournal;
             buttonDelete.Visible = false;
-            idTalkParents = 0;
             fillPanel();
         }
 
@@ -44,7 +38,6 @@ namespace CuratorJournal
             if (e.RowIndex >= 0)
             {
                 talkParents = (TalkParents)dgvTopicTalc.Rows[e.RowIndex].DataBoundItem;
-                idTalkParents = talkParents.idTalkPar;
                 buttonDelete.Visible = true;
                 fillPanel();
                 comboBoxTopic.SelectedItem = talkParents.TopicTalkParents;
@@ -57,8 +50,8 @@ namespace CuratorJournal
             textBoxTopic.Text = talkParents.topicTalc;
             comboBoxTopic.DataSource = DBobjects.Entities.TopicTalkParents.ToList();
             fillKin();
-            comboBoxStudent.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            comboBoxStudent.AutoCompleteSource = AutoCompleteSource.ListItems;
+            comboBoxTopic.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBoxTopic.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
         private void comboBoxStudent_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -68,31 +61,79 @@ namespace CuratorJournal
         }
         private void filldgvTalcParent()
         {
-            dgvTopicTalc.DataSource = DBobjects.Entities.TalkParents.Where(p => p.Kin.idStudent == idStudent && p.idJournal == JournalForm.Journal.idJournal).ToList();
-            //foreach
+            List<StructParentsTalc> structs = DBobjects.Entities.StructParentsTalc.Where(p => p.Kin.idStudent == idStudent).ToList();
+            List<TalkParents> talk = new List<TalkParents>();
+            foreach (StructParentsTalc s in structs)
+            {
+                talk.Add(DBobjects.Entities.TalkParents.FirstOrDefault(p => p.idTalkPar == s.idTalkParents && p.idJournal == JournalForm.Journal.idJournal));
+            }
+            talk = talk.Distinct().ToList();
+            dgvTopicTalc.DataSource = talk;
         }
         private void fillKin()
         {
+            DataTable kinTable = new DataTable();
             DataColumn idKin = new DataColumn("idKin", Type.GetType("System.Int32"));
             DataColumn fioKin = new DataColumn("ФИО родственника", Type.GetType("System.String"));
             DataColumn status = new DataColumn("Статус родства", Type.GetType("System.String"));
             DataColumn uchactie = new DataColumn("Статус участия", Type.GetType("System.Boolean"));
-            DataColumn idtalkParent = new DataColumn("idTalkParent", Type.GetType("System.Int32"));
+            DataColumn idStructtalkParent = new DataColumn("idStructtalkParent", Type.GetType("System.Int32"));
 
             kinTable.Columns.Add(idKin);
             kinTable.Columns.Add(fioKin);
             kinTable.Columns.Add(status);
             kinTable.Columns.Add(uchactie);
-            kinTable.Columns.Add(idtalkParent);
+            kinTable.Columns.Add(idStructtalkParent);
 
+            foreach (Kin kin in DBobjects.Entities.Kin.Where(p => p.idStudent == idStudent && (p.kinStatus == "Мать" || p.kinStatus == "Отец" || p.kinStatus == "Опекун")))
+            {
+                if (DBobjects.Entities.StructParentsTalc.Where(p=>p.idKin==kin.idKin&& p.idTalkParents == talkParents.idTalkPar).Count() > 0)
+                {
+                    kinTable.Rows.Add(kin.idKin, kin, kin.kinStatus, true, DBobjects.Entities.StructParentsTalc.FirstOrDefault(p => p.idKin == kin.idKin && p.idTalkParents == talkParents.idTalkPar).idStructParentsTalc);
+                }
+                else
+                    kinTable.Rows.Add(kin.idKin, kin, kin.kinStatus, false, 0);
 
+            }
             dataGridViewKin.DataSource = kinTable;
+            dataGridViewKin.Columns["idKin"].Visible = false;
+            dataGridViewKin.Columns["idStructtalkParent"].Visible = false;
+            dataGridViewKin.Columns["ФИО родственника"].ReadOnly = true;
+            dataGridViewKin.Columns["Статус родства"].ReadOnly = true;
         }
 
-
+        private void saveKin()
+        {
+            foreach (DataGridViewRow dgvr in dataGridViewKin.Rows)
+            {
+                if (Convert.ToInt32(dgvr.Cells[4].Value) == 0)
+                    structParentsTalc = new StructParentsTalc();
+                else
+                {
+                    int id = Convert.ToInt32(dgvr.Cells[4].Value);
+                    structParentsTalc = DBobjects.Entities.StructParentsTalc.FirstOrDefault(p => p.idStructParentsTalc == id);
+                }
+                if (Convert.ToBoolean(dgvr.Cells[3].Value) == true)
+                {
+                    structParentsTalc.idTalkParents = talkParents.idTalkPar;
+                    structParentsTalc.idKin = Convert.ToInt32(dgvr.Cells[0].Value);
+                    if (DBobjects.Entities.StructParentsTalc.Where(p => p.idStructParentsTalc == structParentsTalc.idStructParentsTalc).Count() == 0)
+                        DBobjects.Entities.StructParentsTalc.Add(structParentsTalc);
+                    DBobjects.Entities.SaveChanges();
+                }
+                else if (structParentsTalc.idStructParentsTalc != 0 && Convert.ToBoolean(dgvr.Cells[3].Value) == false)
+                    deleteStructParents();
+            }
+        }
+        private void deleteStructParents()
+        {
+            DBobjects.Entities.StructParentsTalc.Remove(structParentsTalc);
+            DBobjects.Entities.SaveChanges();
+        }
         private void buttonSave_Click(object sender, EventArgs e)
         {
             saveTalkParent();
+            saveKin();
             MessageBox.Show("Сохранено");
             filldgvTalcParent();
         }
@@ -102,45 +143,32 @@ namespace CuratorJournal
             foreach (DataGridViewRow dgvr in dataGridViewKin.Rows)
             {
                 int id = Convert.ToInt32(dgvr.Cells[4].Value);
-                talkParents = DBobjects.Entities.TalkParents.FirstOrDefault(p => p.idTalkPar == id);
-                if(talkParents!=null)
-                DeletePrivTalk();
+                structParentsTalc = DBobjects.Entities.StructParentsTalc.FirstOrDefault(p => p.idStructParentsTalc == id);
+                if (talkParents != null)
+                    deleteStructParents();
             }
+            DeletePrivTalk();
             filldgvTalcParent();
         }
         private void saveTalkParent()
         {
-            foreach (DataGridViewRow dgvr in dataGridViewKin.Rows)
-            {
-                if (Convert.ToInt32(dgvr.Cells[4].Value) == 0)
-                    talkParents = new TalkParents();
-                else
-                {
-                    int id = Convert.ToInt32(dgvr.Cells[4].Value);
-                    talkParents = DBobjects.Entities.TalkParents.FirstOrDefault(p => p.idTalkPar == id);
-                }
-                if (Convert.ToBoolean(dgvr.Cells[3].Value) == true)
-                {
-                    if(DBobjects.Entities.TopicTalkParents.Where(p => p.nameTopTPar == comboBoxTopic.Text).Count()>0)
-
-                    talkParents.idTopTPar = DBobjects.Entities.TopicTalkParents.FirstOrDefault(p => p.nameTopTPar == comboBoxTopic.Text).idTopTPar;
-                    talkParents.topicTalc = textBoxTopic.Text;
-                    talkParents.dateTalkPar = dateTimePickerTalkStudent.Value.Date;
-                    talkParents.idKin = Convert.ToInt32(dgvr.Cells[0].Value);
-                    talkParents.idJournal = JournalForm.Journal.idJournal;
-                    if (DBobjects.Entities.TalkParents.Where(p => p.idTalkPar == talkParents.idTalkPar).Count() == 0)
-                        DBobjects.Entities.TalkParents.Add(talkParents);
-                    DBobjects.Entities.SaveChanges();
-                }
-                else if (talkParents.idTalkPar != 0 && Convert.ToBoolean(dgvr.Cells[3].Value) == false)
-                    DeletePrivTalk();
-            }
-        }
-        private void DeletePrivTalk()
-        {
-            DBobjects.Entities.TalkParents.Remove(talkParents);
+            talkParents.idTopTPar = DBobjects.Entities.TopicTalkParents.FirstOrDefault(p => p.nameTopTPar == comboBoxTopic.Text).idTopTPar;
+            talkParents.topicTalc = textBoxTopic.Text;
+            talkParents.dateTalkPar = dateTimePickerTalkStudent.Value.Date;
+            talkParents.idJournal = JournalForm.Journal.idJournal;
+            if (DBobjects.Entities.TalkParents.Where(p => p.idTalkPar == talkParents.idTalkPar).Count() == 0)
+                DBobjects.Entities.TalkParents.Add(talkParents);
             DBobjects.Entities.SaveChanges();
         }
 
+
+
+        private void DeletePrivTalk()
+        {
+            if(DBobjects.Entities.TalkParents.Where(p=>p.idTalkPar==talkParents.idTalkPar).Count()>0)
+            DBobjects.Entities.TalkParents.Remove(talkParents);
+            DBobjects.Entities.SaveChanges();
+        }
     }
 }
+

@@ -62,7 +62,7 @@
             // comboBoxStudent
             // 
             this.comboBoxStudent.FormattingEnabled = true;
-            this.comboBoxStudent.Location = new System.Drawing.Point(137, 56);
+            this.comboBoxStudent.Location = new System.Drawing.Point(127, 53);
             this.comboBoxStudent.Name = "comboBoxStudent";
             this.comboBoxStudent.Size = new System.Drawing.Size(454, 21);
             this.comboBoxStudent.TabIndex = 5;
@@ -71,7 +71,7 @@
             // labelStudent
             // 
             this.labelStudent.AutoSize = true;
-            this.labelStudent.Location = new System.Drawing.Point(26, 59);
+            this.labelStudent.Location = new System.Drawing.Point(12, 56);
             this.labelStudent.Name = "labelStudent";
             this.labelStudent.Size = new System.Drawing.Size(105, 13);
             this.labelStudent.TabIndex = 6;
@@ -83,7 +83,7 @@
             this.dgvTopicTalc.AllowUserToDeleteRows = false;
             this.dgvTopicTalc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTopicTalc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTopicTalc.Location = new System.Drawing.Point(29, 97);
+            this.dgvTopicTalc.Location = new System.Drawing.Point(12, 97);
             this.dgvTopicTalc.Name = "dgvTopicTalc";
             this.dgvTopicTalc.ReadOnly = true;
             this.dgvTopicTalc.RowHeadersVisible = false;
@@ -114,15 +114,15 @@
             this.panelTalkParent.Controls.Add(this.textBoxTopic);
             this.panelTalkParent.Controls.Add(this.lDate);
             this.panelTalkParent.Controls.Add(this.dateTimePickerTalkStudent);
-            this.panelTalkParent.Location = new System.Drawing.Point(29, 231);
+            this.panelTalkParent.Location = new System.Drawing.Point(12, 231);
             this.panelTalkParent.Name = "panelTalkParent";
-            this.panelTalkParent.Size = new System.Drawing.Size(587, 236);
+            this.panelTalkParent.Size = new System.Drawing.Size(569, 236);
             this.panelTalkParent.TabIndex = 49;
             this.panelTalkParent.Visible = false;
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(474, 200);
+            this.buttonDelete.Location = new System.Drawing.Point(439, 200);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(101, 23);
             this.buttonDelete.TabIndex = 50;
@@ -133,7 +133,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(303, 200);
+            this.buttonSave.Location = new System.Drawing.Point(283, 200);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(101, 23);
             this.buttonSave.TabIndex = 49;
@@ -147,7 +147,7 @@
             this.dataGridViewKin.AllowUserToDeleteRows = false;
             this.dataGridViewKin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewKin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewKin.Location = new System.Drawing.Point(303, 23);
+            this.dataGridViewKin.Location = new System.Drawing.Point(283, 23);
             this.dataGridViewKin.Name = "dataGridViewKin";
             this.dataGridViewKin.RowHeadersVisible = false;
             this.dataGridViewKin.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -168,7 +168,7 @@
             this.comboBoxTopic.FormattingEnabled = true;
             this.comboBoxTopic.Location = new System.Drawing.Point(9, 23);
             this.comboBoxTopic.Name = "comboBoxTopic";
-            this.comboBoxTopic.Size = new System.Drawing.Size(272, 21);
+            this.comboBoxTopic.Size = new System.Drawing.Size(257, 21);
             this.comboBoxTopic.TabIndex = 46;
             // 
             // labelTopic
@@ -186,7 +186,7 @@
             this.textBoxTopic.MaxLength = 300;
             this.textBoxTopic.Multiline = true;
             this.textBoxTopic.Name = "textBoxTopic";
-            this.textBoxTopic.Size = new System.Drawing.Size(272, 100);
+            this.textBoxTopic.Size = new System.Drawing.Size(257, 100);
             this.textBoxTopic.TabIndex = 44;
             // 
             // lDate

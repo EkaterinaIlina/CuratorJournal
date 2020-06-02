@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище CuratorJournalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище CuratorJournalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AchivementStudent">
           <Key>
             <PropertyRef Name="idAchivStud" />
@@ -290,6 +290,14 @@
           <Property Name="idStatusSt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nameSatusSt" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <EntityType Name="StructParentsTalc">
+          <Key>
+            <PropertyRef Name="idStructParentsTalc" />
+          </Key>
+          <Property Name="idStructParentsTalc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idKin" Type="int" Nullable="false" />
+          <Property Name="idTalkParents" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Student">
           <Key>
             <PropertyRef Name="idStudent" />
@@ -332,7 +340,6 @@
             <PropertyRef Name="idTalkPar" />
           </Key>
           <Property Name="idTalkPar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idKin" Type="int" Nullable="false" />
           <Property Name="idTopTPar" Type="int" Nullable="false" />
           <Property Name="idJournal" Type="int" Nullable="false" />
           <Property Name="topicTalc" Type="varchar" MaxLength="300" />
@@ -809,20 +816,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TalkParen__idKin__41EDCAC5">
-          <End Role="Kin" Type="Self.Kin" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="TalkParents" Type="Self.TalkParents" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kin">
-              <PropertyRef Name="idKin" />
-            </Principal>
-            <Dependent Role="TalkParents">
-              <PropertyRef Name="idKin" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__TalkParen__idTop__42E1EEFE">
           <End Role="TopicTalkParents" Type="Self.TopicTalkParents" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -949,6 +942,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_StructParentsTalc_Kin">
+          <End Role="Kin" Type="Self.Kin" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StructParentsTalc" Type="Self.StructParentsTalc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kin">
+              <PropertyRef Name="idKin" />
+            </Principal>
+            <Dependent Role="StructParentsTalc">
+              <PropertyRef Name="idKin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StructParentsTalc_TalkParents">
+          <End Role="TalkParents" Type="Self.TalkParents" Multiplicity="1" />
+          <End Role="StructParentsTalc" Type="Self.StructParentsTalc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TalkParents">
+              <PropertyRef Name="idTalkPar" />
+            </Principal>
+            <Dependent Role="StructParentsTalc">
+              <PropertyRef Name="idTalkParents" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Student_Group">
           <End Role="Group" Type="Self.Group" Multiplicity="1" />
           <End Role="Student" Type="Self.Student" Multiplicity="*" />
@@ -1032,6 +1051,7 @@
           <EntitySet Name="RatingMark" EntityType="Self.RatingMark" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Residence" EntityType="Self.Residence" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StatusStudent" EntityType="Self.StatusStudent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StructParentsTalc" EntityType="Self.StructParentsTalc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudyingProcess" EntityType="Self.StudyingProcess" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TalkParents" EntityType="Self.TalkParents" Schema="dbo" store:Type="Tables" />
@@ -1166,10 +1186,6 @@
             <End Role="Journal" EntitySet="Journal" />
             <End Role="TalkParents" EntitySet="TalkParents" />
           </AssociationSet>
-          <AssociationSet Name="FK__TalkParen__idKin__41EDCAC5" Association="Self.FK__TalkParen__idKin__41EDCAC5">
-            <End Role="Kin" EntitySet="Kin" />
-            <End Role="TalkParents" EntitySet="TalkParents" />
-          </AssociationSet>
           <AssociationSet Name="FK__TalkParen__idTop__42E1EEFE" Association="Self.FK__TalkParen__idTop__42E1EEFE">
             <End Role="TopicTalkParents" EntitySet="TopicTalkParents" />
             <End Role="TalkParents" EntitySet="TalkParents" />
@@ -1206,6 +1222,14 @@
             <End Role="Journal" EntitySet="Journal" />
             <End Role="RatingMark" EntitySet="RatingMark" />
           </AssociationSet>
+          <AssociationSet Name="FK_StructParentsTalc_Kin" Association="Self.FK_StructParentsTalc_Kin">
+            <End Role="Kin" EntitySet="Kin" />
+            <End Role="StructParentsTalc" EntitySet="StructParentsTalc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StructParentsTalc_TalkParents" Association="Self.FK_StructParentsTalc_TalkParents">
+            <End Role="TalkParents" EntitySet="TalkParents" />
+            <End Role="StructParentsTalc" EntitySet="StructParentsTalc" />
+          </AssociationSet>
           <AssociationSet Name="FK_Student_Group" Association="Self.FK_Student_Group">
             <End Role="Group" EntitySet="Group" />
             <End Role="Student" EntitySet="Student" />
@@ -1223,7 +1247,8 @@
             <End Role="Student" EntitySet="Student" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CuratorJournalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1424,8 +1449,8 @@
           <Property Name="disabilityKin" Type="Boolean" />
           <Property Name="placeOfWorkKin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="idStudent" Type="Int32" />
-          <NavigationProperty Name="TalkParents" Relationship="Self.FK__TalkParen__idKin__41EDCAC5" FromRole="Kin" ToRole="TalkParents" />
           <NavigationProperty Name="Student" Relationship="Self.FK_Kin_Student" FromRole="Kin" ToRole="Student" />
+          <NavigationProperty Name="StructParentsTalc" Relationship="Self.FK_StructParentsTalc_Kin" FromRole="Kin" ToRole="StructParentsTalc" />
         </EntityType>
         <EntityType Name="LackAttendance">
           <Key>
@@ -1583,6 +1608,16 @@
           <Property Name="nameSatusSt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="JournalStudent" Relationship="Self.FK__JournalSt__idSta__05D8E0BE" FromRole="StatusStudent" ToRole="JournalStudent" />
         </EntityType>
+        <EntityType Name="StructParentsTalc">
+          <Key>
+            <PropertyRef Name="idStructParentsTalc" />
+          </Key>
+          <Property Name="idStructParentsTalc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idKin" Type="Int32" Nullable="false" />
+          <Property Name="idTalkParents" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kin" Relationship="Self.FK_StructParentsTalc_Kin" FromRole="StructParentsTalc" ToRole="Kin" />
+          <NavigationProperty Name="TalkParents" Relationship="Self.FK_StructParentsTalc_TalkParents" FromRole="StructParentsTalc" ToRole="TalkParents" />
+        </EntityType>
         <EntityType Name="Student">
           <Key>
             <PropertyRef Name="idStudent" />
@@ -1639,14 +1674,13 @@
             <PropertyRef Name="idTalkPar" />
           </Key>
           <Property Name="idTalkPar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idKin" Type="Int32" Nullable="false" />
           <Property Name="idTopTPar" Type="Int32" Nullable="false" />
           <Property Name="idJournal" Type="Int32" Nullable="false" />
+          <Property Name="topicTalc" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="dateTalkPar" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Journal" Relationship="Self.FK__TalkParen__idJou__43D61337" FromRole="TalkParents" ToRole="Journal" />
-          <NavigationProperty Name="Kin" Relationship="Self.FK__TalkParen__idKin__41EDCAC5" FromRole="TalkParents" ToRole="Kin" />
+          <NavigationProperty Name="StructParentsTalc" Relationship="Self.FK_StructParentsTalc_TalkParents" FromRole="TalkParents" ToRole="StructParentsTalc" />
           <NavigationProperty Name="TopicTalkParents" Relationship="Self.FK__TalkParen__idTop__42E1EEFE" FromRole="TalkParents" ToRole="TopicTalkParents" />
-          <Property Name="topicTalc" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TopicTalkParents">
           <Key>
@@ -2093,20 +2127,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TalkParen__idKin__41EDCAC5">
-          <End Role="Kin" Type="Self.Kin" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="TalkParents" Type="Self.TalkParents" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kin">
-              <PropertyRef Name="idKin" />
-            </Principal>
-            <Dependent Role="TalkParents">
-              <PropertyRef Name="idKin" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Kin_Student">
           <End Role="Student" Type="Self.Student" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -2118,6 +2138,20 @@
             </Principal>
             <Dependent Role="Kin">
               <PropertyRef Name="idStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StructParentsTalc_Kin">
+          <End Role="Kin" Type="Self.Kin" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StructParentsTalc" Type="Self.StructParentsTalc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kin">
+              <PropertyRef Name="idKin" />
+            </Principal>
+            <Dependent Role="StructParentsTalc">
+              <PropertyRef Name="idKin" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2301,6 +2335,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_StructParentsTalc_TalkParents">
+          <End Role="TalkParents" Type="Self.TalkParents" Multiplicity="1" />
+          <End Role="StructParentsTalc" Type="Self.StructParentsTalc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TalkParents">
+              <PropertyRef Name="idTalkPar" />
+            </Principal>
+            <Dependent Role="StructParentsTalc">
+              <PropertyRef Name="idTalkParents" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__TalkParen__idTop__42E1EEFE">
           <End Role="TopicTalkParents" Type="Self.TopicTalkParents" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -2346,6 +2392,7 @@
           <EntitySet Name="RatingMark" EntityType="Self.RatingMark" />
           <EntitySet Name="Residence" EntityType="Self.Residence" />
           <EntitySet Name="StatusStudent" EntityType="Self.StatusStudent" />
+          <EntitySet Name="StructParentsTalc" EntityType="Self.StructParentsTalc" />
           <EntitySet Name="Student" EntityType="Self.Student" />
           <EntitySet Name="StudyingProcess" EntityType="Self.StudyingProcess" />
           <EntitySet Name="TalkParents" EntityType="Self.TalkParents" />
@@ -2472,13 +2519,13 @@
             <End Role="Student" EntitySet="Student" />
             <End Role="JournalStudent" EntitySet="JournalStudent" />
           </AssociationSet>
-          <AssociationSet Name="FK__TalkParen__idKin__41EDCAC5" Association="Self.FK__TalkParen__idKin__41EDCAC5">
-            <End Role="Kin" EntitySet="Kin" />
-            <End Role="TalkParents" EntitySet="TalkParents" />
-          </AssociationSet>
           <AssociationSet Name="FK_Kin_Student" Association="Self.FK_Kin_Student">
             <End Role="Student" EntitySet="Student" />
             <End Role="Kin" EntitySet="Kin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StructParentsTalc_Kin" Association="Self.FK_StructParentsTalc_Kin">
+            <End Role="Kin" EntitySet="Kin" />
+            <End Role="StructParentsTalc" EntitySet="StructParentsTalc" />
           </AssociationSet>
           <AssociationSet Name="FK__LackAtten__idStu__025D5595" Association="Self.FK__LackAtten__idStu__025D5595">
             <End Role="Student" EntitySet="Student" />
@@ -2531,6 +2578,10 @@
           <AssociationSet Name="FK_Student_ResidenceT" Association="Self.FK_Student_ResidenceT">
             <End Role="Residence" EntitySet="Residence" />
             <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StructParentsTalc_TalkParents" Association="Self.FK_StructParentsTalc_TalkParents">
+            <End Role="TalkParents" EntitySet="TalkParents" />
+            <End Role="StructParentsTalc" EntitySet="StructParentsTalc" />
           </AssociationSet>
           <AssociationSet Name="FK__TalkParen__idTop__42E1EEFE" Association="Self.FK__TalkParen__idTop__42E1EEFE">
             <End Role="TopicTalkParents" EntitySet="TopicTalkParents" />
@@ -2858,6 +2909,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="StructParentsTalc">
+            <EntityTypeMapping TypeName="CuratorJournalModel.StructParentsTalc">
+              <MappingFragment StoreEntitySet="StructParentsTalc">
+                <ScalarProperty Name="idStructParentsTalc" ColumnName="idStructParentsTalc" />
+                <ScalarProperty Name="idKin" ColumnName="idKin" />
+                <ScalarProperty Name="idTalkParents" ColumnName="idTalkParents" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Student">
             <EntityTypeMapping TypeName="CuratorJournalModel.Student">
               <MappingFragment StoreEntitySet="Student">
@@ -2900,11 +2960,10 @@
           <EntitySetMapping Name="TalkParents">
             <EntityTypeMapping TypeName="CuratorJournalModel.TalkParents">
               <MappingFragment StoreEntitySet="TalkParents">
-                <ScalarProperty Name="topicTalc" ColumnName="topicTalc" />
                 <ScalarProperty Name="idTalkPar" ColumnName="idTalkPar" />
-                <ScalarProperty Name="idKin" ColumnName="idKin" />
                 <ScalarProperty Name="idTopTPar" ColumnName="idTopTPar" />
                 <ScalarProperty Name="idJournal" ColumnName="idJournal" />
+                <ScalarProperty Name="topicTalc" ColumnName="topicTalc" />
                 <ScalarProperty Name="dateTalkPar" ColumnName="dateTalkPar" />
               </MappingFragment>
             </EntityTypeMapping>

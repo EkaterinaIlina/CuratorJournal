@@ -131,7 +131,6 @@ namespace CuratorJournal
             dgvKin.Columns["disabilityKin"].Visible = false;
             dgvKin.Columns["placeOfWorkKin"].Visible = false;
             dgvKin.Columns["idStudent"].Visible = false;
-            dgvKin.Columns["TalkParents"].Visible = false;
             dgvKin.Columns["Student"].Visible = false;
         }
 

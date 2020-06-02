@@ -55,6 +55,7 @@ namespace CuratorJournal
         public virtual DbSet<RatingMark> RatingMark { get; set; }
         public virtual DbSet<Residence> Residence { get; set; }
         public virtual DbSet<StatusStudent> StatusStudent { get; set; }
+        public virtual DbSet<StructParentsTalc> StructParentsTalc { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<StudyingProcess> StudyingProcess { get; set; }
         public virtual DbSet<TalkParents> TalkParents { get; set; }
