@@ -91,6 +91,7 @@ namespace CuratorJournal
                 bEditGrop.Visible = true;
                 group = (Group)dgvGroup.Rows[e.RowIndex].DataBoundItem;
                 FillDop(group);
+                buttonControl.Visible = true;
             }
         }
 
@@ -135,6 +136,7 @@ namespace CuratorJournal
                 student = (Student)dgvStudent.Rows[e.RowIndex].DataBoundItem;
                 StudentForm studentForm = new StudentForm(student);
                 studentForm.ShowDialog();
+                
                 FillDop(group);
             }
         }
@@ -155,6 +157,12 @@ namespace CuratorJournal
                 journalForm.ShowDialog();
                 FillDop(group);
             }
+        }
+
+        private void buttonControl_Click(object sender, EventArgs e)
+        {
+            ConsolidatedStatementForm consolidatedStatementForm = new ConsolidatedStatementForm(group);
+            consolidatedStatementForm.ShowDialog();
         }
     }
 }

@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="CuratorJournalModel.Family" Width="1.5" PointX="8.25" PointY="23.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.FinalGrade" Width="1.5" PointX="12" PointY="10.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.FormOfControl" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuratorJournalModel.Grade" Width="1.5" PointX="12" PointY="33.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.Group" Width="1.5" PointX="0.75" PointY="25.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.GroupDynamics" Width="1.5" PointX="8.25" PointY="19.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CuratorJournalModel.Hostel" Width="1.5" PointX="1.5" PointY="13.125" IsExpanded="true" />
@@ -57,7 +56,6 @@
         <AssociationConnector Association="CuratorJournalModel.FK__Family__idStuden__08B54D69" ManuallyRouted="false" />
         <AssociationConnector Association="CuratorJournalModel.FK__FinalGrad__idFor__4C6B5938" ManuallyRouted="false" />
         <AssociationConnector Association="CuratorJournalModel.FK__ListMarkS__idFin__503BEA1C" ManuallyRouted="false" />
-        <AssociationConnector Association="CuratorJournalModel.FK__ListMarkS__idGra__51300E55" ManuallyRouted="false" />
         <AssociationConnector Association="CuratorJournalModel.FK__Journal__idGroup__4E88ABD4" ManuallyRouted="false" />
         <AssociationConnector Association="CuratorJournalModel.FK_Student_Group" ManuallyRouted="false" />
         <AssociationConnector Association="CuratorJournalModel.FK__GroupDyna__idJou__31B762FC" ManuallyRouted="false" />
@@ -89,6 +87,8 @@
         <AssociationConnector Association="CuratorJournalModel.FK_Student_ResidenceT" ManuallyRouted="false" />
         <AssociationConnector Association="CuratorJournalModel.FK_StructParentsTalc_TalkParents" ManuallyRouted="false" />
         <AssociationConnector Association="CuratorJournalModel.FK__TalkParen__idTop__42E1EEFE" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CuratorJournalModel.Semestr" Width="1.5" PointX="0.75" PointY="0.875" />
+        <AssociationConnector Association="CuratorJournalModel.FK_FinalGrade_Semestr" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

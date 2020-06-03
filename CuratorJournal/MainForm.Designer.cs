@@ -46,6 +46,7 @@
             this.ToolStripMenuItemSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.сменитьПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonControl = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGroup)).BeginInit();
             this.panelStudent.SuspendLayout();
@@ -57,13 +58,14 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.buttonControl);
             this.panel1.Controls.Add(this.bEditGrop);
             this.panel1.Controls.Add(this.lGroup);
             this.panel1.Controls.Add(this.bAddGroup);
             this.panel1.Controls.Add(this.dgvGroup);
             this.panel1.Location = new System.Drawing.Point(1, 23);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(344, 206);
+            this.panel1.Size = new System.Drawing.Size(344, 218);
             this.panel1.TabIndex = 0;
             // 
             // bEditGrop
@@ -167,7 +169,7 @@
             this.panelJournal.Controls.Add(this.lJournal);
             this.panelJournal.Location = new System.Drawing.Point(1, 235);
             this.panelJournal.Name = "panelJournal";
-            this.panelJournal.Size = new System.Drawing.Size(344, 229);
+            this.panelJournal.Size = new System.Drawing.Size(341, 229);
             this.panelJournal.TabIndex = 2;
             this.panelJournal.Visible = false;
             // 
@@ -239,6 +241,17 @@
             this.SettingsToolStripMenuItem.Text = "Настройки пользователя";
             this.SettingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
             // 
+            // buttonControl
+            // 
+            this.buttonControl.Location = new System.Drawing.Point(11, 192);
+            this.buttonControl.Name = "buttonControl";
+            this.buttonControl.Size = new System.Drawing.Size(322, 23);
+            this.buttonControl.TabIndex = 27;
+            this.buttonControl.Text = "Сводная ведомость";
+            this.buttonControl.UseVisualStyleBackColor = true;
+            this.buttonControl.Visible = false;
+            this.buttonControl.Click += new System.EventHandler(this.buttonControl_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -289,5 +302,6 @@
         private System.Windows.Forms.ToolStripMenuItem сменитьПользователяToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SettingsToolStripMenuItem;
         private System.Windows.Forms.Button bEditGrop;
+        private System.Windows.Forms.Button buttonControl;
     }
 }

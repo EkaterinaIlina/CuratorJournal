@@ -17,10 +17,9 @@ namespace CuratorJournal
         public int idListMarkStudent { get; set; }
         public int idStudent { get; set; }
         public int idFinalGrade { get; set; }
-        public int idGrade { get; set; }
+        public string grade { get; set; }
     
         public virtual FinalGrade FinalGrade { get; set; }
-        public virtual Grade Grade { get; set; }
         public virtual Student Student { get; set; }
     }
 }

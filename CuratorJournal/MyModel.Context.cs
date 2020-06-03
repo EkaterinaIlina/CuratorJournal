@@ -34,7 +34,6 @@ namespace CuratorJournal
         public virtual DbSet<Family> Family { get; set; }
         public virtual DbSet<FinalGrade> FinalGrade { get; set; }
         public virtual DbSet<FormOfControl> FormOfControl { get; set; }
-        public virtual DbSet<Grade> Grade { get; set; }
         public virtual DbSet<Group> Group { get; set; }
         public virtual DbSet<GroupDynamics> GroupDynamics { get; set; }
         public virtual DbSet<Hostel> Hostel { get; set; }
@@ -62,5 +61,6 @@ namespace CuratorJournal
         public virtual DbSet<TopicTalkParents> TopicTalkParents { get; set; }
         public virtual DbSet<TypeOfEvent> TypeOfEvent { get; set; }
         public virtual DbSet<VisitHostel> VisitHostel { get; set; }
+        public virtual DbSet<Semestr> Semestr { get; set; }
     }
 }

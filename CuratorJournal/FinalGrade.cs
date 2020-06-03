@@ -23,11 +23,12 @@ namespace CuratorJournal
         public int idFinalGrade { get; set; }
         public int idDiscipline { get; set; }
         public int idFormContr { get; set; }
-        public int SemesterDis { get; set; }
+        public int idSemestr { get; set; }
     
         public virtual Discipline Discipline { get; set; }
         public virtual FormOfControl FormOfControl { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ListMarkStud> ListMarkStud { get; set; }
+        public virtual Semestr Semestr { get; set; }
     }
 }

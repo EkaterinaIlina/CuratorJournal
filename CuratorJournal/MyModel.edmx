@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище CuratorJournalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище CuratorJournalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AchivementStudent">
           <Key>
             <PropertyRef Name="idAchivStud" />
@@ -84,7 +84,7 @@
           <Property Name="idFinalGrade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idDiscipline" Type="int" Nullable="false" />
           <Property Name="idFormContr" Type="int" Nullable="false" />
-          <Property Name="SemesterDis" Type="int" Nullable="false" />
+          <Property Name="idSemestr" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="FormOfControl">
           <Key>
@@ -92,13 +92,6 @@
           </Key>
           <Property Name="idFormContr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nameFormContr" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Grade">
-          <Key>
-            <PropertyRef Name="idGrade" />
-          </Key>
-          <Property Name="idGrade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nameGrade" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Group">
           <Key>
@@ -192,7 +185,7 @@
           <Property Name="idListMarkStudent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idStudent" Type="int" Nullable="false" />
           <Property Name="idFinalGrade" Type="int" Nullable="false" />
-          <Property Name="idGrade" Type="int" Nullable="false" />
+          <Property Name="grade" Type="varchar" MaxLength="15" Nullable="false" />
         </EntityType>
         <EntityType Name="Meeting">
           <Key>
@@ -282,6 +275,13 @@
           <Property Name="flat" Type="varchar" MaxLength="50" />
           <Property Name="idHostel" Type="int" />
           <Property Name="room" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Semestr">
+          <Key>
+            <PropertyRef Name="idSemestr" />
+          </Key>
+          <Property Name="idSemestr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="semestrName" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="StatusStudent">
           <Key>
@@ -606,20 +606,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ListMarkS__idGra__51300E55">
-          <End Role="Grade" Type="Self.Grade" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ListMarkStud" Type="Self.ListMarkStud" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Grade">
-              <PropertyRef Name="idGrade" />
-            </Principal>
-            <Dependent Role="ListMarkStud">
-              <PropertyRef Name="idGrade" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__ListMarkS__idStu__4F47C5E3">
           <End Role="Student" Type="Self.Student" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -900,6 +886,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_FinalGrade_Semestr">
+          <End Role="Semestr" Type="Self.Semestr" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FinalGrade" Type="Self.FinalGrade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semestr">
+              <PropertyRef Name="idSemestr" />
+            </Principal>
+            <Dependent Role="FinalGrade">
+              <PropertyRef Name="idSemestr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Journal_Curator">
           <End Role="Curator" Type="Self.Curator" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1030,7 +1030,6 @@
           <EntitySet Name="Family" EntityType="Self.Family" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FinalGrade" EntityType="Self.FinalGrade" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FormOfControl" EntityType="Self.FormOfControl" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Grade" EntityType="Self.Grade" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GroupDynamics" EntityType="Self.GroupDynamics" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hostel" EntityType="Self.Hostel" Schema="dbo" store:Type="Tables" />
@@ -1050,6 +1049,7 @@
           <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RatingMark" EntityType="Self.RatingMark" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Residence" EntityType="Self.Residence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Semestr" EntityType="Self.Semestr" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StatusStudent" EntityType="Self.StatusStudent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StructParentsTalc" EntityType="Self.StructParentsTalc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
@@ -1124,10 +1124,6 @@
           </AssociationSet>
           <AssociationSet Name="FK__ListMarkS__idFin__503BEA1C" Association="Self.FK__ListMarkS__idFin__503BEA1C">
             <End Role="FinalGrade" EntitySet="FinalGrade" />
-            <End Role="ListMarkStud" EntitySet="ListMarkStud" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ListMarkS__idGra__51300E55" Association="Self.FK__ListMarkS__idGra__51300E55">
-            <End Role="Grade" EntitySet="Grade" />
             <End Role="ListMarkStud" EntitySet="ListMarkStud" />
           </AssociationSet>
           <AssociationSet Name="FK__ListMarkS__idStu__4F47C5E3" Association="Self.FK__ListMarkS__idStu__4F47C5E3">
@@ -1210,6 +1206,10 @@
             <End Role="TypeOfEvent" EntitySet="TypeOfEvent" />
             <End Role="Event" EntitySet="Event" />
           </AssociationSet>
+          <AssociationSet Name="FK_FinalGrade_Semestr" Association="Self.FK_FinalGrade_Semestr">
+            <End Role="Semestr" EntitySet="Semestr" />
+            <End Role="FinalGrade" EntitySet="FinalGrade" />
+          </AssociationSet>
           <AssociationSet Name="FK_Journal_Curator" Association="Self.FK_Journal_Curator">
             <End Role="Curator" EntitySet="Curator" />
             <End Role="Journal" EntitySet="Journal" />
@@ -1247,8 +1247,7 @@
             <End Role="Student" EntitySet="Student" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CuratorJournalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1346,10 +1345,11 @@
           <Property Name="idFinalGrade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idDiscipline" Type="Int32" Nullable="false" />
           <Property Name="idFormContr" Type="Int32" Nullable="false" />
-          <Property Name="SemesterDis" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Discipline" Relationship="Self.FK__FinalGrad__idDis__4B7734FF" FromRole="FinalGrade" ToRole="Discipline" />
           <NavigationProperty Name="FormOfControl" Relationship="Self.FK__FinalGrad__idFor__4C6B5938" FromRole="FinalGrade" ToRole="FormOfControl" />
           <NavigationProperty Name="ListMarkStud" Relationship="Self.FK__ListMarkS__idFin__503BEA1C" FromRole="FinalGrade" ToRole="ListMarkStud" />
+          <Property Name="idSemestr" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Semestr" Relationship="CuratorJournalModel.FK_FinalGrade_Semestr" FromRole="FinalGrade" ToRole="Semestr" />
         </EntityType>
         <EntityType Name="FormOfControl">
           <Key>
@@ -1358,14 +1358,6 @@
           <Property Name="idFormContr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nameFormContr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="FinalGrade" Relationship="Self.FK__FinalGrad__idFor__4C6B5938" FromRole="FormOfControl" ToRole="FinalGrade" />
-        </EntityType>
-        <EntityType Name="Grade">
-          <Key>
-            <PropertyRef Name="idGrade" />
-          </Key>
-          <Property Name="idGrade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nameGrade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ListMarkStud" Relationship="Self.FK__ListMarkS__idGra__51300E55" FromRole="Grade" ToRole="ListMarkStud" />
         </EntityType>
         <EntityType Name="Group">
           <Key>
@@ -1487,10 +1479,9 @@
           <Property Name="idListMarkStudent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idStudent" Type="Int32" Nullable="false" />
           <Property Name="idFinalGrade" Type="Int32" Nullable="false" />
-          <Property Name="idGrade" Type="Int32" Nullable="false" />
           <NavigationProperty Name="FinalGrade" Relationship="Self.FK__ListMarkS__idFin__503BEA1C" FromRole="ListMarkStud" ToRole="FinalGrade" />
-          <NavigationProperty Name="Grade" Relationship="Self.FK__ListMarkS__idGra__51300E55" FromRole="ListMarkStud" ToRole="Grade" />
           <NavigationProperty Name="Student" Relationship="Self.FK__ListMarkS__idStu__4F47C5E3" FromRole="ListMarkStud" ToRole="Student" />
+          <Property Name="grade" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Meeting">
           <Key>
@@ -1916,20 +1907,6 @@
             </Principal>
             <Dependent Role="ListMarkStud">
               <PropertyRef Name="idFinalGrade" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ListMarkS__idGra__51300E55">
-          <End Role="Grade" Type="Self.Grade" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ListMarkStud" Type="Self.ListMarkStud" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Grade">
-              <PropertyRef Name="idGrade" />
-            </Principal>
-            <Dependent Role="ListMarkStud">
-              <PropertyRef Name="idGrade" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2371,7 +2348,6 @@
           <EntitySet Name="Family" EntityType="Self.Family" />
           <EntitySet Name="FinalGrade" EntityType="Self.FinalGrade" />
           <EntitySet Name="FormOfControl" EntityType="Self.FormOfControl" />
-          <EntitySet Name="Grade" EntityType="Self.Grade" />
           <EntitySet Name="Group" EntityType="Self.Group" />
           <EntitySet Name="GroupDynamics" EntityType="Self.GroupDynamics" />
           <EntitySet Name="Hostel" EntityType="Self.Hostel" />
@@ -2457,10 +2433,6 @@
           </AssociationSet>
           <AssociationSet Name="FK__ListMarkS__idFin__503BEA1C" Association="Self.FK__ListMarkS__idFin__503BEA1C">
             <End Role="FinalGrade" EntitySet="FinalGrade" />
-            <End Role="ListMarkStud" EntitySet="ListMarkStud" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ListMarkS__idGra__51300E55" Association="Self.FK__ListMarkS__idGra__51300E55">
-            <End Role="Grade" EntitySet="Grade" />
             <End Role="ListMarkStud" EntitySet="ListMarkStud" />
           </AssociationSet>
           <AssociationSet Name="FK__Journal__idGroup__4E88ABD4" Association="Self.FK__Journal__idGroup__4E88ABD4">
@@ -2587,7 +2559,34 @@
             <End Role="TopicTalkParents" EntitySet="TopicTalkParents" />
             <End Role="TalkParents" EntitySet="TalkParents" />
           </AssociationSet>
+          <EntitySet Name="Semestr" EntityType="CuratorJournalModel.Semestr" />
+          <AssociationSet Name="FK_FinalGrade_Semestr" Association="CuratorJournalModel.FK_FinalGrade_Semestr">
+            <End Role="Semestr" EntitySet="Semestr" />
+            <End Role="FinalGrade" EntitySet="FinalGrade" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Semestr">
+          <Key>
+            <PropertyRef Name="idSemestr" />
+          </Key>
+          <Property Name="idSemestr" Type="Int32" Nullable="false" />
+          <Property Name="semestrName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FinalGrade" Relationship="CuratorJournalModel.FK_FinalGrade_Semestr" FromRole="Semestr" ToRole="FinalGrade" />
+        </EntityType>
+        <Association Name="FK_FinalGrade_Semestr">
+          <End Type="CuratorJournalModel.Semestr" Role="Semestr" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CuratorJournalModel.FinalGrade" Role="FinalGrade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semestr">
+              <PropertyRef Name="idSemestr" />
+            </Principal>
+            <Dependent Role="FinalGrade">
+              <PropertyRef Name="idSemestr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2676,10 +2675,10 @@
           <EntitySetMapping Name="FinalGrade">
             <EntityTypeMapping TypeName="CuratorJournalModel.FinalGrade">
               <MappingFragment StoreEntitySet="FinalGrade">
+                <ScalarProperty Name="idSemestr" ColumnName="idSemestr" />
                 <ScalarProperty Name="idFinalGrade" ColumnName="idFinalGrade" />
                 <ScalarProperty Name="idDiscipline" ColumnName="idDiscipline" />
                 <ScalarProperty Name="idFormContr" ColumnName="idFormContr" />
-                <ScalarProperty Name="SemesterDis" ColumnName="SemesterDis" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2688,14 +2687,6 @@
               <MappingFragment StoreEntitySet="FormOfControl">
                 <ScalarProperty Name="idFormContr" ColumnName="idFormContr" />
                 <ScalarProperty Name="nameFormContr" ColumnName="nameFormContr" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Grade">
-            <EntityTypeMapping TypeName="CuratorJournalModel.Grade">
-              <MappingFragment StoreEntitySet="Grade">
-                <ScalarProperty Name="idGrade" ColumnName="idGrade" />
-                <ScalarProperty Name="nameGrade" ColumnName="nameGrade" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2796,10 +2787,10 @@
           <EntitySetMapping Name="ListMarkStud">
             <EntityTypeMapping TypeName="CuratorJournalModel.ListMarkStud">
               <MappingFragment StoreEntitySet="ListMarkStud">
+                <ScalarProperty Name="grade" ColumnName="grade" />
                 <ScalarProperty Name="idListMarkStudent" ColumnName="idListMarkStudent" />
                 <ScalarProperty Name="idStudent" ColumnName="idStudent" />
                 <ScalarProperty Name="idFinalGrade" ColumnName="idFinalGrade" />
-                <ScalarProperty Name="idGrade" ColumnName="idGrade" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2991,6 +2982,14 @@
                 <ScalarProperty Name="idJournal" ColumnName="idJournal" />
                 <ScalarProperty Name="dateVisitHostel" ColumnName="dateVisitHostel" />
                 <ScalarProperty Name="causeVisitHostel" ColumnName="causeVisitHostel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Semestr">
+            <EntityTypeMapping TypeName="CuratorJournalModel.Semestr">
+              <MappingFragment StoreEntitySet="Semestr">
+                <ScalarProperty Name="semestrName" ColumnName="semestrName" />
+                <ScalarProperty Name="idSemestr" ColumnName="idSemestr" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

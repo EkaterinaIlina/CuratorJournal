@@ -81,6 +81,12 @@
     <Compile Include="Authorization.Designer.cs">
       <DependentUpon>Authorization.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConsolidatedStatementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsolidatedStatementForm.Designer.cs">
+      <DependentUpon>ConsolidatedStatementForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CoreIndicator.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
@@ -125,9 +131,6 @@
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="FormOfControl.cs">
-      <DependentUpon>MyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Grade.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Group.cs">
@@ -246,6 +249,9 @@
     <Compile Include="Residence.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Semestr.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="StatusStudent.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
@@ -308,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsolidatedStatementForm.resx">
+      <DependentUpon>ConsolidatedStatementForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DisciplinaryCommissionForm.resx">
       <DependentUpon>DisciplinaryCommissionForm.cs</DependentUpon>

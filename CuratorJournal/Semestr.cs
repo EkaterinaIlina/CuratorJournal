@@ -12,18 +12,19 @@ namespace CuratorJournal
     using System;
     using System.Collections.Generic;
     
-    public partial class Grade
+    public partial class Semestr
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Grade()
+        public Semestr()
         {
-            this.ListMarkStud = new HashSet<ListMarkStud>();
+            this.FinalGrade = new HashSet<FinalGrade>();
         }
     
-        public int idGrade { get; set; }
-        public string nameGrade { get; set; }
+        public int idSemestr { get; set; }
+        public string semestrName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ListMarkStud> ListMarkStud { get; set; }
+        public virtual ICollection<FinalGrade> FinalGrade { get; set; }
+        public override string ToString() => semestrName;
     }
 }
