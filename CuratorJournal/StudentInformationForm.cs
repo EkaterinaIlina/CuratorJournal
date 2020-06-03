@@ -168,27 +168,57 @@ namespace CuratorJournal
         {
             int id = dgvStudent.SelectedRows[0].Index;
             var itemRez = (MenuItem)sender;
-            if (itemRez.Name == "1" && DBobjects.Entities.JournalStudent.Where(p => p.idJournal == JournalForm.Journal.idJournal && p.idStatusSt == 1).Count() == 1)
-                MessageBox.Show("Староста может быть только один");
-            else
-               dgvStudent.Rows[id].Cells["idStatus"].Value = itemRez.Name;
-            switch (Convert.ToInt32(dgvStudent.Rows[id].Cells["idStatus"].Value))
+            int countStarosta = 0;
+            int countProforg = 0;
+            if (itemRez.Name == "1")
             {
-                case 1:
-                    dgvStudent.Rows[id].Cells[2].Style.Font = new Font(dgvStudent.DefaultCellStyle.Font, FontStyle.Bold);
-                    break;
-                case 2:
-                    dgvStudent.Rows[id].Cells[2].Style.Font = new Font(dgvStudent.DefaultCellStyle.Font, FontStyle.Underline);
-                    break;
-                case 3:
-                    dgvStudent.Rows[id].Cells[2].Style.Font = new Font(dgvStudent.DefaultCellStyle.Font, FontStyle.Italic);
-                    break;
-                case 4:
-                    dgvStudent.Rows[id].Cells[2].Style.Font = new Font(dgvStudent.DefaultCellStyle.Font, FontStyle.Regular);
-                    break;
-                default:
-                    dgvStudent.Rows[id].Cells[2].Style.Font = new Font(dgvStudent.DefaultCellStyle.Font, FontStyle.Regular);
-                    break;
+                foreach (DataGridViewRow dataGridViewRow in dgvStudent.Rows)
+                {
+                    if (Convert.ToInt32(dataGridViewRow.Cells[5].Value) == 1)
+                    {
+                        countStarosta += 1;
+                    }
+                    if (countStarosta >= 1)
+                        break;
+                }
+            }
+            else if(itemRez.Name == "3")
+            {
+                foreach (DataGridViewRow dataGridViewRow in dgvStudent.Rows)
+                {
+                    if (Convert.ToInt32(dataGridViewRow.Cells[5].Value) == 3)
+                    {
+                        countProforg += 1;
+                    }
+                    if (countProforg >= 1)
+                        break;
+                }
+            }
+            if (countStarosta >= 1)
+                MessageBox.Show("Староста может быть только один");
+            else if (countProforg >= 1)
+                MessageBox.Show("Профорг может быть только один");
+            else
+            {
+                dgvStudent.Rows[id].Cells["idStatus"].Value = itemRez.Name;
+                switch (Convert.ToInt32(dgvStudent.Rows[id].Cells["idStatus"].Value))
+                {
+                    case 1:
+                        dgvStudent.Rows[id].Cells[2].Style.Font = new Font(dgvStudent.DefaultCellStyle.Font, FontStyle.Bold);
+                        break;
+                    case 2:
+                        dgvStudent.Rows[id].Cells[2].Style.Font = new Font(dgvStudent.DefaultCellStyle.Font, FontStyle.Underline);
+                        break;
+                    case 3:
+                        dgvStudent.Rows[id].Cells[2].Style.Font = new Font(dgvStudent.DefaultCellStyle.Font, FontStyle.Italic);
+                        break;
+                    case 4:
+                        dgvStudent.Rows[id].Cells[2].Style.Font = new Font(dgvStudent.DefaultCellStyle.Font, FontStyle.Regular);
+                        break;
+                    default:
+                        dgvStudent.Rows[id].Cells[2].Style.Font = new Font(dgvStudent.DefaultCellStyle.Font, FontStyle.Regular);
+                        break;
+                }
             }
         }
 

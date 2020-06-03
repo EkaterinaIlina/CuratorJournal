@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonControl = new System.Windows.Forms.Button();
             this.bEditGrop = new System.Windows.Forms.Button();
             this.lGroup = new System.Windows.Forms.Label();
             this.bAddGroup = new System.Windows.Forms.Button();
@@ -46,7 +47,6 @@
             this.ToolStripMenuItemSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.сменитьПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonControl = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGroup)).BeginInit();
             this.panelStudent.SuspendLayout();
@@ -65,8 +65,19 @@
             this.panel1.Controls.Add(this.dgvGroup);
             this.panel1.Location = new System.Drawing.Point(1, 23);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(344, 218);
+            this.panel1.Size = new System.Drawing.Size(344, 231);
             this.panel1.TabIndex = 0;
+            // 
+            // buttonControl
+            // 
+            this.buttonControl.Location = new System.Drawing.Point(13, 197);
+            this.buttonControl.Name = "buttonControl";
+            this.buttonControl.Size = new System.Drawing.Size(322, 23);
+            this.buttonControl.TabIndex = 27;
+            this.buttonControl.Text = "Сводная ведомость";
+            this.buttonControl.UseVisualStyleBackColor = true;
+            this.buttonControl.Visible = false;
+            this.buttonControl.Click += new System.EventHandler(this.buttonControl_Click);
             // 
             // bEditGrop
             // 
@@ -167,9 +178,9 @@
             this.panelJournal.Controls.Add(this.dgvJournal);
             this.panelJournal.Controls.Add(this.bAddJour);
             this.panelJournal.Controls.Add(this.lJournal);
-            this.panelJournal.Location = new System.Drawing.Point(1, 235);
+            this.panelJournal.Location = new System.Drawing.Point(1, 260);
             this.panelJournal.Name = "panelJournal";
-            this.panelJournal.Size = new System.Drawing.Size(341, 229);
+            this.panelJournal.Size = new System.Drawing.Size(341, 204);
             this.panelJournal.TabIndex = 2;
             this.panelJournal.Visible = false;
             // 
@@ -179,7 +190,7 @@
             this.dgvJournal.AllowUserToDeleteRows = false;
             this.dgvJournal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvJournal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvJournal.Location = new System.Drawing.Point(9, 43);
+            this.dgvJournal.Location = new System.Drawing.Point(11, 40);
             this.dgvJournal.Name = "dgvJournal";
             this.dgvJournal.ReadOnly = true;
             this.dgvJournal.RowHeadersVisible = false;
@@ -191,7 +202,7 @@
             // bAddJour
             // 
             this.bAddJour.Image = global::CuratorJournal.Properties.Resources.add_button;
-            this.bAddJour.Location = new System.Drawing.Point(164, 12);
+            this.bAddJour.Location = new System.Drawing.Point(285, 16);
             this.bAddJour.Name = "bAddJour";
             this.bAddJour.Size = new System.Drawing.Size(43, 23);
             this.bAddJour.TabIndex = 25;
@@ -202,7 +213,7 @@
             // 
             this.lJournal.AutoSize = true;
             this.lJournal.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lJournal.Location = new System.Drawing.Point(9, 14);
+            this.lJournal.Location = new System.Drawing.Point(11, 16);
             this.lJournal.Name = "lJournal";
             this.lJournal.Size = new System.Drawing.Size(148, 21);
             this.lJournal.TabIndex = 24;
@@ -240,17 +251,6 @@
             this.SettingsToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.SettingsToolStripMenuItem.Text = "Настройки пользователя";
             this.SettingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
-            // 
-            // buttonControl
-            // 
-            this.buttonControl.Location = new System.Drawing.Point(11, 192);
-            this.buttonControl.Name = "buttonControl";
-            this.buttonControl.Size = new System.Drawing.Size(322, 23);
-            this.buttonControl.TabIndex = 27;
-            this.buttonControl.Text = "Сводная ведомость";
-            this.buttonControl.UseVisualStyleBackColor = true;
-            this.buttonControl.Visible = false;
-            this.buttonControl.Click += new System.EventHandler(this.buttonControl_Click);
             // 
             // MainForm
             // 

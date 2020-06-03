@@ -85,7 +85,7 @@ namespace CuratorJournal
             if (DBobjects.Entities.Group.Where(p => p.idGroup == group.idGroup).Count() > 0)
             {
                 DBobjects.Entities.Group.Remove(group);
-                DBobjects.Entities.SaveChanges();
+                DBobjects.Entities.SaveChanges();               
                 MessageBox.Show("Удалено");
             }
         }
@@ -130,6 +130,7 @@ namespace CuratorJournal
         private void maskedtbSipher_TextChanged(object sender, EventArgs e)
         {
             group.cipher = maskedtbSipher.Text;
+            group.cipher = group.cipher.Replace(',', '.');
         }
     }
 }

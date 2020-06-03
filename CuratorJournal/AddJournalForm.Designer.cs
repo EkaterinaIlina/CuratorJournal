@@ -41,6 +41,7 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonPrintJournal = new System.Windows.Forms.Button();
+            this.saveFileDialogJournal = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownKurs)).BeginInit();
             this.SuspendLayout();
             // 
@@ -175,6 +176,7 @@
             this.buttonPrintJournal.Text = "Сформировать журнал за год";
             this.buttonPrintJournal.UseVisualStyleBackColor = true;
             this.buttonPrintJournal.Visible = false;
+            this.buttonPrintJournal.Click += new System.EventHandler(this.buttonPrintJournal_Click);
             // 
             // AddJournalForm
             // 
@@ -219,5 +221,6 @@
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonPrintJournal;
+        private System.Windows.Forms.SaveFileDialog saveFileDialogJournal;
     }
 }

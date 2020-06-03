@@ -181,6 +181,7 @@
             this.Controls.Add(this.dataGridViewMark);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "ConsolidatedStatementForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDiscControl)).EndInit();
