@@ -64,6 +64,10 @@ namespace CuratorJournal
                 radioButtonB.Checked = true;
             else
                 radioButtonK.Checked = true;
+            if (student.gender == false)
+                radioButtonMan.Checked = true;
+            else
+                radioButtonFam.Checked = true;
             dateTimePickerDateBirth.Value = student.dateOfBirthStudent.Date;
             maskedTextBoxPhone.Text = student.telephoneStudent;
             if (student.disabilityStudent == true)
@@ -130,6 +134,7 @@ namespace CuratorJournal
             dgvKin.Columns["placeOfWorkKin"].Visible = false;
             dgvKin.Columns["idStudent"].Visible = false;
             dgvKin.Columns["Student"].Visible = false;
+            dgvKin.Columns["StructParentsTalc"].Visible = false;
         }
 
         private void dgvKin_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -358,8 +363,7 @@ namespace CuratorJournal
         private void buttonSaveStudent_Click(object sender, EventArgs e)
         {         
             SaveAll();
-            this.FormClosing -= StudentForm_FormClosing;
-           
+            this.FormClosing -= StudentForm_FormClosing;         
         }
 
         private void SaveAll()
@@ -373,17 +377,17 @@ namespace CuratorJournal
                 {
                     if (radioButtonHostel.Checked == true)
                     {
-                        if (String.IsNullOrWhiteSpace(residenceTemp.room ))
+                        if (String.IsNullOrWhiteSpace(residenceTemp.room))
                             MessageBox.Show("Заполните обязательные поля");
                     }
                     else if (radioButtonPropiska.Checked == true || radioButtonOther.Checked == true)
                     {
-                        if (String.IsNullOrWhiteSpace(residenceTemp.country ) || String.IsNullOrWhiteSpace(residenceTemp.region ) || String.IsNullOrWhiteSpace(residenceTemp.town ) || String.IsNullOrWhiteSpace(residenceTemp.house ))
+                        if (String.IsNullOrWhiteSpace(residenceTemp.country) || String.IsNullOrWhiteSpace(residenceTemp.region) || String.IsNullOrWhiteSpace(residenceTemp.town) || String.IsNullOrWhiteSpace(residenceTemp.house))
                             MessageBox.Show("Заполните обязательные поля");
                     }
-                   
-                        SaveResidenceTemp();
 
+                    SaveResidenceTemp();
+                }
                         if (String.IsNullOrWhiteSpace(student.surnameStudent ) || String.IsNullOrWhiteSpace(student.nameStudent ) || String.IsNullOrWhiteSpace(student.telephoneStudent )
                         || String.IsNullOrWhiteSpace(student.nameSchoolStudent ) || String.IsNullOrWhiteSpace(residence.country ) || String.IsNullOrWhiteSpace(residence.region ) || String.IsNullOrWhiteSpace(residence.town )
                         || String.IsNullOrWhiteSpace(residence.house ))
@@ -391,6 +395,7 @@ namespace CuratorJournal
                      else
                      {
                             ReadSaveStudent();
+                        MessageBox.Show("Сохранено");
                         SaveNewKin();
                         if (radioButtonSelectFamT.Checked == true)
                         {
@@ -399,18 +404,15 @@ namespace CuratorJournal
                             else
                             {
                                 ReadSaveFamily();
-                                MessageBox.Show("Сохранено");
-                            }
-                                    
+                            }                                    
                         }
                         else if (radioButtonSelectFamT.Checked == false && family.idFamily != 0)
                         {
                             DeleteFamily();
-                            MessageBox.Show("Сохранено");
                         }
         
                      }
-                }
+                
 
             }
         }
@@ -699,6 +701,14 @@ namespace CuratorJournal
         private void comboBoxLang_SelectedIndexChanged(object sender, EventArgs e)
         {                     
                 language = DBobjects.Entities.Language.FirstOrDefault(p => p.nameLanguage == comboBoxLang.Text);          
-        }        
+        }
+
+        private void radioButtonMan_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonMan.Checked == true)
+                student.gender = false;
+            else
+                student.gender = true;
+        }
     }
 }

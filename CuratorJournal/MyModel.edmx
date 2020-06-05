@@ -307,6 +307,7 @@
           <Property Name="surnameStudent" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="nameStudent" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="patronymicStudent" Type="varchar" MaxLength="50" />
+          <Property Name="gender" Type="bit" Nullable="false" />
           <Property Name="formOfTrainStudent" Type="bit" Nullable="false" />
           <Property Name="dateOfBirthStudent" Type="date" Nullable="false" />
           <Property Name="telephoneStudent" Type="varchar" MaxLength="17" Nullable="false" />
@@ -1640,6 +1641,7 @@
           <NavigationProperty Name="RatingMark" Relationship="Self.FK__RatingMar__idStu__46B27FE2" FromRole="Student" ToRole="RatingMark" />
           <NavigationProperty Name="Residence" Relationship="Self.FK_Student_ResidenceP" FromRole="Student" ToRole="Residence" />
           <NavigationProperty Name="Residence1" Relationship="Self.FK_Student_ResidenceT" FromRole="Student" ToRole="Residence" />
+          <Property Name="gender" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="StudyingProcess">
           <Key>
@@ -2912,6 +2914,7 @@
           <EntitySetMapping Name="Student">
             <EntityTypeMapping TypeName="CuratorJournalModel.Student">
               <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="gender" ColumnName="gender" />
                 <ScalarProperty Name="idStudent" ColumnName="idStudent" />
                 <ScalarProperty Name="idGroup" ColumnName="idGroup" />
                 <ScalarProperty Name="surnameStudent" ColumnName="surnameStudent" />

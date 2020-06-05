@@ -145,6 +145,10 @@
             this.tbFIOSpous = new System.Windows.Forms.TextBox();
             this.buttonSaveStudent = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
+            this.labelGender = new System.Windows.Forms.Label();
+            this.panelGender = new System.Windows.Forms.Panel();
+            this.radioButtonFam = new System.Windows.Forms.RadioButton();
+            this.radioButtonMan = new System.Windows.Forms.RadioButton();
             this.panelForm.SuspendLayout();
             this.panelInval.SuspendLayout();
             this.groupBoxPerman.SuspendLayout();
@@ -162,11 +166,12 @@
             this.panelSelectChild.SuspendLayout();
             this.panelPlaceWork.SuspendLayout();
             this.panelStatusS.SuspendLayout();
+            this.panelGender.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(144, 157);
+            this.tbName.Location = new System.Drawing.Point(144, 140);
             this.tbName.MaxLength = 50;
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(192, 20);
@@ -175,7 +180,7 @@
             // 
             // tbPathr
             // 
-            this.tbPathr.Location = new System.Drawing.Point(144, 205);
+            this.tbPathr.Location = new System.Drawing.Point(144, 180);
             this.tbPathr.MaxLength = 50;
             this.tbPathr.Name = "tbPathr";
             this.tbPathr.Size = new System.Drawing.Size(189, 20);
@@ -185,7 +190,7 @@
             // lPathr
             // 
             this.lPathr.AutoSize = true;
-            this.lPathr.Location = new System.Drawing.Point(24, 209);
+            this.lPathr.Location = new System.Drawing.Point(25, 180);
             this.lPathr.Name = "lPathr";
             this.lPathr.Size = new System.Drawing.Size(54, 13);
             this.lPathr.TabIndex = 16;
@@ -203,7 +208,7 @@
             // lName
             // 
             this.lName.AutoSize = true;
-            this.lName.Location = new System.Drawing.Point(24, 160);
+            this.lName.Location = new System.Drawing.Point(25, 143);
             this.lName.Name = "lName";
             this.lName.Size = new System.Drawing.Size(39, 13);
             this.lName.TabIndex = 14;
@@ -1342,11 +1347,54 @@
             this.buttonDelete.Visible = false;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
+            // labelGender
+            // 
+            this.labelGender.AutoSize = true;
+            this.labelGender.Location = new System.Drawing.Point(23, 213);
+            this.labelGender.Name = "labelGender";
+            this.labelGender.Size = new System.Drawing.Size(27, 13);
+            this.labelGender.TabIndex = 65;
+            this.labelGender.Text = "Пол";
+            // 
+            // panelGender
+            // 
+            this.panelGender.Controls.Add(this.radioButtonFam);
+            this.panelGender.Controls.Add(this.radioButtonMan);
+            this.panelGender.Location = new System.Drawing.Point(144, 206);
+            this.panelGender.Name = "panelGender";
+            this.panelGender.Size = new System.Drawing.Size(189, 27);
+            this.panelGender.TabIndex = 66;
+            // 
+            // radioButtonFam
+            // 
+            this.radioButtonFam.AutoSize = true;
+            this.radioButtonFam.Location = new System.Drawing.Point(3, 3);
+            this.radioButtonFam.Name = "radioButtonFam";
+            this.radioButtonFam.Size = new System.Drawing.Size(69, 17);
+            this.radioButtonFam.TabIndex = 18;
+            this.radioButtonFam.Text = "женский";
+            this.radioButtonFam.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMan
+            // 
+            this.radioButtonMan.AutoSize = true;
+            this.radioButtonMan.Checked = true;
+            this.radioButtonMan.Location = new System.Drawing.Point(116, 3);
+            this.radioButtonMan.Name = "radioButtonMan";
+            this.radioButtonMan.Size = new System.Drawing.Size(70, 17);
+            this.radioButtonMan.TabIndex = 19;
+            this.radioButtonMan.TabStop = true;
+            this.radioButtonMan.Text = "мужской";
+            this.radioButtonMan.UseVisualStyleBackColor = true;
+            this.radioButtonMan.CheckedChanged += new System.EventHandler(this.radioButtonMan_CheckedChanged);
+            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1366, 745);
+            this.Controls.Add(this.panelGender);
+            this.Controls.Add(this.labelGender);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonSaveStudent);
             this.Controls.Add(this.groupBoxFamily);
@@ -1419,6 +1467,8 @@
             this.panelPlaceWork.PerformLayout();
             this.panelStatusS.ResumeLayout(false);
             this.panelStatusS.PerformLayout();
+            this.panelGender.ResumeLayout(false);
+            this.panelGender.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1542,5 +1592,9 @@
         private System.Windows.Forms.ListBox listBoxHostel;
         private System.Windows.Forms.Button bSaveKin;
         private System.Windows.Forms.Button bDeleteKin;
+        private System.Windows.Forms.Label labelGender;
+        private System.Windows.Forms.Panel panelGender;
+        private System.Windows.Forms.RadioButton radioButtonFam;
+        private System.Windows.Forms.RadioButton radioButtonMan;
     }
 }

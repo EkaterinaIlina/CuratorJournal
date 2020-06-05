@@ -42,6 +42,7 @@ namespace CuratorJournal
         public System.DateTime yearOfManStudent { get; set; }
         public int idResidencePerman { get; set; }
         public Nullable<int> idResidenceTemp { get; set; }
+        public bool gender { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AchivementStudent> AchivementStudent { get; set; }

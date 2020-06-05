@@ -63,6 +63,7 @@ namespace CuratorJournal
                 dgvJournal.Columns[11].Visible = false; dgvJournal.Columns[12].Visible = false;
                 dgvJournal.Columns[13].Visible = false; dgvJournal.Columns[14].Visible = false;
                 dgvJournal.Columns[15].Visible = false; dgvJournal.Columns[16].Visible = false;
+                dgvJournal.Columns[17].Visible = false;
                 dgvStudent.DataSource = DBobjects.Entities.Student.Where(p => p.idGroup == group.idGroup).ToList();
                 dgvStudent.Columns[0].Visible = false; dgvStudent.Columns[1].Visible = false;
                 dgvStudent.Columns[2].HeaderText = "Фамилия"; dgvStudent.Columns[3].HeaderText = "Имя";
@@ -77,7 +78,7 @@ namespace CuratorJournal
                 dgvStudent.Columns[14].Visible = false; dgvStudent.Columns[23].Visible = false;
                 dgvStudent.Columns[15].Visible = false; dgvStudent.Columns[24].Visible = false;
                 dgvStudent.Columns[16].Visible = false; dgvStudent.Columns[25].Visible = false;
-                dgvStudent.Columns[26].Visible = false;
+                dgvStudent.Columns[26].Visible = false; dgvStudent.Columns[27].Visible = false;
             }
         }
 
