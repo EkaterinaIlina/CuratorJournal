@@ -144,8 +144,18 @@ namespace CuratorJournal
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            int count = 0;
+            foreach (DataGridViewRow dataGridViewRow in dgvRoom.Rows)
+            {
+                if (Convert.ToBoolean(dataGridViewRow.Cells[3].Value) == false)
+                {
+                    count = count + 1;
+                }
+            }           
             if (String.IsNullOrWhiteSpace(visitHostel.causeVisitHostel))
                 MessageBox.Show("Заполните обязательные поля");
+            else if (count == dgvRoom.RowCount)
+                MessageBox.Show("Необходимо отметить проверенные комнаты");
             else
             {
                 SaveVisit();

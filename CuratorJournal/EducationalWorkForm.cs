@@ -135,8 +135,18 @@ namespace CuratorJournal
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(privateTalk.topicPrTalk ))
+            int count = 0;
+            foreach (DataGridViewRow dataGridViewRow in dgvStudent.Rows)
+            {
+                if (Convert.ToBoolean(dataGridViewRow.Cells[3].Value) == false)
+                {
+                    count = count + 1;
+                }
+            }
+            if (String.IsNullOrWhiteSpace(privateTalk.topicPrTalk)) 
                 MessageBox.Show("Заполните обязательные поля");
+            else if (count == dgvStudent.RowCount)
+                MessageBox.Show("Необходимо отметить студентов с которыми велась беседа");                    
             else
             {
                 SavePrivTalk();

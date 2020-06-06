@@ -355,40 +355,60 @@ namespace CuratorJournal
                     tableDisciplineComm.Rows[jDisciplineComm].Cells[4].Range.Text = offense.decisionOffense;
                     jDisciplineComm++;
                 }
-                String message = "";
-                String meet = "";
-                String deduction = "";
-                
-                foreach(TalkParents talkParents in DBobjects.Entities.TalkParents.Where(p => p.idJournal == Journal.idJournal))
+                Microsoft.Office.Interop.Word.Table tableMessage = application.ActiveDocument.Tables[24];
+                int jMessage = 1;
+                Microsoft.Office.Interop.Word.Table tableMeet = application.ActiveDocument.Tables[25];
+                int jMeet = 1;
+                Microsoft.Office.Interop.Word.Table tableDeduction = application.ActiveDocument.Tables[26];
+                int jDeduction = 1;
+                foreach (TalkParents talkParents in DBobjects.Entities.TalkParents.Where(p => p.idJournal == Journal.idJournal))
                 {
                     String kins = "";
-                    foreach (StructParentsTalc structParentsTalc in DBobjects.Entities.StructParentsTalc.Where(p => p.idTalkParents == p.idTalkParents).ToList())
+                    foreach (StructParentsTalc structParentsTalc in DBobjects.Entities.StructParentsTalc.Where(p => p.idTalkParents == talkParents.idTalkPar).ToList())
                     {
-                        kins += structParentsTalc.Kin.fullNameKin+",";
+                        kins += structParentsTalc.Kin.fullNameKin + ",";
                     }
                     kins = kins.TrimEnd(',', ' ');
                     if (talkParents.TopicTalkParents.ToString()== "Письмо с уведомлением из деканата")
                     {
-                        message += "\n" + talkParents.dateTalkPar.ToShortDateString() + " " + talkParents.topicTalc+ "Письмо отправлено: "+ kins + "\n";
+                        if (jMessage > 1) tableMessage.Rows.Add(ref missing);
+                        tableMessage.Rows[jMessage].Cells[1].Range.Text = talkParents.dateTalkPar.ToShortDateString() + " " + talkParents.topicTalc+ ". Письмо отправлено: " + kins;
+                        jMessage++;
                     }
                     else if (talkParents.TopicTalkParents.ToString() == "Личная встреча")
                     {
-                        meet += "\n" + talkParents.dateTalkPar.ToShortDateString() + " " + talkParents.topicTalc + "Личная встреча состоялась с: " + kins + "\n";
+                        if (jMeet > 1) tableMeet.Rows.Add(ref missing);
+                        tableMeet.Rows[jMeet].Cells[1].Range.Text = talkParents.dateTalkPar.ToShortDateString() + " " + talkParents.topicTalc + ". Личная встреча состоялась с: " + kins;
+                        jMeet++;
                     }
-                    else if(talkParents.TopicTalkParents.ToString() == "Совместно с декано факультета и ректором решался вопрос об отчислении")
+                    else if(talkParents.TopicTalkParents.ToString() == "Совместно с деканатом факультета и ректоратом решался вопрос об отчислении")
                     {
-                        deduction += "\n" + talkParents.dateTalkPar.ToShortDateString() + " " + talkParents.topicTalc + "Беседа состоялась с: " + kins + "\n";
+                        if (jDeduction > 1) tableDeduction.Rows.Add(ref missing);
+                        tableDeduction.Rows[jDeduction].Cells[1].Range.Text = talkParents.dateTalkPar.ToShortDateString() + " " + talkParents.topicTalc + ". Присутствующие родители: " + kins;
+                        jDeduction++;
                     }
                 }
-                message = message.Trim('\n', ' ');
-                message = message.Replace("\n\n", " ");
-                meet = meet.Trim('\n', ' ');
-                meet = meet.Replace("\n\n", " ");
-                deduction = deduction.Trim('\n', ' ');
-                deduction = deduction.Replace("\n\n", " ");
-                RPS("@работа с родителями(письма)", message, application, missing);
-                RPS("@работа с родителями(встречи)", meet, application, missing);
-                RPS("@работа с родителями(вопрос об отчислении)", deduction, application, missing);               
+                Microsoft.Office.Interop.Word.Table tableVisitHostel = application.ActiveDocument.Tables[27];
+                int jVisitHostelHostel = 2;
+                foreach (VisitHostel visitHostel in DBobjects.Entities.VisitHostel.Where(p => p.idJournal == Journal.idJournal))
+                {
+                    if (jVisitHostelHostel > 2) tableVisitHostel.Rows.Add(ref missing);
+                    tableVisitHostel.Rows[jVisitHostelHostel].Cells[1].Range.Text = visitHostel.dateVisitHostel.ToShortDateString();
+                    tableVisitHostel.Rows[jVisitHostelHostel].Cells[2].Range.Text = visitHostel.causeVisitHostel;
+                    String hostel = " ";
+                    String rooms = "";
+                    foreach (ProvenRooms provenRooms in DBobjects.Entities.ProvenRooms.Where(p => p.idVisitHostel == visitHostel.idVisitHostel))
+                    {
+                        if (hostel.Contains(" " + provenRooms.Residence.Hostel.ToString() + ", "  ))
+                            hostel += provenRooms.Residence.Hostel.ToString() + ", ";
+                        rooms += provenRooms.Residence.room + ", ";
+                    }
+                    hostel = hostel.TrimEnd(',', ' ');
+                    rooms = rooms.TrimEnd(',', ' ');
+                    tableVisitHostel.Rows[jVisitHostelHostel].Cells[3].Range.Text = hostel;
+                    tableVisitHostel.Rows[jVisitHostelHostel].Cells[4].Range.Text = rooms;
+                    jVisitHostelHostel++;
+                }
 
                 saveFileDialogJournal.FileName = "Журнал группы " + Journal.Group.numberGroup + " за " + Journal.courceGroup.ToString() +" курс.docx";
               if (saveFileDialogJournal.ShowDialog() == DialogResult.Cancel) return;
@@ -406,7 +426,7 @@ namespace CuratorJournal
             }
             catch (System.Runtime.InteropServices.COMException ex)
             {        
-                    MessageBox.Show(ex.Message +" Закройте документ и повторите попытку.");
+                    MessageBox.Show(ex.Message);
                 this.Cursor = Cursors.Default;
                 
             }
@@ -417,7 +437,11 @@ namespace CuratorJournal
             object findText = stubTR;
             object replaceWith = text;
             object replace = 2;
-            app.Selection.Find.Execute(FindText: findText, ReplaceWith: text);
+            app.Selection.Find.Execute(ref findText, ref missing, ref missing, ref missing,
+
+ref missing, ref missing, ref missing, ref missing, ref missing, ref replaceWith,
+
+ref replace, ref missing, ref missing, ref missing, ref missing);
         }
         private void buttonSave_Click(object sender, EventArgs e)
         { 

@@ -865,6 +865,7 @@
             this.listBoxHostel.Name = "listBoxHostel";
             this.listBoxHostel.Size = new System.Drawing.Size(126, 30);
             this.listBoxHostel.TabIndex = 4;
+            this.listBoxHostel.SelectedIndexChanged += new System.EventHandler(this.listBoxHostel_SelectedIndexChanged);
             this.listBoxHostel.SelectedValueChanged += new System.EventHandler(this.listBoxHostel_SelectedValueChanged);
             // 
             // lRoom

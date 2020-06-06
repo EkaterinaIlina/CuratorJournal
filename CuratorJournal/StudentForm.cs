@@ -105,8 +105,8 @@ namespace CuratorJournal
                     if (residenceTemp.idHostel != null || residenceTemp.idHostel.ToString() != "")
                     {
                         radioButtonHostel.Checked = true;
-                        listBoxHostel.SelectedItem = student.Residence1.Hostel.nameHostel ;
-                        tbRoom.Text = residenceTemp.room;
+                        listBoxHostel.SelectedItem = student.Residence1.Hostel.ToString() ;
+                        tbRoom.Text = student.Residence1.room;
                     }
                     else
                     {
@@ -569,9 +569,9 @@ namespace CuratorJournal
         private void listBoxHostel_SelectedValueChanged(object sender, EventArgs e)
         {
             if (radioButtonInog.Checked == true && radioButtonHostel.Checked == true)
-            {
-                    residenceTemp.idHostel = DBobjects.Entities.Hostel.FirstOrDefault(p => p.nameHostel == listBoxHostel.SelectedItem.ToString()).idHostel;
-            }
+          {
+                   residenceTemp.idHostel = DBobjects.Entities.Hostel.FirstOrDefault(p => p.nameHostel == listBoxHostel.SelectedItem.ToString()).idHostel;
+           }
         }
 
         private void maskedTextBoxPhone_TextChanged(object sender, EventArgs e)
@@ -709,6 +709,11 @@ namespace CuratorJournal
                 student.gender = false;
             else
                 student.gender = true;
+        }
+
+        private void listBoxHostel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -61,7 +61,15 @@ namespace CuratorJournal
         }
         private void filldgvTalcParent()
         {
-            dgvTopicTalc.DataSource = DBobjects.Entities.TalkParents.Where(p=>p.idJournal==JournalForm.Journal.idJournal).ToList(); 
+            List<StructParentsTalc> structParentsTalcs = DBobjects.Entities.StructParentsTalc.Where(p => p.Kin.idStudent == idStudent).ToList();
+            List<TalkParents> talkParents = new List<TalkParents>();
+            foreach (StructParentsTalc structParentsTalc in structParentsTalcs)
+            {
+                talkParents.Add(DBobjects.Entities.TalkParents.FirstOrDefault(p => p.idTalkPar == structParentsTalc.idTalkParents));
+            }
+            talkParents = talkParents.Distinct().ToList();
+            dgvTopicTalc.DataSource = talkParents;
+            //dgvTopicTalc.DataSource = DBobjects.Entities.TalkParents.Where(p=>p.idJournal==JournalForm.Journal.idJournal).ToList(); 
             dgvTopicTalc.Columns[0].Visible = false;
             dgvTopicTalc.Columns[1].Visible = false;
             dgvTopicTalc.Columns[2].Visible = false;
@@ -134,12 +142,24 @@ namespace CuratorJournal
             DBobjects.Entities.SaveChanges();
         }
         private void buttonSave_Click(object sender, EventArgs e)
-        { 
-            
-            saveTalkParent();
-            saveKin();
-            MessageBox.Show("Сохранено");
-            filldgvTalcParent();
+        {
+            int count=0;
+            foreach(DataGridViewRow dataGridViewRow in dataGridViewKin.Rows)
+            {
+                if (Convert.ToBoolean(dataGridViewRow.Cells[3].Value) == false)
+                {
+                    count = count + 1;
+                }
+            }
+            if (count != dataGridViewKin.RowCount)
+            {
+                saveTalkParent();
+                saveKin();
+                MessageBox.Show("Сохранено");
+                filldgvTalcParent();
+            }
+            else
+                MessageBox.Show("Определите статус участия");
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
