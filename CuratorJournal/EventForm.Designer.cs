@@ -142,9 +142,9 @@
             this.lStudent.AutoSize = true;
             this.lStudent.Location = new System.Drawing.Point(5, 194);
             this.lStudent.Name = "lStudent";
-            this.lStudent.Size = new System.Drawing.Size(137, 13);
+            this.lStudent.Size = new System.Drawing.Size(96, 13);
             this.lStudent.TabIndex = 36;
-            this.lStudent.Text = "Отсутствующие студенты";
+            this.lStudent.Text = "Приняли участие:";
             // 
             // lNazv
             // 

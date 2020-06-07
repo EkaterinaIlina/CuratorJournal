@@ -51,6 +51,8 @@ namespace CuratorJournal
             //Путь к файлу
             object pathFile = "E:\\zhurnal.docx";
             object missing = Type.Missing;
+            Object falseObj = false;
+
             try
             {
                 //Загружаем документ
@@ -204,6 +206,7 @@ namespace CuratorJournal
                         }
                 }
                     List<Kin> kins = DBobjects.Entities.Kin.Where(p => p.idStudent == student.idStudent).ToList();
+                   
                     if(kins.Where(p=>p.kinStatus=="Брат" || p.kinStatus == "Сестра").Count() >= 2)
                     {
                         if (jLargeRelatives > 2) tableLargeRelatives.Rows.Add(ref missing);
@@ -211,7 +214,7 @@ namespace CuratorJournal
                         tableLargeRelatives.Rows[jLargeRelatives].Cells[3].Range.Text = (kins.Where(p => p.kinStatus == "Брат" || p.kinStatus == "Сестра").Count()+1).ToString();
                         jLargeRelatives++;
                     }
-                    if(kins.Where(p => p.kinStatus == "Мать" || p.kinStatus == "Отец" && p.kinStatus != "Опекун").Count() < 2)
+                    if(kins.Where(p => p.kinStatus == "Мать" || p.kinStatus == "Отец" && p.kinStatus != "Опекун").Count() < 2 && kins.Count()!=0)
                     {
                         if (jIncomplete > 2) tableIncomplete.Rows.Add(ref missing);
                         tableIncomplete.Rows[jIncomplete].Cells[2].Range.Text = student.surnameStudent + " " + student.nameStudent + " " + student.patronymicStudent;
@@ -399,7 +402,7 @@ namespace CuratorJournal
                     String rooms = "";
                     foreach (ProvenRooms provenRooms in DBobjects.Entities.ProvenRooms.Where(p => p.idVisitHostel == visitHostel.idVisitHostel))
                     {
-                        if (hostel.Contains(" " + provenRooms.Residence.Hostel.ToString() + ", "  ))
+                        if (hostel.Contains(" " + provenRooms.Residence.Hostel.ToString() + ", "  )==false)
                             hostel += provenRooms.Residence.Hostel.ToString() + ", ";
                         rooms += provenRooms.Residence.room + ", ";
                     }
@@ -409,16 +412,56 @@ namespace CuratorJournal
                     tableVisitHostel.Rows[jVisitHostelHostel].Cells[4].Range.Text = rooms;
                     jVisitHostelHostel++;
                 }
+                Microsoft.Office.Interop.Word.Table tableAchivmentNauch = application.ActiveDocument.Tables[28];
+                int jNauch = 1;
+                Microsoft.Office.Interop.Word.Table tableAchivmentArtists = application.ActiveDocument.Tables[29];
+                int jArtists = 1;
+                Microsoft.Office.Interop.Word.Table tableAchivmentSports = application.ActiveDocument.Tables[30];
+                int jSports = 1;
+                Microsoft.Office.Interop.Word.Table tableAchivmentOther = application.ActiveDocument.Tables[31];
+                int jOther = 1;
+                string studentsList = "";
 
+                foreach (Event events in DBobjects.Entities.Event.Where(p => p.idJournal == Journal.idJournal))
+                {                    
+                    foreach (AchivementStudent achivementStudent in DBobjects.Entities.AchivementStudent.Where(p => p.idEvent == events.idEvent).ToList())
+                    {                     
+                        if (events.TypeOfEvent.ToString() == "Научно-исследовательская работа")
+                        {
+                            if (jNauch > 1) tableAchivmentNauch.Rows.Add(ref missing);
+                            tableAchivmentNauch.Rows[jNauch].Cells[1].Range.Text = events.dateEvent.ToShortDateString() + " " + events.nameEvent+ " Участник: "+achivementStudent.Student.ToString() + ". Руководитель: " + achivementStudent.fullNameSupervis + ", Тема работы: " + achivementStudent.topicWork+". ("+achivementStudent.topicAchivment+")";
+                            jNauch++;
+                        }
+                        else if (events.TypeOfEvent.ToString() == "Художественная самодеятельность")
+                        {
+                            if (jArtists > 1) tableAchivmentArtists.Rows.Add(ref missing);
+                            tableAchivmentArtists.Rows[jArtists].Cells[1].Range.Text = events.dateEvent.ToShortDateString()+ " " + events.nameEvent + ". Участники: " + achivementStudent.Student.ToString() + ". (" + achivementStudent.topicAchivment + ")";
+                            jArtists++;
+                        }
+                        else if (events.TypeOfEvent.ToString() == "Спортивное мероприятие")
+                        {
+                            if (jSports > 1) tableAchivmentSports.Rows.Add(ref missing);
+                            tableAchivmentSports.Rows[jSports].Cells[1].Range.Text = events.dateEvent.ToShortDateString() + " " + events.nameEvent + ". Участник: " + achivementStudent.Student.ToString() + ". (" + achivementStudent.topicAchivment + ")";
+                            jSports++;
+                        }
+                        else
+                        {
+                            if (jOther > 1) tableAchivmentOther.Rows.Add(ref missing);
+                            tableAchivmentOther.Rows[jOther].Cells[1].Range.Text ="Тип мероприятия: "+ events.TypeOfEvent.ToString() + " "+ events.dateEvent.ToShortDateString() + " " + events.nameEvent + ". Участник: " + achivementStudent.Student.ToString() + ". (" + achivementStudent.topicAchivment + ")";
+                            jOther++;
+                        }
+                    }
+
+                }
                 saveFileDialogJournal.FileName = "Журнал группы " + Journal.Group.numberGroup + " за " + Journal.courceGroup.ToString() +" курс.docx";
               if (saveFileDialogJournal.ShowDialog() == DialogResult.Cancel) return;
               // получаем выбранный файл 
               object SaveAsFile = saveFileDialogJournal.FileName;
               document.SaveAs2(SaveAsFile, missing, missing, missing);
-                document.Close();
-                application.Quit();
-                document = null;           
-            System.Runtime.InteropServices.Marshal.ReleaseComObject(application);
+              document.Close(ref falseObj, ref missing, ref missing);
+             application.Quit(ref missing, ref missing, ref missing);
+             document = null;                
+              System.Runtime.InteropServices.Marshal.ReleaseComObject(application);
               application = null;
               //Открываем документ для просмотра.
               System.Diagnostics.Process.Start(SaveAsFile.ToString());
@@ -426,9 +469,13 @@ namespace CuratorJournal
             }
             catch (System.Runtime.InteropServices.COMException ex)
             {        
-                    MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
+                document.Close(ref falseObj, ref missing, ref missing);
+                application.Quit(ref missing, ref missing, ref missing);
+                document = null;
+                application = null;               
                 this.Cursor = Cursors.Default;
-                
+                application.Quit();
             }
             this.Cursor = Cursors.Default;
         }

@@ -50,7 +50,7 @@
             // 
             this.lTitle.AutoSize = true;
             this.lTitle.Font = new System.Drawing.Font("Palatino Linotype", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.lTitle.Location = new System.Drawing.Point(105, 9);
+            this.lTitle.Location = new System.Drawing.Point(90, 9);
             this.lTitle.Name = "lTitle";
             this.lTitle.Size = new System.Drawing.Size(432, 28);
             this.lTitle.TabIndex = 4;
@@ -64,16 +64,16 @@
             this.panelPrivTalc.Controls.Add(this.lDate);
             this.panelPrivTalc.Controls.Add(this.dgvStudent);
             this.panelPrivTalc.Controls.Add(this.dateTimePickerTalkStudent);
-            this.panelPrivTalc.Location = new System.Drawing.Point(292, 40);
+            this.panelPrivTalc.Location = new System.Drawing.Point(280, 40);
             this.panelPrivTalc.Name = "panelPrivTalc";
-            this.panelPrivTalc.Size = new System.Drawing.Size(304, 459);
+            this.panelPrivTalc.Size = new System.Drawing.Size(304, 436);
             this.panelPrivTalc.TabIndex = 46;
             this.panelPrivTalc.Visible = false;
             // 
             // labelTopic
             // 
             this.labelTopic.AutoSize = true;
-            this.labelTopic.Location = new System.Drawing.Point(10, 45);
+            this.labelTopic.Location = new System.Drawing.Point(10, 30);
             this.labelTopic.Name = "labelTopic";
             this.labelTopic.Size = new System.Drawing.Size(79, 13);
             this.labelTopic.TabIndex = 41;
@@ -81,7 +81,7 @@
             // 
             // textBoxTopic
             // 
-            this.textBoxTopic.Location = new System.Drawing.Point(13, 61);
+            this.textBoxTopic.Location = new System.Drawing.Point(13, 46);
             this.textBoxTopic.MaxLength = 300;
             this.textBoxTopic.Multiline = true;
             this.textBoxTopic.Name = "textBoxTopic";
@@ -93,7 +93,7 @@
             // 
             this.lStudent.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lStudent.AutoSize = true;
-            this.lStudent.Location = new System.Drawing.Point(11, 148);
+            this.lStudent.Location = new System.Drawing.Point(10, 133);
             this.lStudent.Name = "lStudent";
             this.lStudent.Size = new System.Drawing.Size(199, 13);
             this.lStudent.TabIndex = 36;
@@ -102,7 +102,7 @@
             // lDate
             // 
             this.lDate.AutoSize = true;
-            this.lDate.Location = new System.Drawing.Point(10, 15);
+            this.lDate.Location = new System.Drawing.Point(10, 10);
             this.lDate.Name = "lDate";
             this.lDate.Size = new System.Drawing.Size(96, 13);
             this.lDate.TabIndex = 5;
@@ -114,7 +114,7 @@
             this.dgvStudent.AllowUserToDeleteRows = false;
             this.dgvStudent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStudent.Location = new System.Drawing.Point(13, 164);
+            this.dgvStudent.Location = new System.Drawing.Point(13, 149);
             this.dgvStudent.Name = "dgvStudent";
             this.dgvStudent.RowHeadersVisible = false;
             this.dgvStudent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -136,18 +136,18 @@
             this.dgvTopicTalc.AllowUserToDeleteRows = false;
             this.dgvTopicTalc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTopicTalc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTopicTalc.Location = new System.Drawing.Point(67, 40);
+            this.dgvTopicTalc.Location = new System.Drawing.Point(51, 40);
             this.dgvTopicTalc.Name = "dgvTopicTalc";
             this.dgvTopicTalc.ReadOnly = true;
             this.dgvTopicTalc.RowHeadersVisible = false;
             this.dgvTopicTalc.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dgvTopicTalc.Size = new System.Drawing.Size(210, 407);
+            this.dgvTopicTalc.Size = new System.Drawing.Size(210, 376);
             this.dgvTopicTalc.TabIndex = 45;
             this.dgvTopicTalc.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTopicTalc_CellMouseClick);
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(67, 486);
+            this.buttonDelete.Location = new System.Drawing.Point(51, 452);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(210, 24);
             this.buttonDelete.TabIndex = 49;
@@ -158,7 +158,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(67, 456);
+            this.buttonSave.Location = new System.Drawing.Point(51, 422);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(210, 24);
             this.buttonSave.TabIndex = 48;
@@ -169,7 +169,7 @@
             // bAddPrivTalc
             // 
             this.bAddPrivTalc.Image = ((System.Drawing.Image)(resources.GetObject("bAddPrivTalc.Image")));
-            this.bAddPrivTalc.Location = new System.Drawing.Point(18, 40);
+            this.bAddPrivTalc.Location = new System.Drawing.Point(2, 40);
             this.bAddPrivTalc.Name = "bAddPrivTalc";
             this.bAddPrivTalc.Size = new System.Drawing.Size(43, 23);
             this.bAddPrivTalc.TabIndex = 47;
@@ -182,7 +182,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(632, 513);
+            this.ClientSize = new System.Drawing.Size(609, 482);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.bAddPrivTalc);

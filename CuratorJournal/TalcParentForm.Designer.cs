@@ -116,13 +116,13 @@
             this.panelTalkParent.Controls.Add(this.dateTimePickerTalkStudent);
             this.panelTalkParent.Location = new System.Drawing.Point(12, 231);
             this.panelTalkParent.Name = "panelTalkParent";
-            this.panelTalkParent.Size = new System.Drawing.Size(569, 236);
+            this.panelTalkParent.Size = new System.Drawing.Size(569, 224);
             this.panelTalkParent.TabIndex = 49;
             this.panelTalkParent.Visible = false;
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(439, 200);
+            this.buttonDelete.Location = new System.Drawing.Point(438, 188);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(101, 23);
             this.buttonDelete.TabIndex = 50;
@@ -133,7 +133,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(283, 200);
+            this.buttonSave.Location = new System.Drawing.Point(283, 188);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(101, 23);
             this.buttonSave.TabIndex = 49;
@@ -147,7 +147,7 @@
             this.dataGridViewKin.AllowUserToDeleteRows = false;
             this.dataGridViewKin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewKin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewKin.Location = new System.Drawing.Point(283, 23);
+            this.dataGridViewKin.Location = new System.Drawing.Point(283, 7);
             this.dataGridViewKin.Name = "dataGridViewKin";
             this.dataGridViewKin.RowHeadersVisible = false;
             this.dataGridViewKin.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -174,7 +174,7 @@
             // labelTopic
             // 
             this.labelTopic.AutoSize = true;
-            this.labelTopic.Location = new System.Drawing.Point(6, 108);
+            this.labelTopic.Location = new System.Drawing.Point(6, 95);
             this.labelTopic.Name = "labelTopic";
             this.labelTopic.Size = new System.Drawing.Size(129, 13);
             this.labelTopic.TabIndex = 45;
@@ -182,7 +182,7 @@
             // 
             // textBoxTopic
             // 
-            this.textBoxTopic.Location = new System.Drawing.Point(9, 124);
+            this.textBoxTopic.Location = new System.Drawing.Point(9, 111);
             this.textBoxTopic.MaxLength = 300;
             this.textBoxTopic.Multiline = true;
             this.textBoxTopic.Name = "textBoxTopic";
@@ -212,7 +212,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(628, 513);
+            this.ClientSize = new System.Drawing.Size(605, 463);
             this.Controls.Add(this.panelTalkParent);
             this.Controls.Add(this.bAddPrivTalc);
             this.Controls.Add(this.dgvTopicTalc);

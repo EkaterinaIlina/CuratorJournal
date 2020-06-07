@@ -33,14 +33,14 @@
             this.dgvOffence = new System.Windows.Forms.DataGridView();
             this.bAddOffence = new System.Windows.Forms.Button();
             this.panelOffence = new System.Windows.Forms.Panel();
-            this.lDate = new System.Windows.Forms.Label();
-            this.dateTimePickerOffence = new System.Windows.Forms.DateTimePicker();
+            this.labelCause = new System.Windows.Forms.Label();
+            this.textBoxCause = new System.Windows.Forms.TextBox();
             this.lDescision = new System.Windows.Forms.Label();
             this.lNumberProt = new System.Windows.Forms.Label();
             this.textBoxNumberProt = new System.Windows.Forms.TextBox();
             this.tbDecision = new System.Windows.Forms.TextBox();
-            this.labelCause = new System.Windows.Forms.Label();
-            this.textBoxCause = new System.Windows.Forms.TextBox();
+            this.lDate = new System.Windows.Forms.Label();
+            this.dateTimePickerOffence = new System.Windows.Forms.DateTimePicker();
             this.bDelete = new System.Windows.Forms.Button();
             this.bSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOffence)).BeginInit();
@@ -51,7 +51,7 @@
             // 
             this.lTitle.AutoSize = true;
             this.lTitle.Font = new System.Drawing.Font("Palatino Linotype", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.lTitle.Location = new System.Drawing.Point(135, 9);
+            this.lTitle.Location = new System.Drawing.Point(100, 9);
             this.lTitle.Name = "lTitle";
             this.lTitle.Size = new System.Drawing.Size(417, 28);
             this.lTitle.TabIndex = 4;
@@ -63,7 +63,7 @@
             this.dgvOffence.AllowUserToDeleteRows = false;
             this.dgvOffence.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvOffence.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOffence.Location = new System.Drawing.Point(62, 57);
+            this.dgvOffence.Location = new System.Drawing.Point(43, 40);
             this.dgvOffence.Name = "dgvOffence";
             this.dgvOffence.ReadOnly = true;
             this.dgvOffence.RowHeadersVisible = false;
@@ -75,7 +75,7 @@
             // bAddOffence
             // 
             this.bAddOffence.Image = ((System.Drawing.Image)(resources.GetObject("bAddOffence.Image")));
-            this.bAddOffence.Location = new System.Drawing.Point(564, 57);
+            this.bAddOffence.Location = new System.Drawing.Point(550, 40);
             this.bAddOffence.Name = "bAddOffence";
             this.bAddOffence.Size = new System.Drawing.Size(43, 23);
             this.bAddOffence.TabIndex = 34;
@@ -93,34 +93,35 @@
             this.panelOffence.Controls.Add(this.tbDecision);
             this.panelOffence.Controls.Add(this.lDate);
             this.panelOffence.Controls.Add(this.dateTimePickerOffence);
-            this.panelOffence.Location = new System.Drawing.Point(62, 213);
+            this.panelOffence.Location = new System.Drawing.Point(43, 196);
             this.panelOffence.Name = "panelOffence";
-            this.panelOffence.Size = new System.Drawing.Size(496, 245);
+            this.panelOffence.Size = new System.Drawing.Size(496, 220);
             this.panelOffence.TabIndex = 36;
             this.panelOffence.Visible = false;
             // 
-            // lDate
+            // labelCause
             // 
-            this.lDate.AutoSize = true;
-            this.lDate.Location = new System.Drawing.Point(3, 11);
-            this.lDate.Name = "lDate";
-            this.lDate.Size = new System.Drawing.Size(96, 13);
-            this.lDate.TabIndex = 7;
-            this.lDate.Text = "Дата проведения";
+            this.labelCause.AutoSize = true;
+            this.labelCause.Location = new System.Drawing.Point(3, 77);
+            this.labelCause.Name = "labelCause";
+            this.labelCause.Size = new System.Drawing.Size(118, 13);
+            this.labelCause.TabIndex = 15;
+            this.labelCause.Text = "Причина обсуждения*\r\n";
             // 
-            // dateTimePickerOffence
+            // textBoxCause
             // 
-            this.dateTimePickerOffence.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerOffence.Location = new System.Drawing.Point(105, 8);
-            this.dateTimePickerOffence.Name = "dateTimePickerOffence";
-            this.dateTimePickerOffence.Size = new System.Drawing.Size(140, 20);
-            this.dateTimePickerOffence.TabIndex = 6;
-            this.dateTimePickerOffence.ValueChanged += new System.EventHandler(this.dateTimePickerOffence_ValueChanged);
+            this.textBoxCause.Location = new System.Drawing.Point(6, 93);
+            this.textBoxCause.MaxLength = 300;
+            this.textBoxCause.Multiline = true;
+            this.textBoxCause.Name = "textBoxCause";
+            this.textBoxCause.Size = new System.Drawing.Size(471, 44);
+            this.textBoxCause.TabIndex = 14;
+            this.textBoxCause.TextChanged += new System.EventHandler(this.textBoxCause_TextChanged);
             // 
             // lDescision
             // 
             this.lDescision.AutoSize = true;
-            this.lDescision.Location = new System.Drawing.Point(3, 155);
+            this.lDescision.Location = new System.Drawing.Point(3, 140);
             this.lDescision.Name = "lDescision";
             this.lDescision.Size = new System.Drawing.Size(107, 13);
             this.lDescision.TabIndex = 13;
@@ -147,7 +148,7 @@
             // 
             // tbDecision
             // 
-            this.tbDecision.Location = new System.Drawing.Point(6, 171);
+            this.tbDecision.Location = new System.Drawing.Point(3, 156);
             this.tbDecision.MaxLength = 300;
             this.tbDecision.Multiline = true;
             this.tbDecision.Name = "tbDecision";
@@ -155,28 +156,27 @@
             this.tbDecision.TabIndex = 10;
             this.tbDecision.TextChanged += new System.EventHandler(this.tbDecision_TextChanged);
             // 
-            // labelCause
+            // lDate
             // 
-            this.labelCause.AutoSize = true;
-            this.labelCause.Location = new System.Drawing.Point(3, 77);
-            this.labelCause.Name = "labelCause";
-            this.labelCause.Size = new System.Drawing.Size(118, 13);
-            this.labelCause.TabIndex = 15;
-            this.labelCause.Text = "Причина обсуждения*\r\n";
+            this.lDate.AutoSize = true;
+            this.lDate.Location = new System.Drawing.Point(3, 11);
+            this.lDate.Name = "lDate";
+            this.lDate.Size = new System.Drawing.Size(96, 13);
+            this.lDate.TabIndex = 7;
+            this.lDate.Text = "Дата проведения";
             // 
-            // textBoxCause
+            // dateTimePickerOffence
             // 
-            this.textBoxCause.Location = new System.Drawing.Point(6, 93);
-            this.textBoxCause.MaxLength = 300;
-            this.textBoxCause.Multiline = true;
-            this.textBoxCause.Name = "textBoxCause";
-            this.textBoxCause.Size = new System.Drawing.Size(471, 59);
-            this.textBoxCause.TabIndex = 14;
-            this.textBoxCause.TextChanged += new System.EventHandler(this.textBoxCause_TextChanged);
+            this.dateTimePickerOffence.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerOffence.Location = new System.Drawing.Point(105, 8);
+            this.dateTimePickerOffence.Name = "dateTimePickerOffence";
+            this.dateTimePickerOffence.Size = new System.Drawing.Size(140, 20);
+            this.dateTimePickerOffence.TabIndex = 6;
+            this.dateTimePickerOffence.ValueChanged += new System.EventHandler(this.dateTimePickerOffence_ValueChanged);
             // 
             // bDelete
             // 
-            this.bDelete.Location = new System.Drawing.Point(406, 473);
+            this.bDelete.Location = new System.Drawing.Point(406, 423);
             this.bDelete.Name = "bDelete";
             this.bDelete.Size = new System.Drawing.Size(133, 28);
             this.bDelete.TabIndex = 41;
@@ -187,7 +187,7 @@
             // 
             // bSave
             // 
-            this.bSave.Location = new System.Drawing.Point(95, 473);
+            this.bSave.Location = new System.Drawing.Point(46, 423);
             this.bSave.Name = "bSave";
             this.bSave.Size = new System.Drawing.Size(133, 28);
             this.bSave.TabIndex = 40;
@@ -199,7 +199,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 513);
+            this.ClientSize = new System.Drawing.Size(605, 463);
             this.Controls.Add(this.bDelete);
             this.Controls.Add(this.bSave);
             this.Controls.Add(this.panelOffence);

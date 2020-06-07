@@ -317,7 +317,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(594, 509);
+            this.ClientSize = new System.Drawing.Size(605, 463);
             this.Controls.Add(this.panelMeeting);
             this.Controls.Add(this.dgvMeeting);
             this.Controls.Add(this.bAddMeeting);

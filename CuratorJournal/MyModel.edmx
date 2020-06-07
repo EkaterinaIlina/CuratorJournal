@@ -14,6 +14,7 @@
           <Property Name="idEvent" Type="int" Nullable="false" />
           <Property Name="fullNameSupervis" Type="varchar" MaxLength="100" />
           <Property Name="topicWork" Type="varchar" MaxLength="100" />
+          <Property Name="topicAchivment" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Attendance">
           <Key>
@@ -1263,6 +1264,7 @@
           <Property Name="topicWork" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Event" Relationship="Self.FK_AchivementStudent_Event" FromRole="AchivementStudent" ToRole="Event" />
           <NavigationProperty Name="Student" Relationship="Self.FK_AchivementStudent_Student" FromRole="AchivementStudent" ToRole="Student" />
+          <Property Name="topicAchivment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Attendance">
           <Key>
@@ -2598,6 +2600,7 @@
           <EntitySetMapping Name="AchivementStudent">
             <EntityTypeMapping TypeName="CuratorJournalModel.AchivementStudent">
               <MappingFragment StoreEntitySet="AchivementStudent">
+                <ScalarProperty Name="topicAchivment" ColumnName="topicAchivment" />
                 <ScalarProperty Name="idAchivStud" ColumnName="idAchivStud" />
                 <ScalarProperty Name="idStudent" ColumnName="idStudent" />
                 <ScalarProperty Name="idEvent" ColumnName="idEvent" />

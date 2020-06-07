@@ -19,6 +19,7 @@ namespace CuratorJournal
         public int idEvent { get; set; }
         public string fullNameSupervis { get; set; }
         public string topicWork { get; set; }
+        public string topicAchivment { get; set; }
     
         public virtual Event Event { get; set; }
         public virtual Student Student { get; set; }

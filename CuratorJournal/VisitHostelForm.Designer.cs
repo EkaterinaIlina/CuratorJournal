@@ -51,7 +51,7 @@
             // bAddVisit
             // 
             this.bAddVisit.Image = ((System.Drawing.Image)(resources.GetObject("bAddVisit.Image")));
-            this.bAddVisit.Location = new System.Drawing.Point(15, 44);
+            this.bAddVisit.Location = new System.Drawing.Point(2, 44);
             this.bAddVisit.Name = "bAddVisit";
             this.bAddVisit.Size = new System.Drawing.Size(43, 23);
             this.bAddVisit.TabIndex = 44;
@@ -69,7 +69,7 @@
             this.panelVisitRoom.Controls.Add(this.lDate);
             this.panelVisitRoom.Controls.Add(this.dgvRoom);
             this.panelVisitRoom.Controls.Add(this.dateTimePickerVisit);
-            this.panelVisitRoom.Location = new System.Drawing.Point(289, 44);
+            this.panelVisitRoom.Location = new System.Drawing.Point(276, 44);
             this.panelVisitRoom.Name = "panelVisitRoom";
             this.panelVisitRoom.Size = new System.Drawing.Size(304, 459);
             this.panelVisitRoom.TabIndex = 43;
@@ -160,7 +160,7 @@
             this.dgvVisit.AllowUserToDeleteRows = false;
             this.dgvVisit.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvVisit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVisit.Location = new System.Drawing.Point(64, 44);
+            this.dgvVisit.Location = new System.Drawing.Point(51, 44);
             this.dgvVisit.Name = "dgvVisit";
             this.dgvVisit.ReadOnly = true;
             this.dgvVisit.RowHeadersVisible = false;
@@ -173,7 +173,7 @@
             // 
             this.lTitle.AutoSize = true;
             this.lTitle.Font = new System.Drawing.Font("Palatino Linotype", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.lTitle.Location = new System.Drawing.Point(78, 9);
+            this.lTitle.Location = new System.Drawing.Point(65, 9);
             this.lTitle.Name = "lTitle";
             this.lTitle.Size = new System.Drawing.Size(420, 28);
             this.lTitle.TabIndex = 41;
@@ -181,7 +181,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(64, 457);
+            this.buttonSave.Location = new System.Drawing.Point(51, 457);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(210, 24);
             this.buttonSave.TabIndex = 45;
@@ -192,7 +192,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(64, 487);
+            this.buttonDelete.Location = new System.Drawing.Point(51, 487);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(210, 24);
             this.buttonDelete.TabIndex = 46;
@@ -206,7 +206,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(630, 463);
+            this.ClientSize = new System.Drawing.Size(605, 463);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.bAddVisit);

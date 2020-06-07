@@ -91,39 +91,45 @@ namespace CuratorJournal
             StudentTable.Columns.Add(idStudent);
             StudentTable.Columns.Add(FIOstudent);
             StudentTable.Columns.Add(idAchiv);
+            DataColumn achivment = new DataColumn("Достижение", Type.GetType("System.String"));
+            achivment.MaxLength = 200;
             List<Student> stud = DBobjects.Entities.Student.Where(p => p.idGroup == JournalForm.Journal.idGroup).ToList();
             if (comboBoxTypeEvent.Text == "Научно-исследовательская работа")
             {
                 DataColumn fioSupervis = new DataColumn("ФИО руководителя", Type.GetType("System.String"));
-                DataColumn subject = new DataColumn("Тема", Type.GetType("System.String"));               
+                fioSupervis.MaxLength = 100;
+                DataColumn subject = new DataColumn("Тема", Type.GetType("System.String"));
+                subject.MaxLength = 100;
+                
                 StudentTable.Columns.Add(fioSupervis);
                 StudentTable.Columns.Add(subject);
+                StudentTable.Columns.Add(achivment);
                 foreach (Student st in stud)
                 {
                     if (DBobjects.Entities.AchivementStudent.Where(p => p.idStudent == st.idStudent && p.idEvent == eventObj.idEvent).Count() > 0)
                     {
                         AchivementStudent achivementStudent = DBobjects.Entities.AchivementStudent.FirstOrDefault(p => p.idStudent == st.idStudent && p.idEvent == eventObj.idEvent);
-                        StudentTable.Rows.Add(st.idStudent, st, achivementStudent.idAchivStud,achivementStudent.fullNameSupervis, achivementStudent.topicWork) ;
+                        StudentTable.Rows.Add(st.idStudent, st, achivementStudent.idAchivStud,achivementStudent.fullNameSupervis, achivementStudent.topicWork, achivementStudent.topicAchivment) ;
                     }
                     else
-                        StudentTable.Rows.Add(st.idStudent, st, 0, "","");
+                        StudentTable.Rows.Add(st.idStudent, st, 0, "","","");
                 }
             }
             else
             {
-                DataColumn Status = new DataColumn("Статус участия", Type.GetType("System.Boolean"));                
-                StudentTable.Columns.Add(Status);
+                StudentTable.Columns.Add(achivment);
                 foreach (Student st in stud)
                 {
                     if (DBobjects.Entities.AchivementStudent.Where(p => p.idStudent == st.idStudent && p.idEvent == eventObj.idEvent).Count() > 0)
                     {
                         AchivementStudent achivementStudent = DBobjects.Entities.AchivementStudent.FirstOrDefault(p => p.idStudent == st.idStudent && p.idEvent == eventObj.idEvent);
-                        StudentTable.Rows.Add(st.idStudent, st, achivementStudent.idAchivStud, true);
+                        StudentTable.Rows.Add(st.idStudent, st, achivementStudent.idAchivStud, achivementStudent.topicAchivment);
                     }
                     else
-                        StudentTable.Rows.Add(st.idStudent, st, 0,  false);
+                        StudentTable.Rows.Add(st.idStudent, st, 0,  "");
                 }
             }
+
             dgvStudent.DataSource = StudentTable;
             dgvStudent.Columns[0].Visible = false;
             dgvStudent.Columns[1].ReadOnly = true;
@@ -182,25 +188,27 @@ namespace CuratorJournal
                 
                 if (comboBoxTypeEvent.Text != "Научно-исследовательская работа")
                 {
-                    if (Convert.ToBoolean(dgvr.Cells[3].Value) == true)
+                    if (String.IsNullOrWhiteSpace(dgvr.Cells[3].Value.ToString())==false )
                     {
                         achivementStudent.idEvent = eventObj.idEvent;
                         achivementStudent.idStudent = Convert.ToInt32(dgvr.Cells[0].Value);
+                        achivementStudent.topicAchivment = dgvr.Cells[3].Value.ToString();
                         if (DBobjects.Entities.AchivementStudent.Where(p => p.idAchivStud == achivementStudent.idAchivStud).Count() == 0)
                             DBobjects.Entities.AchivementStudent.Add(achivementStudent);
                         DBobjects.Entities.SaveChanges();
                     }
-                    else if (achivementStudent.idAchivStud != 0 && Convert.ToBoolean(dgvr.Cells[3].Value) == false)
+                    else if (achivementStudent.idAchivStud != 0 && Convert.ToString(dgvr.Cells[3].Value) == "")
                         DeleteAchivment();
                 }
                 else
                 {
-                    if ((dgvr.Cells[4].Value).ToString() != "" || (dgvr.Cells[3].Value).ToString() != "")
+                    if ((dgvr.Cells[3].Value).ToString() != "" || (dgvr.Cells[4].Value).ToString() != "" || (dgvr.Cells[5].Value).ToString()!="")
                     {
                         achivementStudent.idEvent = eventObj.idEvent;
                         achivementStudent.idStudent = Convert.ToInt32(dgvr.Cells[0].Value);
                         achivementStudent.fullNameSupervis = dgvr.Cells[3].Value.ToString();
                         achivementStudent.topicWork = dgvr.Cells[4].Value.ToString();
+                        achivementStudent.topicAchivment = dgvr.Cells[5].Value.ToString();
                         if (DBobjects.Entities.AchivementStudent.Where(p => p.idAchivStud == achivementStudent.idAchivStud).Count() == 0)
                             DBobjects.Entities.AchivementStudent.Add(achivementStudent);
                         DBobjects.Entities.SaveChanges();
