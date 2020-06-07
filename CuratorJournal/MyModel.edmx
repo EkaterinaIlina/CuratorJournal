@@ -14,7 +14,7 @@
           <Property Name="idEvent" Type="int" Nullable="false" />
           <Property Name="fullNameSupervis" Type="varchar" MaxLength="100" />
           <Property Name="topicWork" Type="varchar" MaxLength="100" />
-          <Property Name="topicAchivment" Type="varchar" MaxLength="200" />
+          <Property Name="topicAchivment" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="Attendance">
           <Key>
@@ -122,6 +122,7 @@
           </Key>
           <Property Name="idHostel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nameHostel" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="adressHostel" Type="varchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="Journal">
           <Key>
@@ -154,7 +155,7 @@
           <Property Name="telephoneKin" Type="varchar" MaxLength="17" />
           <Property Name="disabilityKin" Type="bit" />
           <Property Name="placeOfWorkKin" Type="varchar" MaxLength="50" />
-          <Property Name="idStudent" Type="int" />
+          <Property Name="idStudent" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="LackAttendance">
           <Key>
@@ -344,7 +345,7 @@
           <Property Name="idTalkPar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idTopTPar" Type="int" Nullable="false" />
           <Property Name="idJournal" Type="int" Nullable="false" />
-          <Property Name="topicTalc" Type="varchar" MaxLength="300" />
+          <Property Name="topicTalc" Type="varchar" MaxLength="300" Nullable="false" />
           <Property Name="dateTalkPar" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="TopicTalkParents">
@@ -917,7 +918,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Kin_Student">
-          <End Role="Student" Type="Self.Student" Multiplicity="0..1">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Kin" Type="Self.Kin" Multiplicity="*" />
@@ -1264,7 +1265,7 @@
           <Property Name="topicWork" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Event" Relationship="Self.FK_AchivementStudent_Event" FromRole="AchivementStudent" ToRole="Event" />
           <NavigationProperty Name="Student" Relationship="Self.FK_AchivementStudent_Student" FromRole="AchivementStudent" ToRole="Student" />
-          <Property Name="topicAchivment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="topicAchivment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="Attendance">
           <Key>
@@ -1395,6 +1396,7 @@
           <Property Name="idHostel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nameHostel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Residence" Relationship="Self.FK__Residence__idHos__662B2B3B" FromRole="Hostel" ToRole="Residence" />
+          <Property Name="adressHostel" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Journal">
           <Key>
@@ -1443,7 +1445,7 @@
           <Property Name="telephoneKin" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
           <Property Name="disabilityKin" Type="Boolean" />
           <Property Name="placeOfWorkKin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="idStudent" Type="Int32" />
+          <Property Name="idStudent" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Student" Relationship="Self.FK_Kin_Student" FromRole="Kin" ToRole="Student" />
           <NavigationProperty Name="StructParentsTalc" Relationship="Self.FK_StructParentsTalc_Kin" FromRole="Kin" ToRole="StructParentsTalc" />
         </EntityType>
@@ -1671,7 +1673,7 @@
           <Property Name="idTalkPar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idTopTPar" Type="Int32" Nullable="false" />
           <Property Name="idJournal" Type="Int32" Nullable="false" />
-          <Property Name="topicTalc" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="topicTalc" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="dateTalkPar" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Journal" Relationship="Self.FK__TalkParen__idJou__43D61337" FromRole="TalkParents" ToRole="Journal" />
           <NavigationProperty Name="StructParentsTalc" Relationship="Self.FK_StructParentsTalc_TalkParents" FromRole="TalkParents" ToRole="StructParentsTalc" />
@@ -2109,7 +2111,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Kin_Student">
-          <End Role="Student" Type="Self.Student" Multiplicity="0..1">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Kin" Type="Self.Kin" Multiplicity="*" />
@@ -2722,6 +2724,7 @@
           <EntitySetMapping Name="Hostel">
             <EntityTypeMapping TypeName="CuratorJournalModel.Hostel">
               <MappingFragment StoreEntitySet="Hostel">
+                <ScalarProperty Name="adressHostel" ColumnName="adressHostel" />
                 <ScalarProperty Name="idHostel" ColumnName="idHostel" />
                 <ScalarProperty Name="nameHostel" ColumnName="nameHostel" />
               </MappingFragment>

@@ -26,12 +26,11 @@ namespace CuratorJournal
         public string telephoneKin { get; set; }
         public Nullable<bool> disabilityKin { get; set; }
         public string placeOfWorkKin { get; set; }
-        public Nullable<int> idStudent { get; set; }
+        public int idStudent { get; set; }
     
         public virtual Student Student { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StructParentsTalc> StructParentsTalc { get; set; }
         public override string ToString() => fullNameKin;
-
     }
 }

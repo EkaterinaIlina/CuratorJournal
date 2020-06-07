@@ -77,7 +77,7 @@ namespace CuratorJournal
 
             int jTableSt = 1;
             int jTableStip = 2;
-            foreach (JournalStudent journalStudent in DBobjects.Entities.JournalStudent.Where(p=>p.idJournal==Journal.idJournal).ToList())
+            foreach (JournalStudent journalStudent in DBobjects.Entities.JournalStudent.Where(p=>p.idJournal==Journal.idJournal).ToList().OrderBy(p => p.Student.surnameStudent))
             {
                 if (journalStudent.StatusStudent.nameSatusSt != "Нет")
                 {
@@ -164,7 +164,7 @@ namespace CuratorJournal
                     }
                     else
                     {
-                        tableInogor.Rows[jTableInogor].Cells[4].Range.Text =student.Residence1.Hostel.ToString()+ " комната "+ student.Residence1.room;
+                        tableInogor.Rows[jTableInogor].Cells[4].Range.Text = student.Residence1.Hostel.adressHostel + ". Комната "+ student.Residence1.room;
 
                         jTableInogor++;
                     }                                       
@@ -420,8 +420,6 @@ namespace CuratorJournal
                 int jSports = 1;
                 Microsoft.Office.Interop.Word.Table tableAchivmentOther = application.ActiveDocument.Tables[31];
                 int jOther = 1;
-                string studentsList = "";
-
                 foreach (Event events in DBobjects.Entities.Event.Where(p => p.idJournal == Journal.idJournal))
                 {                    
                     foreach (AchivementStudent achivementStudent in DBobjects.Entities.AchivementStudent.Where(p => p.idEvent == events.idEvent).ToList())

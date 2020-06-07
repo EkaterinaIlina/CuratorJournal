@@ -22,6 +22,7 @@ namespace CuratorJournal
     
         public int idHostel { get; set; }
         public string nameHostel { get; set; }
+        public string adressHostel { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Residence> Residence { get; set; }
